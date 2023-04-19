@@ -25,6 +25,6 @@ e2e tests:
   image: cypress/browsers:node18.12.0-chrome107
   stage: test
   script:
-      - echo $CI_ENVIRONMENT_URL // for debugging
-      - npm ci
-      - npm run test:e2e
+    - cd smartmat
+    - npm ci
+    - npm run test:e2e
