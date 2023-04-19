@@ -2,7 +2,7 @@ image: node:latest
 
 stages:
   - build # Jobs placed in build stage will run first
-  - unit-test # Jobs placed in test stage will run after build jobs
+  - test # Jobs placed in test stage will run after build jobs
 
 install:
   stage: build # The install job will be run before the prettier, typescript and test jobs
@@ -14,8 +14,25 @@ install:
       - node_modules
 
 
-test:
-  stage: unit-test # The test job will run in parallel with the prettier and typescript jobs
+unit test:
+  stage: test # The test job will run in parallel with the prettier and typescript jobs
   script:
     - cd smartmat
+    - npm ci
     - npm run test:unit
+
+
+e2e tests:
+  image: cypress/browsers:node12.14.1-chrome85-ff81
+  stage: test
+  script:
+    - cd smartmat
+    - npm ci
+    - npm run start:ci &
+    - npx cypress run --browser firefox
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
