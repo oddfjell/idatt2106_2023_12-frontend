@@ -18,4 +18,4 @@ test:
   stage: test # The test job will run in parallel with the prettier and typescript jobs
   script:
     - cd smartmat
-    - npm test
+    - npm run test
