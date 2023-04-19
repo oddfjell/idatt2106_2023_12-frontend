@@ -2,7 +2,7 @@ image: node:latest
 
 stages:
   - build # Jobs placed in build stage will run first
-  - test # Jobs placed in test stage will run after build jobs
+  - unit-test # Jobs placed in test stage will run after build jobs
 
 install:
   stage: build # The install job will be run before the prettier, typescript and test jobs
@@ -15,7 +15,7 @@ install:
 
 
 test:
-  stage: test # The test job will run in parallel with the prettier and typescript jobs
+  stage: unit-test # The test job will run in parallel with the prettier and typescript jobs
   script:
     - cd smartmat
-    - npm run test
+    - npm run test:unit
