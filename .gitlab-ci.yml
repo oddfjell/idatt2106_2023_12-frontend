@@ -7,6 +7,7 @@ stages:
 install:
   stage: build # The install job will be run before the prettier, typescript and test jobs
   script:
+    - cd smartmat
     - npm install
   artifacts: # Keep node_modules folder for the following stages
     paths:
@@ -16,4 +17,5 @@ install:
 test:
   stage: test # The test job will run in parallel with the prettier and typescript jobs
   script:
+    - cd smartmat
     - npm test
