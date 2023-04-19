@@ -22,7 +22,6 @@ unit test:
     - npm run test:unit
 
 e2e tests:
-  image: cypress/browsers:node18.12.0-chrome107
   stage: test
   script:
     - cd smartmat
