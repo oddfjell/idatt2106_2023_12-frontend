@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div class="h">
-
+{{msg}}
   </div>
 </template>
 
