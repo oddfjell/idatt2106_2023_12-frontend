@@ -21,14 +21,10 @@ unit test:
     - npm ci
     - npm run test:unit
 
-
 e2e tests:
-    stage: test
-    script:
-      - cd smartmat
-      # install dependencies
+  image: cypress/browsers:node18.12.0-chrome107
+  stage: test
+  script:
+      - echo $CI_ENVIRONMENT_URL // for debugging
       - npm ci
-      # start the server in the background
-      - npm run start:ci &
-      # run Cypress tests
       - npm run test:e2e
