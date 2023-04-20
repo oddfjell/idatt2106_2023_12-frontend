@@ -26,5 +26,4 @@ e2e tests:
   script:
     - cd smartmat
     - npm ci
-    - npm run start:ci &
     - npm run test:e2e
