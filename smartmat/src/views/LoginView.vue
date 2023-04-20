@@ -1,15 +1,17 @@
 <template>
   <form class="loginField">
 
-<div class="inputField">
-    <label for="username">Username </label>
+
+
+    <label class="loginLabel" for="username">Brukernavn: </label>
     <input type="text" placeholder="Skriv ditt brukernavn " name="username" required>
 
-    <label for="password">Password </label>
+    <label class="loginLabel" for="password">Passord: </label>
     <input type="text" placeholder="Skriv ditt passord" name="password" required>
 
-    <button type="submit">Submit</button>
-    </div>
+    <button type="button">Submit</button>
+
+
   </form>
 
 
@@ -20,15 +22,7 @@
 
 <style>
 
-.loginField{
-  max-width: 50%;
-  margin:0;
-  display: grid;
-  grid-row-gap: 1rem;
-  align-items: center;
-}
-
-
+@import "../assets/style/login.css";
 
 
 
