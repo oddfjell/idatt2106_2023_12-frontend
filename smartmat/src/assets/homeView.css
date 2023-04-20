@@ -1,23 +1,73 @@
+
+/**
+css for the squares around each choice
+ */
 #border{
     width: 275px;
     border: 5px solid black;
     padding: 50px;
     height: 450px;
     margin: 20px;
+    margin: 100px 20px 0 0; /* add 50px margin to the top and 20px margin to the right */
     display: inline-block;
 }
+
+/**
+css for text "kjøleskap", "ukemeny" and "Handleliste"
+ */
  #border h1{
      text-align: center;
      color: black;
      font-size: 25px;
- }
+font-family: "Times New Roman" }
 
+ /**
+ css for hover function on text "kjøleskap", "ukemeny" and "Handleliste"
+  */
  h1:hover{
      background-color: hsla(160, 100%, 37%, 0.2);
  }
 
+ /**
+ css for all images
+  */
 img {
     max-width: 100%;
     max-height: 100%;
+    alignment: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
  }
+
+/**
+special css for weekly menu image to make it wanted position
+ */
+
+#menu{
+    max-width: 100%;
+    max-height: 100%;
+    alignment: center;
+   text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+
+
+
+
+/* Style Font Awesome icons */
+/* Style Font Awesome icons */
+.fa-icon {
+    font-family: "Font Awesome 5 Free";
+    font-size: 24px;
+    color: black;
+    position: fixed;
+    top: 40px;
+    right: 50px;
+    z-index: 9999; /* Make sure the icon is on top of other content */
+}
 
