@@ -18,14 +18,14 @@ function addHeader(token){
 export default {
 
   //Register an account
-  registerAccount(account, token){
+  registerAccount(account){
 
-    return accountApiClient.post('/registerAccount', account, addHeader(token))
+    return accountApiClient.post('/registerAccount', account)
   },
 
   //Login to an account
-  loginAccount(account, token){
-    return accountApiClient.put('/loginAccount', account, addHeader(token))
+  loginAccount(account){
+    return accountApiClient.put('/loginAccount', account)
   },
 
   //Get all accounts
