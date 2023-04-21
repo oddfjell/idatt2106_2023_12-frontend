@@ -32,7 +32,10 @@
 
 
 
+<nav>
+  <RouterLink to="/frontView">| FrontView </RouterLink>
 
+</nav>
 
 
 
