@@ -21,7 +21,7 @@ export default {
 
   //Login to an account
   loginAccount(account){
-    return axios.put(baseURL + '/loginAccount', account, config)
+    return axios.post(baseURL + '/loginAccount', account, config)
   },
 
   //Get all accounts
@@ -32,7 +32,7 @@ export default {
   //Remove an account
   removeAccount(token){
     config.headers+=addHeader(token)
-    return axios.put(baseURL + '/remove');
+    return axios.delete(baseURL + '/remove');
   },
 
 };
