@@ -1,41 +1,38 @@
 import axios from 'axios';
-
-const accountApiClient = axios.create({
-  baseURL: 'http://localhost:8080/auth/account',
+const baseURL = "http://localhost:8080/auth/account"
+let config = {
   headers: {
     'Content-Type': 'application/json'
   },
   withCredentials: true
-});
-function addHeader(token){
+}
+function addHeader(token) {
   return {
-    headers: {
+    headers:{
       "Authorization": "Bearer " + token
-    },
+    }
   }
 }
-
 export default {
-
   //Register an account
   registerAccount(account){
-
-    return accountApiClient.post('/registerAccount', account)
+    return axios.post(baseURL + '/registerAccount', account)
   },
 
   //Login to an account
   loginAccount(account){
-    return accountApiClient.put('/loginAccount', account)
+    return axios.put(baseURL + '/loginAccount', account, config)
   },
 
   //Get all accounts
   getAllAccounts(token) {
-    return accountApiClient.get('/', addHeader(token));
+    return axios.get(baseURL + '/', );
   },
 
   //Remove an account
   removeAccount(token){
-    return accountApiClient.put('/remove', addHeader(token));
+    config.headers+=addHeader(token)
+    return axios.put(baseURL + '/remove');
   },
 
 };
