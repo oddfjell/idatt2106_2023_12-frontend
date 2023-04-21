@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/FrontView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,8 +24,32 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/RegisterUserView.vue')
-    }
+    },
+    {
+      path: '/frontView',
+      name: 'frontView',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/FrontView.vue')
+    },
+    {
+      path: '/WeeklyMenuView',
+      name: 'WeeklyMenuView',
+      component: () => import('../views/WeeklyMenuView.vue')
+    },
 
+    {
+      path: '/RefrigeratorView',
+      name: 'RefrigeratorView',
+      component: () => import('../views/RefrigeratorView.vue')
+    },
+
+    {
+      path: '/ShoppingListView',
+      name: 'ShoppingList',
+      component: () => import('../views/ShoppingListView.vue')
+    }
   ]
 })
 
