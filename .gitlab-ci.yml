@@ -14,8 +14,16 @@ install:
       - node_modules
 
 
-test:
+unit test:
   stage: test # The test job will run in parallel with the prettier and typescript jobs
   script:
     - cd smartmat
-    - npm run test
+    - npm ci
+    - npm run test:unit
+
+#e2e tests:
+#  stage: test
+#  script:
+#    - cd smartmat
+#    - npm ci
+#    - npm run test:e2e

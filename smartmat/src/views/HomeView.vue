@@ -3,6 +3,7 @@
 </script>
 
 <template>
-
-  <h>h</h>
+  <main>
+    <TheWelcome />
+  </main>
 </template>
