@@ -29,8 +29,6 @@ describe("Account Service", () => {
                 name: 'bob',
             }
             const logInResult = await accountService.registerAccount(newAccountPayload)
-            console.log(responseMock)
-            console.log(logInResult.data)
             expect(axios.post).toHaveBeenCalledWith('http://localhost:8080/auth/account/registerAccount', newAccountPayload)
             expect(logInResult.data).toStrictEqual(responseMock)
         });

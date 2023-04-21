@@ -26,11 +26,12 @@ function config2 (token) {
 export default {
   //Register an account
   registerAccount(account){
-    return axios.post(baseURL + '/registerAccount', account, this.config)
+    return axios.post(baseURL + '/registerAccount', account)
   },
 
   //Login to an account
   loginAccount(account){
+
     return axios.post(baseURL + '/loginAccount', account, this.config)
   },
 
