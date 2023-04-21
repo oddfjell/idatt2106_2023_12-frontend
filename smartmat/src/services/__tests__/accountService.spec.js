@@ -36,4 +36,24 @@ describe("Account Service", () => {
         });
     })
 
+    describe("login test", () => {
+        it("tests that axios.post method is called while calling the login method", async () => {
+            const responseMock = true;
+            axios.post.mockResolvedValue({
+                data: responseMock,
+            });
+            const newAccountPayload = {
+                username: "test",
+                password: "test",
+            };
+            const logInResult = await accountService.loginAccount(newAccountPayload);//, accountService.config
+            expect(axios.post).toHaveBeenCalledWith(
+                "http://localhost:8080/auth/account/loginAccount",
+                newAccountPayload,
+                accountService.config // Pass the config object here
+            );
+            expect(logInResult.data).toStrictEqual(responseMock);
+        });
+    });
+
 });
