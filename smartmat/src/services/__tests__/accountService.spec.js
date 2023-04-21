@@ -14,7 +14,7 @@ describe("Account Service", () => {
         axios.get.mockResolvedValue({
             data: accountsMock,
         })
-        const accounts = await accountService.getAllAccounts();
+        const accounts = await accountService.getAllAccounts(123);
         expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/auth/account/')
         expect(accounts.data).toStrictEqual(accountsMock)
         })
