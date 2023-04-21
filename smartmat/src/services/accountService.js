@@ -31,7 +31,6 @@ export default {
 
   //Login to an account
   loginAccount(account){
-
     return axios.post(baseURL + '/loginAccount', account, this.config)
   },
 
@@ -41,9 +40,9 @@ export default {
   },
 
   //Remove an account
-  removeAccount(token){
-    config.headers+=addHeader(token)
-    return axios.delete(baseURL + '/remove');
+  removeAccount(account, token){
+    //config.headers+=addHeader(token)
+    return axios.post(baseURL + '/remove', account, config2(token));
   },
 
 };
