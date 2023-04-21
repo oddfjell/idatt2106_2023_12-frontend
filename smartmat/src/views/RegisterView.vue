@@ -42,7 +42,14 @@ export default {
                 try {
                     let response = await accountService.registerAccount(this.user)
                     if (response.status === 200) {
-                        await router.push("/login")
+                        try {
+                            response = await accountService.loginAccount(this.user)
+                            if(response.status===200){
+                                await router.push("/home")
+                            }
+                        }catch (error){
+                            await router.push("/")
+                        }
                     } else {
                         console.log("Login failed")
                     }
