@@ -22,13 +22,3 @@ input[type=text]{
 
 
 }
-
-button{
-    font-size: 1em;
-    font-weight: bold;
-
-}
-button:hover{
-
-    background-color: lightsteelblue;
-}
