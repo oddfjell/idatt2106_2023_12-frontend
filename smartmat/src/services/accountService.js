@@ -21,7 +21,7 @@ export default {
 
   //Login to an account
   loginAccount(account){
-    return axios.post(baseURL + '/loginAccount', account, config)
+    return axios.post(baseURL + '/loginAccount', account, this.config)
   },
 
   //Get all accounts
