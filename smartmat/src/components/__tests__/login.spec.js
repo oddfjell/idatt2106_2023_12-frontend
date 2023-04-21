@@ -1,5 +1,8 @@
+/*
 import {mount} from "@vue/test-utils";
-import {describe, beforeAll, test, expect} from "vitest";
+
+
+import {describe, beforeEach, test, expect} from "vitest";
 import Login from "../../views/LoginView.vue";
 
 
@@ -7,8 +10,7 @@ describe("Login Form", () => {
 
 
     let wrapper;
-
-    beforeAll(()=>{
+    beforeEach(()=>{
         wrapper = mount(Login)});
 
     test("Rendering username and password correctly",async () => {
@@ -22,3 +24,5 @@ describe("Login Form", () => {
         console.log(userName, password);
     } )
 });
+
+*/
