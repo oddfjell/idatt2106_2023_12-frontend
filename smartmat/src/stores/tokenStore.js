@@ -1,30 +1,38 @@
 import { defineStore } from "pinia";
+import { ref, watch } from "vue";
 
-export const tokenStore = defineStore("token", {
-    state: () => ({
-        jwtToken: null,
-        username:null,
-    }),
-    persist: {
-        storage: localStorage,
-    },
 
-    actions: {
-        ///username, token (jwt)
-        storeToken(logInDetails) {
-            let token = logInDetails.jwt
-            let username = logInDetails.username
-            if((token !== undefined) && (username !== undefined)){
-                this.jwtToken = token
-                this.username = username
-            } else{
-                throw new Error("The username or token is undefined")
-            }
+export const tokenStore = defineStore("user", () => {
+    const user = ref({
+        username: "",
+        jwt: ""
+    });
 
+    if(localStorage.getItem("user")){
+        user.value = JSON.parse(localStorage.getItem("user"))
+    }
+
+    watch(
+        user,
+        (userVal) => {
+            localStorage.setItem("user", JSON.stringify(userVal));
         },
-        logOut(){
-            this.jwtToken=null;
-            this.username=null;
-        }
-    },
+        {deep:true}
+    );
+
+    const changeUsername = (newUsername) => {
+        user.value.username = newUsername;
+    }
+
+    const changeJWT = (newJWT) => {
+        user.value.jwt = newJWT;
+    }
+
+    return{
+        user,
+        changeUsername,
+        changeJWT
+    };
+
 });
+

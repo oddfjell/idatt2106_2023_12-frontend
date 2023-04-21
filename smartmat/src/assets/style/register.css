@@ -1,0 +1,12 @@
+.registerLabel{
+    font-weight: bold;
+}
+
+
+input{
+    width: 100%;
+    margin: auto;
+    vertical-align: center;
+    padding: 3%;
+}
+

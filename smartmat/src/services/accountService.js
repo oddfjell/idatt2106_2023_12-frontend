@@ -13,6 +13,16 @@ function addHeader(token) {
     }
   }
 }
+function config2 (token) {
+  return {
+    headers: {
+      'Content-Type': 'application/json',
+      "Authorization": "Bearer " + token
+
+    },
+    withCredentials: true
+  }
+}
 export default {
   //Register an account
   registerAccount(account){
@@ -21,18 +31,19 @@ export default {
 
   //Login to an account
   loginAccount(account){
-    return axios.put(baseURL + '/loginAccount', account, config)
+
+    return axios.post(baseURL + '/loginAccount', account, this.config)
   },
 
   //Get all accounts
   getAllAccounts(token) {
-    return axios.get(baseURL + '/', );
+    return axios.get(baseURL + '/', config2(token));
   },
 
   //Remove an account
   removeAccount(token){
     config.headers+=addHeader(token)
-    return axios.put(baseURL + '/remove');
+    return axios.delete(baseURL + '/remove');
   },
 
 };

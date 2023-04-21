@@ -14,21 +14,9 @@
 }
 
 
-input[type=text]{
-    margin-bottom: 15%;
-    font-size: 1.2em;
+input{
     width: 100%;
-    text-align: center;
-
-
-}
-
-button{
-    font-size: 1em;
-    font-weight: bold;
-
-}
-button:hover{
-
-    background-color: lightsteelblue;
+    margin: auto;
+    vertical-align: center;
+    padding: 3%;
 }
