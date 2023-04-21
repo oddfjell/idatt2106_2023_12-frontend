@@ -7,7 +7,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import App from './App.vue'
 import router from './router'
 
-import './assets/main.css'
+import './assets/style/main.css'
 
 library.add(fas);
 

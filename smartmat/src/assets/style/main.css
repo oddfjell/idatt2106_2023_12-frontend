@@ -1,5 +1,5 @@
 @import './base.css';
-@import './homeView.css';
+@import './frontPage.css';
 
 #app {
   max-width: 1280px;
