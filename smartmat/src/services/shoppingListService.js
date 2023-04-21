@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const shoppingListApiClient = axios.create({
-    baseURL: 'http://localhost:8080/grocery',
+    baseURL: 'http://localhost:8080/shoppingList',
     headers: {
         'Content-Type': 'application/json'
     },
