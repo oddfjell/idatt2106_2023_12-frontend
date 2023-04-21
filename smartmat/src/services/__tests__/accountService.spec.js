@@ -15,7 +15,7 @@ describe("Account Service", () => {
             data: accountsMock,
         })
         const accounts = await accountService.getAllAccounts(123);
-        expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/auth/account/')
+        expect(axios.get).toHaveBeenCalledWith('http://localhost:8080/auth/account/',{headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true} )
         expect(accounts.data).toStrictEqual(accountsMock)
         })
     })
