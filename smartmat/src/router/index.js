@@ -1,54 +1,45 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import FrontView from '../views/FrontView.vue'
+import LoginView from "@/views/LoginView.vue";
+import RegisterView from "@/views/RegisterView.vue";
+import WeeklyMenuView from "@/views/WeeklyMenuView.vue";
+import RefrigeratorView from "@/views/RefrigeratorView.vue";
+import ShoppingListView from "@/views/ShoppingListView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/home',
-      name: 'home',
+      name: 'FrontView',
       component: FrontView
     },
     {
       path: '/',
-      name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/LoginView.vue')
+      name: 'LoginView',
+      component: LoginView
     },
     {
       path: '/register',
-      name: 'register',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/RegisterView.vue')
+      name: 'RegisterView',
+      component: RegisterView
     },
     {
-      path: '/frontView',
-      name: 'frontView',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/FrontView.vue')
-    },
-    {
-      path: '/WeeklyMenuView',
+      path: '/weeklyMenu',
       name: 'WeeklyMenuView',
-      component: () => import('../views/WeeklyMenuView.vue')
+      component:WeeklyMenuView
     },
 
     {
-      path: '/RefrigeratorView',
+      path: '/refrigerator',
       name: 'RefrigeratorView',
-      component: () => import('../views/RefrigeratorView.vue')
+      component: RefrigeratorView
     },
 
     {
-      path: '/ShoppingListView',
-      name: 'ShoppingList',
-      component: () => import('../views/ShoppingListView.vue')
+      path: '/shoppingList',
+      name: 'ShoppingListView',
+      component: ShoppingListView
     }
   ]
 })
