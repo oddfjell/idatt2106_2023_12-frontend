@@ -6,7 +6,7 @@
     <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required>
 
     <label class="loginLabel" for="password">Passord: </label>
-    <input type="text" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
+    <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
 
       <p id="error" v-if="error">{{error}} </p>
 
@@ -44,7 +44,7 @@ export default {
                 try {
                     let response = await accountService.loginAccount(this.user)
                     if (response.status === 200) {
-                        await router.push("/")
+                        await router.push("/home")
                     } else {
                         this.error = response.status
                         console.log("Login failed")

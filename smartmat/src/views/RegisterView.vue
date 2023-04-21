@@ -6,7 +6,7 @@
             <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required>
 
             <label class="registerLabel" for="password">Passord: </label>
-            <input type="text" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
+            <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
 
             <p id="error" v-if="error">{{error}} </p>
 
@@ -52,7 +52,7 @@ export default {
             }
         },
         onLogin(){
-            router.push('/login')
+            router.push('/')
         }
     }
 }
