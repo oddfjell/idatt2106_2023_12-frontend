@@ -2,7 +2,6 @@
 
 
 
-  <fa icon="user" class="fa-icon" />
 
   <div id="border">
     <nav>

@@ -159,17 +159,7 @@ Styling for the borders for the computer version
         margin-top: 50px;
     }
 
-    /* Style user icon */
-    .fa-icon {
-        font-family: "Font Awesome 5 Free";
-        font-size: 24px;
-        color: black;
-        position: fixed;
-        top: 40px;
-        right: 50px;
-        z-index: 9999; /* Make sure the icon is on top of other content */
-        cursor: pointer;
-    }
+
 }
 
 
