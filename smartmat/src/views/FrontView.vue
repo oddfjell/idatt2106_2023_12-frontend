@@ -42,7 +42,14 @@
 
 </template>
 <script>
+import {tokenStore} from "@/stores/tokenStore";
 
+export default {
+    created() {
+        console.log(tokenStore().user.username)
+        console.log(tokenStore().user.jwt)
+    }
+}
 </script>
 
 <style>
