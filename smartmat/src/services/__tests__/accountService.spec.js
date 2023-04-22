@@ -19,7 +19,7 @@ describe("Account Service", () => {
         expect(accounts.data).toStrictEqual(accountsMock)
         })
     })
-    describe("registerAccount test", ()=>{
+    describe("registerAccount test", () => {
         it("tests that axios.post method is called while calling registerAccount method", async () => {
             const responseMock = true
             axios.post.mockResolvedValue({
@@ -54,4 +54,19 @@ describe("Account Service", () => {
         });
     });
 
+
+    describe("removeAccount test", () => {
+        it("tests that axios.post method is called while calling removeAccount method", async () => {
+            const responseMock = true
+            axios.post.mockResolvedValue({
+                data: responseMock,
+            })
+            const AccountPayload = {
+                name: 'bob',
+            }
+            const removeResult = await accountService.removeAccount(AccountPayload, 123)
+            expect(axios.post).toHaveBeenCalledWith('http://localhost:8080/auth/account/remove', AccountPayload, {headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true} )
+            expect(removeResult.data).toStrictEqual(responseMock)
+        });
+    })
 });
