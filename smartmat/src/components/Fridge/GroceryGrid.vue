@@ -56,13 +56,6 @@ export default {
     grid-gap: 1%;
     margin: auto;
 }
-.grocery{
-    height: fit-content;
-    width: 100%;
-}
-#count{
-    width: 100%;
-}
 
 @media only screen and (max-width: 1400px) {
     #grocery_grid{
