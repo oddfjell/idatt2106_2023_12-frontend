@@ -48,14 +48,13 @@ export default {
 <style scoped>
 .container{
     max-width: none;
-    width: 100%;
     padding: 1%;
 }
 #grocery_grid{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 1%;
-    padding: 0%;
+    margin: auto;
 }
 .grocery{
     height: fit-content;
@@ -63,6 +62,12 @@ export default {
 }
 #count{
     width: 100%;
+}
+
+@media only screen and (max-width: 1400px) {
+    #grocery_grid{
+        grid-template-columns: repeat(4, 1fr)
+    }
 }
 @media only screen and (max-width: 1200px) {
     #grocery_grid{
