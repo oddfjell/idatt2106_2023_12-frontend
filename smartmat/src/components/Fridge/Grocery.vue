@@ -9,8 +9,8 @@
         <p id="category">{{grocery.category.name}}</p>
 
         <div class="buttonBar">
-            <button id="eatBtn" >Spist</button>
-            <Throw />
+            <button class="Btn" id="eatBtn" >Spist</button>
+            <Throw/>
         </div>
         </div>
 </div>
@@ -51,6 +51,13 @@ export default {
 #grocery-left{
     margin-left: 0;
 }
+.Btn{
+    border: 0;
+    width: fit-content;
+    padding: 5%;
+    border-radius: 5px;
+    margin: 0;
+}
 #grocery-right{
     margin-right: 0;
     display: flex;
@@ -59,30 +66,22 @@ export default {
 }
 .buttonBar{
     margin-right: 0;
-    width: fit-content;
+    width: 100%;
     align-self: end;
+
 }
 #category{
     text-align: end;
 }
-#throwComponent{
-    background: #0b6dff;
-    color: white;
-}
 
 #eatBtn{
-    background: #d5d5d5;
-    color: black;
-    margin-right: 10px;
-}
-
-#throwComponent:hover {
-    background-color: #4169a8;
-    cursor: pointer;
+    background: #48bd00;
+    color: white;
+    float: right;
 }
 
 #eatBtn:hover {
-    background-color: #b7b7b7;
+    background-color: #048100;
     cursor: pointer;
 }
 </style>
