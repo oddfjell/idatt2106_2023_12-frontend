@@ -1,14 +1,14 @@
 <template>
-    <button @click="showThrowModal=true"> Kast </button>
+    <button id="throwModalBtn" @click="showThrowModal=true"> Kast </button>
     <Teleport to="body">
-        <BaseModal :show="showThrowModal" @close="showThrowModal = false">
+        <BaseModal id="throwModal" :show="showThrowModal" @close="showThrowModal = false">
             <template #header>
                 <h3>Kast</h3>
             </template>
             <template #body>
                 <p>Hvor mye var det igjen av varen?</p>
                 <div class="slidecontainer">
-                <input name="slider" tabindex="0" type="range" step="10" min="0" max="100" value="100" class="slider" @input="onSliderInput">
+                <input tabindex="0" type="range" step="10" min="0" max="100" value="100" class="slider" id="throwSlider" @input="onSliderInput">
                 </div>
                 <p v-if="value>90">Hele varen ble kastet :(</p>
                 <p v-else-if="value<10">Ingenting! Hele varen var brukt! :)</p>
