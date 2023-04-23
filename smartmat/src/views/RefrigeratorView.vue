@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GroceryGrid from "@/components/GroceryGrid.vue";
+import GroceryGrid from "@/components/Fridge/GroceryGrid.vue";
 export default {
   name: "RefrigeratorView",
     components: {GroceryGrid}
@@ -14,5 +14,7 @@ export default {
 </script>
 
 <style scoped>
-
+.container{
+    max-width: none;
+}
 </style>
