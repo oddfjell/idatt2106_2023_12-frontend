@@ -1,38 +1,46 @@
 <template>
     <div class="container">
-        <div v-if="groceries.length > 0" id="grocery_grid">
-           <GroceryComponent/>
+        <div v-if="fridgeEntities.length > 0" id="grocery_grid">
+            <div v-for="(fridgeEntity, index) in fridgeEntities" :key="fridgeEntity.id">
+           <GroceryComponent :tabindex="index+1" :grocery="fridgeEntity.grocery" :count="fridgeEntity.count" />
+            </div>
         </div>
         <div v-else><h1>No groceries :(</h1></div>
     </div>
 </template>
 
 <script>
-import GroceryComponent from "@/components/Grocery.vue";
+import GroceryComponent from "@/components/Fridge/Grocery.vue";
 import fridgeService from "@/services/fridgeService";
 import {tokenStore} from "@/stores/tokenStore";
-import grocery from "@/components/Grocery.vue";
 
 export default {
     name: "FrontPageView.vue",
     components: {GroceryComponent},
     data(){
         return{
-            groceries:[]
+            fridgeEntities:[]
         }
     },
     methods:{
     },
     async created(){
-        let additionalGroceries = []
+        let additionalGroceries = [{id:4,count:4, account:{username:"Emil"}, grocery:{id:1, name:"Melk", category:{id:1,name:"Melk og melkeprodukter"}}},
+            {id:5,count:1, account:{username:"Emil"}, grocery:{id:1, name:"Melk", category:{id:1,name:"Melk og melkeprodukter"}}}
+        ]
         for(let grocery of additionalGroceries){
-            this.groceries.push(grocery)
+            this.fridgeEntities.push(grocery)
         }
         console.log(tokenStore().user.jwt)
-        let groceries = await fridgeService.getGroceries(tokenStore().user.username, tokenStore().user.jwt )
-        for(let grocery of groceries){
-            this.groceries.push(grocery)
+        try {
+            let groceries = await fridgeService.getGroceries(tokenStore().user.username, tokenStore().user.jwt)
+            for (let grocery of groceries) {
+                this.fridgeEntities.push(grocery)
+            }
+        }catch (error){
+            console.log(error)
         }
+        console.log(this.fridgeEntities)
     },
 }
 </script>
