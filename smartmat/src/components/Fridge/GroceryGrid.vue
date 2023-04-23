@@ -46,24 +46,18 @@ export default {
 </script>
 
 <style scoped>
+.container{
+    margin: 2%;
+    padding: 2% 1%;
+}
 #grocery_grid{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 2%;
-    margin-top: 30px;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 .grocery{
     height: fit-content;
     width: 100%;
-}
-.hoverborder{
-    border:solid transparent 4px;
-    border-radius: 10px;
-}
-.hoverborder:hover{
-    border: solid #1abc9c 4px;
 }
 @media only screen and (max-width: 800px) {
     #grocery_grid{
@@ -74,7 +68,7 @@ export default {
     #grocery_grid{
         grid-template-columns: 1fr 1fr}
 }
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 600px) {
     #grocery_grid{
         grid-template-columns: 1fr }
 }
