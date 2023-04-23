@@ -17,7 +17,7 @@ describe("ThrowComponent", () => {
     })
 
     it("renders modal when clicked",async () => {
-        const button = mountThrow().find("#throwModalBtn")
+        const button = mountThrow().find(".throwModalBtn")
         await button.trigger("click")
     })
 
