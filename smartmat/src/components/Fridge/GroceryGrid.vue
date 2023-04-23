@@ -47,6 +47,7 @@ export default {
 
 <style scoped>
 .container{
+    max-width: none;
     margin: 2%;
     padding: 2% 1%;
 }
@@ -59,12 +60,15 @@ export default {
     height: fit-content;
     width: 100%;
 }
-@media only screen and (max-width: 800px) {
+#count{
+    width: 100%;
+}
+@media only screen and (max-width: 1200px) {
     #grocery_grid{
         grid-template-columns: 1fr 1fr 1fr
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     #grocery_grid{
         grid-template-columns: 1fr 1fr}
 }
