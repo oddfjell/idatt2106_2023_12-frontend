@@ -1,14 +1,16 @@
 <template>
     <div class="container">
-        <h1 id="title">{{grocery.name}}</h1>
-        <p>{{grocery.category.name}}</p>
+        <div id="grocery-header">
+            <img class="thumbnail" src="@/images/weeklyMenuPage.png" alt="">
+            <h3 id="title">{{grocery.name}}</h3>
+        </div>
+        <p id="category">{{grocery.category.name}}</p>
         <p id="count">Antall: {{count}}</p>
         <div class="buttonBar">
-            <button >Eat</button>
+            <button>Spist</button>
             <Throw/>
         </div>
-    </div>
-    <div class=""></div>
+</div>
 </template>
 
 <script>
@@ -26,9 +28,24 @@ export default {
     },
 }
 </script>
-
 <style scoped>
+.thumbnail{
+    width: 10%;
+}
+#title{
+    font-weight: bold;
+}
+.container{
+    padding: 0 1%;
+    margin: 2% auto;
+    width: 90%;
+    height: 90%;
+
+}
+#grocery-header{
+float: left;
+}
 .buttonBar{
-    float:right;
+    float: right;
 }
 </style>
