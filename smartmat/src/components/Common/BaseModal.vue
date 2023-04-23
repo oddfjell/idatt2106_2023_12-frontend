@@ -7,7 +7,6 @@ export default {
 </script>
 
 <template>
-    <Transition name="modal">
         <div v-if="show" class="modal-mask">
             <div class="modal-container">
                 <div class="modal-header">
@@ -28,7 +27,6 @@ export default {
                 </div>
             </div>
         </div>
-    </Transition>
 </template>
 
 <style>
