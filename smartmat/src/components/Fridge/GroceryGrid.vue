@@ -48,13 +48,14 @@ export default {
 <style scoped>
 .container{
     max-width: none;
-    margin: 2%;
-    padding: 2% 1%;
+    width: 100%;
+    padding: 1%;
 }
 #grocery_grid{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 2%;
+    grid-gap: 1%;
+    padding: 0%;
 }
 .grocery{
     height: fit-content;

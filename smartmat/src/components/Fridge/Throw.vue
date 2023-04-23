@@ -68,7 +68,7 @@ export default {
 }
 
 #cancelBtn{
-    background: #b7b7b7;
+    background: #d5d5d5;
     color: black;
     margin-right: 10px;
 }
@@ -79,7 +79,7 @@ export default {
 }
 
 #cancelBtn:hover {
-    background-color: #d0cece;
+    background-color: #b7b7b7;
     cursor: pointer;
 }
 
