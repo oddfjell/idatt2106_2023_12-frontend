@@ -12,7 +12,7 @@ function configToken (token) {
 }
 export default {
     //should get account from Token
-    getGroceries( token) {
+    getGroceries(token) {
         return axios.get(baseURL + '/groceries', configToken(token))
     },
     addGrocery(account, token){
