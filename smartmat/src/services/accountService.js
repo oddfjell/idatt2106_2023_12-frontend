@@ -33,8 +33,9 @@ export default {
   },
 
   //Remove an account
-  removeAccount(token){
-    return axios.delete(baseURL + '/remove', configToken(token));
+  removeAccount(account, token){
+    //config.headers+=addHeader(token)
+    return axios.post(baseURL + '/remove', account, configToken(token));
   },
 
 };
