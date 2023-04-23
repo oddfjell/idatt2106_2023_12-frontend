@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <h1>{{grocery.name}}</h1>
+        <h1 id="title">{{grocery.name}}</h1>
         <p>{{grocery.category.name}}</p>
-        <p>Antall: {{count}}</p>
+        <p id="count">Antall: {{count}}</p>
         <div class="buttonBar">
             <button >Eat</button>
             <Throw/>
