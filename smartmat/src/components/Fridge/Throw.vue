@@ -1,9 +1,9 @@
 <template>
-    <button id="throwModalBtn" @click="showThrowModal=true"> Kast </button>
+    <button id="throwModalBtn" @click="showThrowModal=true"> Kastet </button>
     <Teleport to="body">
-        <BaseModal id="throwModal" :show="showThrowModal" @close="showThrowModal = false">
+        <BaseModal id="throwModal" :show="showThrowModal">
             <template #header>
-                <h3>Kast</h3>
+                <h3>Kastet</h3>
             </template>
             <template #body>
                 <p>Hvor mye var det igjen av varen?</p>
@@ -11,12 +11,12 @@
                 <input tabindex="0" type="range" step="10" min="0" max="100" value="100" class="slider" id="throwSlider" @input="onSliderInput">
                 </div>
                 <p v-if="value>90">Hele varen ble kastet :(</p>
-                <p v-else-if="value<10">Ingenting! Hele varen var brukt! :)</p>
+                <p v-else-if="value<10">Ingenting! Hele varen ble brukt! :)</p>
                 <p v-else>{{value}}% igjen</p>
             </template>
             <template #footer>
-            <button class="Btn" @click="$emit('close')" id="throwBtn">Kast</button>
-                <button class="Btn" @click="$emit('close')" id="cancelBtn" >Avbryt</button>
+                <button class="Btn" @click="close" id="throwBtn">Kast</button>
+                <button class="Btn" @click="close" id="cancelBtn" >Avbryt</button>
             </template>
         </BaseModal>
     </Teleport>
@@ -37,6 +37,10 @@ export default {
     methods:{
         onSliderInput(event){
             this.value=event.target.value;
+        },
+        close(){
+            console.log("Bruh")
+            this.showThrowModal=false
         }
     }
 }
