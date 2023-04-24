@@ -1,0 +1,57 @@
+
+/*
+separate css version for phone, to make it fit nicely into the phone screen
+ */
+@media (max-width: 414px) {
+
+    /* Style user icon */
+    .fa-icon-user {
+        font-size: 20px;
+        color: black;
+        position: fixed;
+        top: 39px;
+        right: 20px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    /* Style user icon */
+    .fa-icon-cart {
+        font-size: 20px;
+        color: black;
+        position: fixed;
+        top: 40px;
+        right: 50px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+}
+
+/*
+Styling for the borders for the computer version
+ */
+@media (min-width:415px) {
+    /*
+    styling for the user icon in the corner
+    */
+    .fa-icon-user {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+    /*
+    styling for the user icon in the corner
+    */
+    .fa-icon-cart {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 32px;
+        right: 70px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+}

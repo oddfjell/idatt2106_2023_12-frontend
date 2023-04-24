@@ -7,6 +7,8 @@ describe("Shopping List Service", () =>{
     beforeEach(() => {
         axios.get.mockReset()
         axios.post.mockReset()
+        axios.put.mockReset()
+        axios.delete.mockReset()
     })
 
     describe("getProducts test", async () => {
