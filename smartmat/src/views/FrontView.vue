@@ -1,44 +1,21 @@
 <template>
-
-
-
-
-  <div id="border">
-    <nav>
-      <RouterLink to="/refrigerator">  <h1>Kjøleskap</h1>     <img src="../images/refrigerator.png" alt="Kjøleskap">
+    <RouterLink to="/refrigerator">
+        <div id="border">
+        <h1>Kjøleskap</h1>   <img src="../images/refrigerator.png" alt="Kjøleskap" >
+        </div>
     </RouterLink>
-
-    </nav>
-
-
-
-  </div>
-
-  <div id="border">
-
-    <nav>
-
-    <RouterLink to="/weeklyMenu">  <h1>Ukemeny</h1>  <img id="menu" src="../images/weeklyMenuPage.png" alt="Ukemeny">
+    <RouterLink to="/weeklyMenuView">
+      <div id="border">
+        <h1>Ukemeny</h1>
+        <img id="menu" src="../images/weeklyMenuPage.png" alt="Ukemeny">
+      </div>
     </RouterLink>
-    </nav>
-
-
-  </div>
-
-  <div id="border">
-    <nav>
-      <RouterLink to="/shoppingList">  <h1>Handleliste</h1> <img src="../images/list.png" alt="Handleliste">
-      </RouterLink>
-
-    </nav>
-
-
-
-  </div>
-
-
-
-
+    <RouterLink to="/shoppingList">
+      <div id="border">
+        <h1>Handleliste</h1>
+        <img src="../images/list.png" alt="Handleliste">
+      </div>
+    </RouterLink>
 </template>
 <script>
 import {tokenStore} from "@/stores/tokenStore";
