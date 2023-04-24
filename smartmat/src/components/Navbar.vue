@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart"/>
       </RouterLink>
 
-    <RouterLink to="/" tag ="button">
+    <RouterLink to="/home" tag ="button">
     <fa :icon="['fas', 'home']" class="fa-icon-home" />
     </RouterLink>
 
