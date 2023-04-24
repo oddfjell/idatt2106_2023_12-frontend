@@ -6,42 +6,44 @@ separate css version for phone, to make it fit nicely into the phone screen
 
     /* Style user icon */
     .fa-icon-user {
-        font-size: 20px;
+        font-size: 50px;
         color: black;
         position: fixed;
-        top: 39px;
-        right: 20px;
+        top: 1505px;
+        right: 50px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
     /* Style user icon */
     .fa-icon-cart {
-        font-size: 20px;
+        font-size: 50px;
         color: black;
         position: fixed;
-        top: 40px;
-        right: 50px;
+        top: 1505px;
+        right: 268px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
     .fa-icon-home{
-        font-size: 20px;
+        font-size: 50px;
         color: black;
         position: fixed;
-        top: 40px;
-        right: 80px;
+        top: 1505px;
+        right: 486px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
-    .fa-icon-utensils{
-        font-size: 20px;
+    .fa-icon-cutlery{
+        font-size: 50px;
         color: black;
         position: fixed;
-        top: 40px;
-        right: 80px;
+        top: 1505px;
+        right: 704px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
+    /*922*/
+
     .fridge{
 
         width:100px;

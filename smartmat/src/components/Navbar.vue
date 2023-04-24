@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-
+    <nav>
     <RouterLink to="/ShoppingListView" tag ="button">
     <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart"/>
       </RouterLink>
@@ -25,17 +25,6 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterLink to="/RefrigeratorView" tag ="button">
       <img class="fridge" src="../images/fridge.svg" alt="Kjøleskap">
     </RouterLink>
-
-    <nav>
-      <RouterLink to="/">Hjem</RouterLink>
-      <RouterLink to="/weeklyMenuView"> | Ukemeny</RouterLink>
-      <RouterLink to="/shoppingListView"> | Handleliste</RouterLink>
-      <RouterLink to="/refrigeratorView"> | Kjøleskap</RouterLink>
-
-
-
-
-
 
     </nav>
 
