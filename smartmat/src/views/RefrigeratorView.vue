@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div id="fridgeContainer" class="container">
     <h1>Kjøleskap</h1>
     <GroceryGrid/>
 </div>
@@ -16,5 +16,11 @@ export default {
 <style scoped>
 .container{
     max-width: none;
+    min-height: 90vh;
+}
+#fridgeContainer{
+    margin-left: 10%;
+    margin-right: 10%;
+
 }
 </style>

@@ -1,8 +1,9 @@
 <template>
     <div class="container">
-        <div v-if="fridgeEntities.length > 0" id="grocery_grid">
+        <div v-if="loading">Laster ...</div>
+        <div v-else-if="fridgeEntities.length" id="grocery_grid">
             <div v-for="(fridgeEntity, index) in fridgeEntities" :key="fridgeEntity.id">
-           <GroceryComponent :tabindex="index+1" :grocery="fridgeEntity.grocery" :count="fridgeEntity.count" />
+           <GroceryComponent :tabindex="index+1" :grocery="fridgeEntity" :count="fridgeEntity.count" />
             </div>
         </div>
         <div v-else><h1>No groceries :(</h1></div>
@@ -19,56 +20,58 @@ export default {
     components: {GroceryComponent},
     data(){
         return{
-            fridgeEntities:[]
+            loading:true,
+            fridgeEntities:null
         }
     },
     methods:{
     },
     async created(){
-        let additionalGroceries = [{id:4,count:4, account:{username:"Emil"}, grocery:{id:1, name:"Melk", category:{id:1,name:"Melk og melkeprodukter"}}},
-            {id:5,count:1, account:{username:"Emil"}, grocery:{id:1, name:"Melk", category:{id:1,name:"Melk og melkeprodukter"}}}
-        ]
-        for(let grocery of additionalGroceries){
-            this.fridgeEntities.push(grocery)
-        }
-        console.log(tokenStore().user.jwt)
+        let fridgeEntities = [];
         try {
-            let groceries = await fridgeService.getGroceries(tokenStore().user.username, tokenStore().user.jwt)
+            let groceriesResponse = await fridgeService.getGroceries(tokenStore().user.jwt)
+            let groceries = groceriesResponse.data
             for (let grocery of groceries) {
-                this.fridgeEntities.push(grocery)
+                fridgeEntities.push(grocery)
             }
+            console.log(fridgeEntities)
         }catch (error){
             console.log(error)
+        }finally {
+         this.loading=false
         }
-        console.log(this.fridgeEntities)
+        this.fridgeEntities=fridgeEntities
     },
 }
 </script>
 
 <style scoped>
 .container{
-    margin: 2%;
-    padding: 2% 1%;
+    max-width: none;
+    padding: 1%;
 }
 #grocery_grid{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 2%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1%;
+    margin: auto;
 }
-.grocery{
-    height: fit-content;
-    width: 100%;
+
+@media only screen and (max-width: 1420px) {
+    #grocery_grid{
+        grid-template-columns: repeat(4, 1fr)
+    }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1320px) {
     #grocery_grid{
         grid-template-columns: 1fr 1fr 1fr
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1020px) {
     #grocery_grid{
         grid-template-columns: 1fr 1fr}
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 720px) {
     #grocery_grid{
         grid-template-columns: 1fr }
 }
