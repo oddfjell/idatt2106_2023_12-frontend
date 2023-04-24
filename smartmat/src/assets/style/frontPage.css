@@ -5,31 +5,19 @@ separate css version for phone, to make it fit nicely into the phone screen
  */
 @media (max-width: 414px) {
     #border {
-        width: 20%;
+        width: 110%;
         border: 5px solid black;
-        padding: 10px;
-        height: auto;
-        position: page;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        height: 700px;
         transform-style: preserve-3d;
         display: block;
         box-sizing: border-box;
-        transform: rotate(90deg);
-        margin-left: 30%;
-        box-sizing: border-box;
+        transform: rotate(90deg) translateX(40%);
+        margin-left: 100%;
+        margin-top: -300px;
+        margin-bottom: -300px;
     }
 
-/*
-When the any of the borders are hovered over with the cursor, the transform property is set back
-
-    #border:hover {
-        transform: none;
-    }
-
-    #border:hover:before {
-        content: none;
-    }
-     */
 
     /*
     styling for the text on the page "handleliste", "Ukemeny" and "Kjøleskap"
@@ -37,32 +25,48 @@ When the any of the borders are hovered over with the cursor, the transform prop
     #border h1 {
         text-align: center;
         color: black;
-        font-size: 50%;
+        font-size: 500%;
         font-family: "Times New Roman";
-        margin: 10px 0;
         transform: rotate(270deg);
+        margin: 150px 0 10px 10px;
+        text-decoration: none;
+
 
     }
 
     /*
     Styling for the two images on the page inside the borders of "Handlelite" and "kjøleskap"
      */
-    img {
+    .fa-icon-cart-frontPage {
+
+        max-width: 60%;
+        height: auto;
+        margin-top: 170px;
+        margin-left: 60px;
+        transform: rotate(270deg);
+        color: #181818;
+    }
+    .fa-icon-cutlery-frontPage {
+
         max-width: 50%;
         height: auto;
-        margin-top: 20px;
+        margin-top: 150px;
+        margin-left: 60px;
         transform: rotate(270deg);
-
+        color: #181818;
     }
-
-    /*
-    Individual styling for the image for the "Ukemeny", because the image was smaller than the other two
-     */
-    #menu {
-        max-width: 100%;
+    .fridge-frontPage{
+        max-width: 130%;
+        font-size: 100px;
         height: auto;
-        margin-top: 20px;
+        margin-top: -240px;
+        margin-left: -25px;
+        transform: rotate(270deg);
+        width: 1000px;
+        height: 1000px;
+        color: #181818;
     }
+
 
     /*
     styling for the user icon in the corner
@@ -136,7 +140,15 @@ Styling for the borders for the computer version
     /**
     css for all images
      */
-    img {
+    .fa-icon-shopping-cart {
+        font-size: 80px;
+        alignment: center;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    .yo {
         max-width: 100%;
         max-height: 100%;
         alignment: center;

@@ -9,7 +9,7 @@ import router from './router'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 
-library.add(faUtensils, faUser, faHome, faCartShopping);
+library.add(faUtensils, faUser, faHome, faCartShopping,);
 
 const app = createApp(App)
 
