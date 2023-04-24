@@ -24,6 +24,7 @@
 <script>
 import accountService from "@/services/accountService";
 import router from "@/router";
+import {tokenStore} from "@/stores/tokenStore";
 
 export default {
     data() {
@@ -45,6 +46,9 @@ export default {
                         try {
                             response = await accountService.loginAccount(this.user)
                             if(response.status===200){
+                                let data= response.data
+                                tokenStore().changeJWT(data.jwt)
+                                tokenStore().changeUsername(data.username)
                                 await router.push("/home")
                             }
                         }catch (error){
@@ -52,9 +56,11 @@ export default {
                         }
                     } else {
                         console.log("Login failed")
+                        this.error=response.status
                     }
                 }catch (error){
                     console.log("Registration failed")
+                    this.error="Registration failed"
                 }
             }
         },
@@ -65,7 +71,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 @import "../assets/style/register.css";
 #registerBtn {
@@ -92,7 +98,9 @@ export default {
     background-color: #d0cece;
     cursor: pointer;
 }
-
+#error{
+    color:red
+}
 
 
 </style>

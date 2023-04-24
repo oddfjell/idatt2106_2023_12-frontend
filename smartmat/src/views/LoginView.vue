@@ -26,6 +26,7 @@
 <script>
 import accountService from "@/services/accountService";
 import router from "@/router";
+import {tokenStore} from "@/stores/tokenStore";
 
 export default {
     data() {
@@ -44,6 +45,9 @@ export default {
                 try {
                     let response = await accountService.loginAccount(this.user)
                     if (response.status === 200) {
+                        let data=response.data
+                        tokenStore().changeJWT(data.jwt)
+                        tokenStore().changeUsername(data.username)
                         await router.push("/home")
                     } else {
                         this.error = response.status
@@ -61,7 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 @import "../assets/style/login.css";
 

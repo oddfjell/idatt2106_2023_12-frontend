@@ -15,17 +15,7 @@ function addHeader(token) {
   }
 }
   export default{
-  //add Product
-    addProduct(product, token){
-      return groceryApiClient.post('/addProduct', product, addHeader(token))
-    },
-    editProduct(product, token) {
-      return groceryApiClient.put('/editProduct', product, addHeader(token))
-    },
-    removeProduct(productID, token){
-      return groceryApiClient.delete('/removeProduct/' + productID, addHeader(token))
-    },
-    throwProduct(productID, token){
-      return groceryApiClient.delete('/throwProduct/'+productID, addHeader(token))
-    }
+  getProducts(token){
+    return groceryApiClient.get("/", addHeader(token))
+  }
 }

@@ -6,14 +6,7 @@ let config = {
   },
   withCredentials: true
 }
-function addHeader(token) {
-  return {
-    headers:{
-      "Authorization": "Bearer " + token
-    }
-  }
-}
-function config2 (token) {
+function configToken (token) {
   return {
     headers: {
       'Content-Type': 'application/json',
@@ -36,13 +29,13 @@ export default {
 
   //Get all accounts
   getAllAccounts(token) {
-    return axios.get(baseURL + '/', config2(token));
+    return axios.get(baseURL + '/', configToken(token));
   },
 
   //Remove an account
-  removeAccount(token){
-    config.headers+=addHeader(token)
-    return axios.delete(baseURL + '/remove');
+  removeAccount(account, token){
+    //config.headers+=addHeader(token)
+    return axios.post(baseURL + '/remove', account, configToken(token));
   },
 
 };
