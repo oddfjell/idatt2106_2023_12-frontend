@@ -31,13 +31,13 @@ export default {
         return axios.get(baseURL+'/', config2(token))//Var add header
     },
     addToShoppingList(product, token){
-        return shoppingListApiClient.post('/', product, addHeader(token))
+        return axios.post(baseURL+'/', product, config2(token))
     },
     removeFromShoppingList(productID, token){
-        return shoppingListApiClient.delete('/remove/'+productID, addHeader(token))
+        return axios.delete(baseURL+'/remove/'+productID, config2(token))
     },
     acceptRequest(product, token){
-        return shoppingListApiClient.put('/accept', product, addHeader(token))
+        return axios.put(baseURL+'/accept', product, config2(token))
     }
 }
 
