@@ -1,5 +1,5 @@
 <template>
-    <button id="throwModalBtn" @click="showThrowModal=true"> Kastet </button>
+    <button class="Btn throwModalBtn" @click="showThrowModal=true"> Kastet </button>
     <Teleport to="body">
         <BaseModal id="throwModal" :show="showThrowModal">
             <template #header>
@@ -15,7 +15,7 @@
                 <p v-else>{{value}}% igjen</p>
             </template>
             <template #footer>
-                <button class="Btn" @click="close" id="throwBtn">Kast</button>
+                <button class="Btn throwModalBtn" @click="close">Kast</button>
                 <button class="Btn" @click="close" id="cancelBtn" >Avbryt</button>
             </template>
         </BaseModal>
@@ -56,30 +56,30 @@ export default {
 .Btn{
     float: right;
     border: 0;
-    padding: 10px;
-    width: 25%;
+    width: fit-content;
+    padding: 5%;
     border-radius: 5px;
     margin: 0;
 }
 
-#throwBtn{
-    background: #0b6dff;
+.throwModalBtn{
+    background: #fc546c;
     color: white;
 }
 
 #cancelBtn{
-    background: #b7b7b7;
+    background: #d5d5d5;
     color: black;
     margin-right: 10px;
 }
 
-#throwBtn:hover {
-    background-color: #4169a8;
+.throwModalBtn:hover {
+    background-color: #ff2222;
     cursor: pointer;
 }
 
 #cancelBtn:hover {
-    background-color: #d0cece;
+    background-color: #b7b7b7;
     cursor: pointer;
 }
 

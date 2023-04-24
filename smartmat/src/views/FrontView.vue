@@ -53,5 +53,5 @@ export default {
 </script>
 
 <style scoped>
-
+@import '@/assets/style/frontPage.css';
 </style>
