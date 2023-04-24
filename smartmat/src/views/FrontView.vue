@@ -19,7 +19,7 @@
 
     <nav>
 
-    <RouterLink to="/WeeklyMenuView">  <h1>Ukemeny</h1>  <img id="menu" src="../images/weeklyMenuPage.png" alt="Ukemeny">
+    <RouterLink to="/weeklyMenu">  <h1>Ukemeny</h1>  <img id="menu" src="../images/weeklyMenuPage.png" alt="Ukemeny">
     </RouterLink>
     </nav>
 

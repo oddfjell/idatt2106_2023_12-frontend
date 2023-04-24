@@ -27,7 +27,7 @@ const router = createRouter({
     {
       path: '/weeklyMenu',
       name: 'WeeklyMenuView',
-      component:WeeklyMenuView
+      component: WeeklyMenuView
     },
 
     {
