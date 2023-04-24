@@ -1,24 +1,31 @@
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+
+</script>
+
 <template>
   <header>
 
-    <HelloWorld msg="Hello!" />
+    <fa icon="user" class="fa-icon-user" />
+    <fa icon="cart-shopping" class="fa-icon-cart"/>
 
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/login">| Login</RouterLink>
-      <RouterLink to="/register"> | Register</RouterLink>
+      <RouterLink to="/">Hjem</RouterLink>
+      <RouterLink to="/weeklyMenuView"> | Ukemeny</RouterLink>
+      <RouterLink to="/shoppingListView"> | Handleliste</RouterLink>
+      <RouterLink to="/refrigeratorView"> | Kjøleskap</RouterLink>
+
+
 
     </nav>
 
   </header>
+
+  <RouterView />
 </template>
 
-<script>
-export default {
-  name: "Navbar"
-}
-</script>
-
 <style scoped>
+@import "../assets/style/navbar.css";
+
 
 </style>
