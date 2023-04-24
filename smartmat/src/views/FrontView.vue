@@ -6,7 +6,7 @@
 
   <div id="border">
     <nav>
-      <RouterLink to="/Refrigerator">  <h1>Kjøleskap</h1>     <img src="../images/refrigerator.png" alt="Kjøleskap">
+      <RouterLink to="/refrigerator">  <h1>Kjøleskap</h1>     <img src="../images/refrigerator.png" alt="Kjøleskap">
     </RouterLink>
 
     </nav>
@@ -19,7 +19,7 @@
 
     <nav>
 
-    <RouterLink to="/WeeklyMenuView">  <h1>Ukemeny</h1>  <img id="menu" src="../images/weeklyMenuPage.png" alt="Ukemeny">
+    <RouterLink to="/weeklyMenu">  <h1>Ukemeny</h1>  <img id="menu" src="../images/weeklyMenuPage.png" alt="Ukemeny">
     </RouterLink>
     </nav>
 
@@ -28,7 +28,7 @@
 
   <div id="border">
     <nav>
-      <RouterLink to="/ShoppingList">  <h1>Handleliste</h1> <img src="../images/list.png" alt="Handleliste">
+      <RouterLink to="/shoppingList">  <h1>Handleliste</h1> <img src="../images/list.png" alt="Handleliste">
       </RouterLink>
 
     </nav>
