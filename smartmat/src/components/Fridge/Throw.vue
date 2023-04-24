@@ -15,7 +15,7 @@
                 <p v-else>{{value}}% igjen</p>
             </template>
             <template #footer>
-                <button class="Btn throwModalBtn" @click="close">Kast</button>
+                <button class="Btn throwModalBtn" id="throwModalBtn" @click="close">Kast</button>  <!--id="throwModalBtn"-->
                 <button class="Btn" @click="close" id="cancelBtn" >Avbryt</button>
             </template>
         </BaseModal>
