@@ -6,6 +6,7 @@ import WeeklyMenuView from "@/views/WeeklyMenuView.vue";
 import RefrigeratorView from "@/views/RefrigeratorView.vue";
 import ShoppingListView from "@/views/ShoppingListView.vue";
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/shoppingList',
       name: 'ShoppingListView',
       component: ShoppingListView
+    },
+    {
+      path: '/:catchAll(.*)',  //redux pattern
+      name: 'notFound',
+      component: () => import('../views/404View.vue')
     }
   ]
 })
