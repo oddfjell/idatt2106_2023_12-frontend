@@ -24,6 +24,32 @@ separate css version for phone, to make it fit nicely into the phone screen
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
+    .fa-icon-home{
+        font-size: 20px;
+        color: black;
+        position: fixed;
+        top: 40px;
+        right: 80px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    .fa-icon-utensils{
+        font-size: 20px;
+        color: black;
+        position: fixed;
+        top: 40px;
+        right: 80px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    .fridge{
+
+        width:100px;
+        height: 60px;
+        left: 915px;
+        top: -51px;
+
+    }
 }
 
 /*
@@ -54,4 +80,35 @@ Styling for the borders for the computer version
         z-index: 9999;
         cursor: pointer;
     }
+    /*
+   styling for the user icon in the corner
+   */
+    .fa-icon-home {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 32px;
+        right: 110px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+    .fa-icon-cutlery {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 32px;
+        right: 150px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+   .fridge{
+
+        width:100px;
+        height: 60px;
+        left: 915px;
+        top: -51px;
+
+   }
+
+
 }
