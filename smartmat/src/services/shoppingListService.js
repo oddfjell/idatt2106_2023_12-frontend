@@ -31,7 +31,7 @@ export default {
         return axios.get(baseURL+'/', config2(token))//Var add header
     },
     addToShoppingList(product, token){
-        return shoppingListApiClient.post('/', product, addHeader(token))
+        return shoppingListApiClient.post('/add', product, addHeader(token))
     },
     removeFromShoppingList(productID, token){
         return shoppingListApiClient.delete('/remove/'+productID, addHeader(token))
