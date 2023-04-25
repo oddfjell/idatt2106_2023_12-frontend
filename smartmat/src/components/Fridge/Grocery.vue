@@ -32,9 +32,9 @@ export default {
     },
     methods:{
       async onEat(){
-        console.log("elo")
-        await fridgeService.removeGrocery(this.grocery, tokenStore().user.jwt)
-        location.reload();
+          let deletedProduct = {name:this.grocery.name, count:1, categoryId: this.grocery.categoryId}
+        await fridgeService.removeGrocery(deletedProduct, tokenStore().user.jwt)
+       location.reload();
       }
     }
 }
@@ -54,6 +54,8 @@ export default {
     height: 100%;
     display: flex;
     justify-content: space-between;
+    border: 1px solid steelblue;
+    padding: 5px;
 
 }
 #grocery-left{
