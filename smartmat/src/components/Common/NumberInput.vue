@@ -243,7 +243,8 @@ export default defineComponent({
 
 <style scoped>
 .vue-number-input{
-    display: flex;
-    flex-wrap: nowrap;
+}
+.vue-number-input__input{
+    width: 60%;
 }
 </style>
