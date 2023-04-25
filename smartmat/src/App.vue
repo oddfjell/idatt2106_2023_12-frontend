@@ -5,9 +5,7 @@ import Navbar from "@/components/Navbar.vue";
 </script>
 
 <template>
-
-  <Navbar></Navbar>
-
+  <Navbar ></Navbar>
   <RouterView />
 </template>
 
@@ -23,5 +21,28 @@ import Navbar from "@/components/Navbar.vue";
 .Btn{
     margin: 20px auto;
     text-align: center;
+}
+.BlueBtn{
+        background: #0b6dff;
+        border: 0;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+}
+.GreyBtn{
+        background: #b7b7b7;
+        border: 0;
+        padding: 10px 20px;
+        color: black;
+        border-radius: 5px
+}
+
+.BlueBtn:hover {
+    background-color: #4169a8;
+    cursor: pointer;
+}
+.GreyBtn:hover {
+    background-color: #d0cece;
+    cursor: pointer;
 }
 </style>

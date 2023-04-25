@@ -11,10 +11,10 @@
       <p id="error" v-if="error">{{error}} </p>
 
       <div class="Btn">
-          <button id="loginBtn" @click="onSubmit" type="submit">Sign in</button>
+          <button class="BlueBtn" id="loginBtn" @click="onSubmit" type="submit">Sign in</button>
       </div>
       <div class="Btn">
-          <button id="registerBtn" @click="onRegister" >Dont have an account? Register here!</button>
+          <button class="GreyBtn" id="registerBtn" @click="onRegister" >Dont have an account? Register here!</button>
       </div>
 
 
@@ -70,28 +70,10 @@ export default {
 @import "../assets/style/login.css";
 
 #loginBtn{
-    background: #0b6dff;
-    border: 0;
-    padding: 10px 20px;
     width: 80%;
-    color: white;
-    border-radius: 5px;
 }
 #registerBtn{
-    background: #b7b7b7;
-    border: 0;
-    padding: 10px 20px;
     width: 60%;
-    color: black;
-    border-radius: 5px;
-}
-#loginBtn:hover{
-    background-color: #4169a8;
-    cursor: pointer;
-}
-#registerBtn:hover{
-    background-color: #d0cece;
-    cursor: pointer;
 }
 
 #error{

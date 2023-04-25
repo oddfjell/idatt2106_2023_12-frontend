@@ -6,10 +6,10 @@
             <p id="count">Antall: {{count}}</p>
         </div>
         <div id="grocery-right">
-        <p id="category">{{grocery.category.name}}</p>
+        <p id="category">{{grocery.categoryName}}</p>
 
         <div class="buttonBar">
-            <button class="Btn" id="eatBtn" >Spist</button>
+            <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
             <Throw/>
         </div>
         </div>
@@ -18,6 +18,8 @@
 
 <script>
 import Throw from "@/components/Fridge/Throw.vue";
+import fridgeService from "@/services/fridgeService";
+import {tokenStore} from "@/stores/tokenStore";
 
 export default {
     name: "GroceryComponent",
@@ -27,8 +29,14 @@ export default {
         count:Number,
     },
     created() {
-        console.log(this.grocery)
     },
+    methods:{
+      async onEat(){
+        console.log("elo")
+        await fridgeService.removeGrocery(this.grocery, tokenStore().user.jwt)
+        location.reload();
+      }
+    }
 }
 </script>
 <style scoped>

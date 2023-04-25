@@ -10,7 +10,12 @@
       <NumberInput v-model:model-value="amount" id="numberInput" :min="1" :max="99" :controls=true />
       <button @click="addShoppingListEntity">Legg til vare</button>
       </div>
+      <div class="container">
      <ShoppingListGrid/>
+      </div>
+      <div class="Btn">
+      <button class="BlueBtn" id="addSelected" @click="buy">Kjøp valgte varer</button>
+      </div>
   </div>
 </template>
 
@@ -33,6 +38,7 @@ export default {
           amount:1,
           selected:null,
           groceries:[],
+          shoppingListEntities:[]
       }
     },
     methods:{
@@ -41,18 +47,28 @@ export default {
             this.selectedText=selection.name
             console.log(selection.name + " has been selected");
         },
+        buy(){
+            try {
+                console.log(tokenStore().user.jwt)
+                shoppingListService.buyChecked(tokenStore().user.jwt)
+                location.reload()
+            }catch (error){
+                console.log(error)
+            }
+        },
         async addShoppingListEntity(){
-            let product = {grocery:this.selected, count: this.amount}
+            let product = {name:this.selected.name, count: this.amount}
             console.log(product)
             try {
                 await shoppingListService.addToShoppingList(product, tokenStore().user.jwt)
+                location.reload()
             }catch (error){
               console.log(error)
             }finally {
                 this.selected=null
                 this.amount = 1
             }
-        }
+        },
     },
     async created() {
        let groceriesResponse = await groceryService.getProducts(tokenStore().user.jwt)
@@ -68,16 +84,16 @@ export default {
 
 <style scoped>
 .container{
-    min-height: 80vh;
+    min-height: 50vh;
 }
 #header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0;
+    gap: 5%;
 }
 
 #dropdown{
-    width: 100%;
+    width:80%;
 }
 </style>

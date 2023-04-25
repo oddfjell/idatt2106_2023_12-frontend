@@ -28,13 +28,13 @@ describe("Shopping List Service", () =>{
         it("tests that axios.post method is called while calling addToShoppingList method", async () => {
             const status = 202
             axios.post.mockResolvedValue({
-                status: 202
+                status: status
             })
             const productPayload = {
                 name: 'melk',
             }
             const logInResult = await shoppingListService.addToShoppingList(productPayload, 123)
-            expect(axios.post).toHaveBeenCalledWith('http://localhost:8080/shoppingList/', productPayload, {headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true})
+            expect(axios.post).toHaveBeenCalledWith('http://localhost:8080/shoppingList/add', productPayload, {headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true})
             expect(logInResult.status).toStrictEqual(status)
         });
     })

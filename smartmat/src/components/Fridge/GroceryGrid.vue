@@ -34,13 +34,13 @@ export default {
             for (let grocery of groceries) {
                 fridgeEntities.push(grocery)
             }
-            console.log(fridgeEntities)
         }catch (error){
             console.log(error)
         }finally {
          this.loading=false
         }
         this.fridgeEntities=fridgeEntities
+        console.log(this.fridgeEntities)
     },
 }
 </script>
