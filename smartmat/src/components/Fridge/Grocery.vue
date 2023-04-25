@@ -34,7 +34,7 @@ export default {
       async onEat(){
         console.log("elo")
         await fridgeService.removeGrocery(this.grocery, tokenStore().user.jwt)
-        //let groceriesResponse = await fridgeService.getGroceries(tokenStore().user.jwt)
+        location.reload();
       }
     }
 }

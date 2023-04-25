@@ -51,4 +51,19 @@ describe("Fridge Service", () =>{
         });
     })
 
+    describe("throwGrocery test", () => {
+        it("tests that axios.post method is called while calling throw method", async () => {
+            const status = 200
+            axios.post.mockResolvedValue({
+                status: status
+            })
+            const productPayload = {
+                name: 'melk',
+            }
+            const melk = await fridgeService.throwGrocery(productPayload, 123)
+            expect(axios.post).toHaveBeenCalledWith('http://localhost:8080/fridge/throw', productPayload, {headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true})
+            expect(melk.status).toStrictEqual(status)
+        });
+    })
+
 })

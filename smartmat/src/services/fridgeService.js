@@ -22,10 +22,7 @@ export default {
         return axios.post(baseURL + '/remove', grocery, configToken(token))
     },
     throwGrocery(grocery, token){
-        //TODO fiks
-        console.warn("FOR ØYEBLIKKET BLIR TING BARE KASTET")
-        return this.removeGrocery(baseURL + '/throw', grocery, token)
-        //return axios.post(baseURL + '/throw', configToken(token))
+        return axios.post(baseURL + '/throw', grocery, configToken(token))
     }
 }
 

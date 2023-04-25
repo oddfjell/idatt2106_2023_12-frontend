@@ -24,6 +24,8 @@
 
 <script>
 import BaseModal from "@/components/Common/BaseModal.vue";
+import fridgeService from "@/services/fridgeService";
+import {tokenStore} from "@/stores/tokenStore";
 
 export default {
     name: "ThrowComponent",
@@ -38,9 +40,10 @@ export default {
         onSliderInput(event){
             this.value=event.target.value;
         },
-        close(){
-            console.log("Bruh")
+        async close(){
             this.showThrowModal=false
+            await fridgeService.throwGrocery(this.grocery, tokenStore().user.jwt)
+            location.reload();
         }
     }
 }
