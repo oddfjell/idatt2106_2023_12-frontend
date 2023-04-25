@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar.vue";
 
 <template>
   <Navbar ></Navbar>
-  <RouterView />
+  <RouterView id="routerView" />
 </template>
 
 <style>
@@ -14,7 +14,6 @@ import Navbar from "@/components/Navbar.vue";
     max-width: 500px;
     margin: 30px auto;
     overflow: auto;
-    border: 1px solid steelblue;
     padding: 30px;
     border-radius: 5px;
 }
@@ -44,5 +43,8 @@ import Navbar from "@/components/Navbar.vue";
 .GreyBtn:hover {
     background-color: #d0cece;
     cursor: pointer;
+}
+#routerView{
+    margin-top: 10%;
 }
 </style>
