@@ -19,8 +19,8 @@ function addHeader(token) {
     getWeekMenu(token){
       return groceryApiClient.get('/weekMenu', addHeader(token))
     },
-    getNewRecipe(token, recipe){
-        return groceryApiClient.post('/newRecipe', recipe, addHeader(token))
+    getNewRecipe(token, recipes){
+        return groceryApiClient.post('/newRecipe', recipes, addHeader(token))
       },
     getRecipe(token){
         return groceryApiClient.get('/asdasd', addHeader(token))

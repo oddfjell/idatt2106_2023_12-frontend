@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import recipeService from '../services/recipeService'
 import { tokenStore } from "@/stores/tokenStore";
