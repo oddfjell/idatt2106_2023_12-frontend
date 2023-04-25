@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import VueNumberInput from "@/components/Common/NumberInput.vue";
+//import NumberInput from "@/components/Common/NumberInput.vue";
 
 export default {
     name: "shoppingListEntity",
-    components: {VueNumberInput},
+    components: {//NumberInput},
     props:{
         listEntity:Object
     },
