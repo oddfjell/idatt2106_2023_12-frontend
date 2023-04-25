@@ -10,7 +10,12 @@
       <NumberInput v-model:model-value="amount" id="numberInput" :min="1" :max="99" :controls=true />
       <button @click="addShoppingListEntity">Legg til vare</button>
       </div>
+      <div class="container">
      <ShoppingListGrid/>
+      </div>
+      <div class="Btn">
+      <button class="BlueBtn" id="addSelected" @click="buy">Kjøp valgte varer</button>
+      </div>
   </div>
 </template>
 
@@ -41,6 +46,13 @@ export default {
             this.selectedText=selection.name
             console.log(selection.name + " has been selected");
         },
+        buy(){
+            try {
+                shoppingListService.buyChecked(tokenStore().user.jwt)
+            }catch (error){
+                console.log(error)
+            }
+        },
         async addShoppingListEntity(){
             let product = {grocery:this.selected, count: this.amount}
             console.log(product)
@@ -68,7 +80,7 @@ export default {
 
 <style scoped>
 .container{
-    min-height: 80vh;
+    min-height: 50vh;
 }
 #header{
     display: flex;
