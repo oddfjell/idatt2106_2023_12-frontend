@@ -7,8 +7,7 @@
                 :placeholder="selectedText"
               v-on:selected="onSelection">
       </Dropdown>
-      <NumberInput v-model:model-value="amount" id="numberInput" :min="1" :max="99" :controls=true />
-      <button @click="addShoppingListEntity">Legg til vare</button>
+          <button @click="addShoppingListEntity">Legg til vare</button>
       </div>
       <div class="container">
      <ShoppingListGrid/>
@@ -24,14 +23,13 @@
 import {tokenStore} from "@/stores/tokenStore";
 import groceryService from "@/services/groceryService";
 import Dropdown from '@/components/Common/Dropdown.vue';
-import NumberInput from "@/components/Common/NumberInput.vue";
 import shoppingListService from "@/services/shoppingListService";
 import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
 
 
 export default {
   name: "ShoppingList",
-    components:{ShoppingListGrid, Dropdown, NumberInput},
+    components:{ShoppingListGrid, Dropdown},
     data(){
       return{
           selectedText:"Søk etter vare",
@@ -85,6 +83,7 @@ export default {
 <style scoped>
 .container{
     min-height: 50vh;
+    border: 1px solid steelblue;
 }
 #header{
     display: flex;
