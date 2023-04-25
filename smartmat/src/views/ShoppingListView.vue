@@ -38,6 +38,7 @@ export default {
           amount:1,
           selected:null,
           groceries:[],
+          shoppingListEntities:[]
       }
     },
     methods:{
@@ -48,23 +49,26 @@ export default {
         },
         buy(){
             try {
+                console.log(tokenStore().user.jwt)
                 shoppingListService.buyChecked(tokenStore().user.jwt)
+                location.reload()
             }catch (error){
                 console.log(error)
             }
         },
         async addShoppingListEntity(){
-            let product = {grocery:this.selected, count: this.amount}
+            let product = {name:this.selected.name, count: this.amount}
             console.log(product)
             try {
                 await shoppingListService.addToShoppingList(product, tokenStore().user.jwt)
+                location.reload()
             }catch (error){
               console.log(error)
             }finally {
                 this.selected=null
                 this.amount = 1
             }
-        }
+        },
     },
     async created() {
        let groceriesResponse = await groceryService.getProducts(tokenStore().user.jwt)
@@ -86,10 +90,10 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0;
+    gap: 5%;
 }
 
 #dropdown{
-    width: 100%;
+    width:80%;
 }
 </style>

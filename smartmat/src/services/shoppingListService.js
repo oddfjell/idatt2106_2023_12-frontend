@@ -22,13 +22,12 @@ export default {
     removeFromShoppingList(productID, token){
         return axios.delete(baseURL+'/remove/'+productID, config(token))
     },
-    updateChecked(checked, token){
-        return axios.post(baseURL+'/updateChecked', checked, config(token))
+    updateChecked(productname, token){
+        return axios.post(baseURL+'/mark', productname, config(token))
     },
     buyChecked(token){
-        return axios.post(baseURL+'/buyCheked', config(token))
+        return axios.post(baseURL+'/buy',null,  config(token))
     },
-
     acceptRequest(product, token){
         return axios.put(baseURL+'/accept', product, config(token))
     }
