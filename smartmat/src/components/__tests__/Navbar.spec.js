@@ -1,7 +1,7 @@
 import {mount} from "@vue/test-utils";
 import {describe, expect, it, vi,} from "vitest";
 import router from "@/router";
-import NavBar from "@/components/NavBar.vue";
+import NavBar from "@/components/Navbar.vue";
 
 
 function mountNavbarView() {
