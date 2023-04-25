@@ -1,7 +1,14 @@
 import axios from 'axios';
 
-const groceryApiClient = axios.create({
+const recipeApiClient = axios.create({
   baseURL: 'http://localhost:8080/recipes',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  withCredentials: true
+});
+const shoppingListApiClient = axios.create({
+  baseURL: 'http://localhost:8080/shoppingList',
   headers: {
     'Content-Type': 'application/json'
   },
@@ -17,13 +24,15 @@ function addHeader(token) {
   export default{
   //add Product
     getWeekMenu(token){
-      return groceryApiClient.get('/weekMenu', addHeader(token))
+      return recipeApiClient.get('/weekMenu', addHeader(token))
     },
     getNewRecipe(token, recipes){
-        return groceryApiClient.post('/newRecipe', recipes, addHeader(token))
+        return recipeApiClient.post('/newRecipe', recipes, addHeader(token))
       },
     getRecipe(token){
-        return groceryApiClient.get('/asdasd', addHeader(token))
+        return recipeApiClient.get('/asdasd', addHeader(token))
       },
-
+    addToShoppingList(token, ingredients){
+      return 
+    }
 }

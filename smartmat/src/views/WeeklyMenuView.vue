@@ -37,8 +37,8 @@ export default defineComponent({
     const recipesShown = ref([])
 
     const changeRecipe = (index, recipesResponse) => {
-      recipesShown.value.push(displayRecipes.value[index])
-      displayRecipes.value.splice(index, 1, recipesResponse)
+      let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
+      recipesShown.value.concat(oldRecipe)
     }
 
     const getAndChangeRecipe = async () => {
@@ -52,12 +52,18 @@ export default defineComponent({
         
         }
     }
+
+    const addToShoppingList = () => {
+      recipeService.addToShoppingList(tokenStore.user.jwt, displayRecipes.value)
+    }
+
     return {
       displayRecipes,
       changeRecipe,
       getAndChangeRecipe,
       carousel,
-      recipesShown
+      recipesShown,
+      addToShoppingList
     }
   },
   async mounted() {
