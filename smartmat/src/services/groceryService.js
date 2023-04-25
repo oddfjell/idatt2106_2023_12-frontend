@@ -1,21 +1,18 @@
 import axios from 'axios';
 
-const groceryApiClient = axios.create({
-  baseURL: 'http://localhost:8080/grocery',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  withCredentials: true
-});
-function addHeader(token) {
+let baseURL = 'http://localhost:8080/grocery'
+function configToken (token) {
   return {
     headers: {
+      'Content-Type': 'application/json',
       "Authorization": "Bearer " + token
+
     },
+    withCredentials: true
   }
 }
   export default{
   getProducts(token){
-    return groceryApiClient.get("/", addHeader(token))
+    return axios.get(baseURL+"/", configToken(token))
   }
 }
