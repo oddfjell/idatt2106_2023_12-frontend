@@ -1,0 +1,116 @@
+
+/*
+separate css version for phone, to make it fit nicely into the phone screen
+ */
+@media (max-width: 414px) {
+
+    /* Style user icon */
+    .fa-icon-user {
+        font-size: 50px;
+        color: black;
+        position: fixed;
+        top: 1505px;
+        right: 50px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    /* Style user icon */
+    .fa-icon-cart {
+        font-size: 50px;
+        color: black;
+        position: fixed;
+        top: 1505px;
+        right: 268px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    .fa-icon-home{
+        font-size: 50px;
+        color: black;
+        position: fixed;
+        top: 1505px;
+        right: 486px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    .fa-icon-cutlery{
+        font-size: 50px;
+        color: black;
+        position: fixed;
+        top: 1505px;
+        right: 704px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
+    }
+    /*922*/
+
+    .fridge{
+
+        width:100px;
+        height: 60px;
+        left: 915px;
+        top: -51px;
+
+    }
+}
+
+/*
+Styling for the borders for the computer version
+ */
+@media (min-width:415px) {
+    /*
+    styling for the user icon in the corner
+    */
+    .fa-icon-user {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+    /*
+    styling for the user icon in the corner
+    */
+    .fa-icon-cart {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 32px;
+        right: 70px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+    /*
+   styling for the user icon in the corner
+   */
+    .fa-icon-home {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 32px;
+        right: 110px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+    .fa-icon-cutlery {
+        font-size: 25px;
+        color: black;
+        position: fixed;
+        top: 32px;
+        right: 150px;
+        z-index: 9999;
+        cursor: pointer;
+    }
+   .fridge{
+
+        width:100px;
+        height: 60px;
+        left: 915px;
+        top: -51px;
+
+   }
+
+
+}
