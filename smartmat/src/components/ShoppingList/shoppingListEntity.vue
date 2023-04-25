@@ -12,7 +12,7 @@
 
 export default {
     name: "shoppingListEntity",
-    components: {//NumberInput},
+    components: {},
     props:{
         listEntity:Object
     },
@@ -27,7 +27,7 @@ export default {
     },
     created() {
         console.log(this.listEntity)
-    }
+    },
 }
 </script>
 
