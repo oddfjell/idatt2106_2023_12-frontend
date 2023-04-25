@@ -38,7 +38,7 @@ export default defineComponent({
 
     const changeRecipe = (index, recipesResponse) => {
       let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
-      recipesShown.value.concat(oldRecipe)
+      recipesShown.value.push(oldRecipe[0])
     }
 
     const getAndChangeRecipe = async () => {
@@ -80,7 +80,7 @@ export default defineComponent({
         
         }
         this.displayRecipes=recipeEntities
-        this.recipesShown=recipeEntities
+        this.recipesShown=recipeEntities.slice(0)
   },
 })
 </script>
