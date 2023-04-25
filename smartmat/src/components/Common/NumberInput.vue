@@ -8,14 +8,6 @@
       [`vue-number-input--${size}`]: size,
     }"
     >
-        <button
-                v-if="controls"
-                class="vue-number-input__button vue-number-input__button--minus"
-                type="button"
-                tabindex="-1"
-                :disabled="disabled || readonly || !decreasable"
-                @click.prevent="decrease">-
-        </button>
         <input
                 ref="input"
                 class="vue-number-input__input"
@@ -33,13 +25,6 @@
                 @change="change"
                 @paste="paste"
         >
-        <button
-                v-if="controls"
-                class="vue-number-input__button vue-number-input__button--plus"
-                type="button"
-                tabindex="-1"
-                :disabled="disabled || readonly || !increasable"
-                @click.prevent="increase">+</button>
     </div>
 </template>
 
@@ -245,6 +230,7 @@ export default defineComponent({
 .vue-number-input{
 }
 .vue-number-input__input{
-    width: 60%;
+    width: 100%;
+    height: 100%;
 }
 </style>
