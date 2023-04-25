@@ -7,16 +7,16 @@ import { RouterLink} from 'vue-router'
   <header>
     <div id="navbar-frame">
     <nav>
-        <RouterLink to="/home" tag ="button">
+        <RouterLink to="/home">
             <fa :icon="['fas', 'home']" class="fa-icon-home" />
         </RouterLink>
-        <RouterLink to="/refrigerator" tag ="button">
+        <RouterLink to="/refrigerator">
             <img class="fridge" src="../images/fridge.svg" alt="Kjøleskap">
         </RouterLink>
-        <RouterLink to="/weeklyMenu" tag ="button" >
+        <RouterLink to="/weeklyMenu">
             <fa :icon="['fas', 'cutlery']" class="fa-icon-cutlery" />
         </RouterLink>
-    <RouterLink to="/shoppingList" tag ="button">
+    <RouterLink to="/shoppingList">
     <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart"/>
       </RouterLink>
 

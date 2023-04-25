@@ -1,5 +1,5 @@
 import {mount} from "@vue/test-utils";
-import RefrigeratorView from "@/views/RefrigeratorView.vue";;
+import RefrigeratorView from "@/views/RefrigeratorView.vue";
 import GroceryGrid from "@/components/Fridge/GroceryGrid.vue";
 import router from "@/router";
 import {describe,it, expect} from "vitest";
