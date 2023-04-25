@@ -1,7 +1,7 @@
 <template>
-<div id="grid">
+<div>
     <div v-if="loading">Laster ...</div>
-    <div v-else-if="shoppingListEntities.length" id="grocery_grid">
+    <div v-else-if="shoppingListEntities.length" id="shoppingList_grid">
         <div v-for="(shoppingListEntity, index) in shoppingListEntities" :key="shoppingListEntity">
             <ShoppingListEntity :tabindex="index+1" :listEntity="shoppingListEntity" :count="shoppingListEntity.count" />
         </div>
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-#grocery_grid{
+#shoppingList_grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 30%;
