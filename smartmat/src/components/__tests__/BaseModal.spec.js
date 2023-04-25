@@ -16,16 +16,27 @@ describe("BaseModal", () => {
         expect(mountBaseModal().exists()).toBe(true)
 
     });
-    it('shows the footer button when show is true', () => {
-        const wrapper = mount(BaseModal, {
-            props: {
-                show: true
-            }
-        })
-        const button = wrapper.find('.modal-default-button')
-        expect(button.isVisible()).toBe(true)
-    })
 
+it('renders the button when show is set to true',()=>{
+    const wrapper = mount(BaseModal,{
+        props:{
+            show :true
+        }
+    })
+    const b = wrapper.find('.modal-default-button')
+    expect(b.isVisible()).toBe(true)
+})
+
+it("render default header and body"),()=>{
+    const wrapper= mount(BaseModal,{
+        prop:{
+            show: true
+        },
+
+    });
+    expect(wrapper.find('.modal-header').text().toBe("default header"));
+    expect(wrapper.find('.modal-body').text().toBe("default body"));
+}
 
 
 
