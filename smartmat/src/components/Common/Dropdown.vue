@@ -122,12 +122,9 @@ export default {
 <style scoped>
 
 .dropdown {
-    min-width: 160px;
-    height: 40px;
     position: relative;
-    margin: 10px 1px;
     display: inline-block;
-    vertical-align: middle;
+    width: 100%;
 }
 .dropdown a:hover {
     text-decoration: none;
@@ -136,7 +133,7 @@ export default {
 .dropdown-toggle {
     display: inline-block;
     border-radius: 2px 2px 0 0;
-    width: 90%;
+    width: 100%;
 }
 .dropdown-toggle input {
     border: none;
