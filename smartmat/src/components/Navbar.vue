@@ -5,6 +5,7 @@ import { RouterLink} from 'vue-router'
 
 <template>
   <header>
+    <div id="navbar-frame">
     <nav>
     <RouterLink to="/shoppingList" tag ="button">
     <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart"/>
@@ -27,6 +28,7 @@ import { RouterLink} from 'vue-router'
     </RouterLink>
 
     </nav>
+    </div>
 
   </header>
 </template>

@@ -4,25 +4,50 @@ separate css version for phone, to make it fit nicely into the phone screen
  */
 @media (max-width: 414px) {
 
-
-    /* Style user icon */
-    .fa-icon-user {
+    nav{
         font-size: 50px;
         color: black;
         position: fixed;
-        top: 1505px;
-        right: 50px;
+        top: 1200px;
+        right: 20px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
+        display: flex;
+        gap: 110px;
+        align-items: center;
+
     }
-    /* Style user icon */
+    nav a{
+        color: black;
+    }
+
+    nav img{
+        width: 40px;
+    }
+    #navbar-frame{
+        border: solid 60px #20A877FF;
+        position: fixed;
+        width: 1100px;
+        max-height: 10px;
+        margin-top: 1155px;
+        margin-left: -34px;
+        padding: -10px;
+        z-index: 9999;
+
+    }
+    /*922*/
+
+
+
+    /*
+    !* Style user icon *!
     .fa-icon-cart {
         font-size: 50px;
         color: black;
         position: fixed;
         top: 1505px;
         right: 220px;
-        z-index: 9999; /* Make sure the icon is on top of other content */
+        z-index: 9999; !* Make sure the icon is on top of other content *!
         cursor: pointer;
     }
     .fa-icon-home{
@@ -31,7 +56,7 @@ separate css version for phone, to make it fit nicely into the phone screen
         position: fixed;
         top: 1505px;
         right: 400px;
-        z-index: 9999; /* Make sure the icon is on top of other content */
+        z-index: 9999; !* Make sure the icon is on top of other content *!
         cursor: pointer;
     }
     .fa-icon-cutlery{
@@ -40,11 +65,9 @@ separate css version for phone, to make it fit nicely into the phone screen
         position: fixed;
         top: 1505px;
         right: 600px;
-        z-index: 9999; /* Make sure the icon is on top of other content */
+        z-index: 9999; !* Make sure the icon is on top of other content *!
         cursor: pointer;
     }
-    /*922*/
-
     .fridge{
 
         width: 140px;
@@ -52,10 +75,10 @@ separate css version for phone, to make it fit nicely into the phone screen
         position: fixed;
         top: 1460px;
         right: 725px;
-        z-index: 9999; /* Make sure the icon is on top of other content */
+        z-index: 9999; !* Make sure the icon is on top of other content *!
         cursor: pointer;
 
-    }
+    }*/
 }
 
 /*
@@ -65,6 +88,39 @@ Styling for the borders for the computer version
     /*
     styling for the user icon in the corner
     */
+    nav{
+        font-size: 40px;
+        color: black;
+        position: fixed;
+        top: 1200px;
+        right: 20px;
+        z-index: 9999;
+        cursor: pointer;
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        margin-top: -1200px;
+    }
+    nav a{
+        color: black;
+    }
+    nav img{
+        width: 30px;
+        margin-top: 13px;
+    }
+    #navbar-frame{
+        border: solid 60px #20A877FF;
+        position: fixed;
+        width: 200%;
+        max-height: 10px;
+        margin-top: -70px;
+        margin-left: -1000px;
+        padding: -10px;
+        z-index: 9999;
+
+    }
+}
+   /* !*
     .fa-icon-user {
         font-size: 25px;
         color: black;
@@ -74,9 +130,9 @@ Styling for the borders for the computer version
         z-index: 9999;
         cursor: pointer;
     }
-    /*
+    !*
     styling for the user icon in the corner
-    */
+    *!
     .fa-icon-cart {
         font-size: 25px;
         color: black;
@@ -86,9 +142,9 @@ Styling for the borders for the computer version
         z-index: 9999;
         cursor: pointer;
     }
-    /*
+    !*
    styling for the user icon in the corner
-   */
+   *!
     .fa-icon-home {
         font-size: 25px;
         color: black;
@@ -118,5 +174,4 @@ Styling for the borders for the computer version
        cursor: pointer;
    }
 
-
-}
+*/

@@ -1,4 +1,5 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
+  <div id="outer-border">
     <RouterLink to="/refrigerator">
         <div id="border">
         <h1>Kjøleskap</h1> <img class="fridge-frontPage" src="../images/fridge.svg" alt="Kjøleskap">
@@ -15,6 +16,7 @@
         <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart-frontPage"/>
       </div>
     </RouterLink>
+  </div>
 </template>
 <script>
 import {tokenStore} from "@/stores/tokenStore";

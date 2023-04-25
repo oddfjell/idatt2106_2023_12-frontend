@@ -4,6 +4,7 @@
 separate css version for phone, to make it fit nicely into the phone screen
  */
 @media (max-width: 414px) {
+
     #border {
         width: 110%;
         border: 5px solid black;
@@ -12,9 +13,9 @@ separate css version for phone, to make it fit nicely into the phone screen
         transform-style: preserve-3d;
         display: block;
         box-sizing: border-box;
-        transform: rotate(90deg) translateX(60%) translateY(15%);
-        margin-left: 110%;
-        margin-top: -300px;
+        transform: rotate(90deg) translateX(60%) translateY(25%);
+        margin-left: 100%;
+        margin-top: -350px;
         margin-bottom: -300px;
 
     }
@@ -27,7 +28,7 @@ separate css version for phone, to make it fit nicely into the phone screen
         text-align: center;
         color: black;
         font-size: 500%;
-        font-family: "Times New Roman";
+        font-family: "Times New Roman", serif;
         transform: rotate(270deg);
         margin: 150px 0 10px 10px;
         text-decoration: none !important;
@@ -45,29 +46,32 @@ separate css version for phone, to make it fit nicely into the phone screen
         max-width: 60%;
         height: auto;
         margin-top: 170px;
-        margin-left: 60px;
+        margin-left: 80px;
         transform: rotate(270deg);
-        color: #181818;
+        color: #000000;
     }
     .fa-icon-cutlery-frontPage{
 
         max-width: 50%;
         height: auto;
         margin-top: 150px;
-        margin-left: 60px;
+        margin-left:80px;
         transform: rotate(270deg);
-        color: #181818;
+        color: #000000;
     }
     .fridge-frontPage{
-        max-width: 130%;
+        max-width: 50%;
         font-size: 100px;
-        height: auto;
         margin-top: -240px;
-        margin-left: -25px;
+        margin-left: 80px;
         transform: rotate(270deg);
         width: 1000px;
         height: 1000px;
-        color: #181818;
+        color: #000000;
+    }
+
+    a{
+        text-decoration: none;
     }
 
 
@@ -75,7 +79,7 @@ separate css version for phone, to make it fit nicely into the phone screen
     styling for the user icon in the corner
      */
     .fa-icon {
-        font-family: "Font Awesome 5 Free";
+        font-family: "Font Awesome 5 Free", serif;
         font-size: 15px;
         color: black;
         position: fixed;
@@ -102,8 +106,13 @@ Styling for the borders for the computer version
         position: relative;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         transform-style: preserve-3d;
-        transition: all 0.3s ease-in-out;
         transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    #outer-border{
+        display: flex;
+        margin-top: 150px;
+
     }
 
 
@@ -133,17 +142,21 @@ Styling for the borders for the computer version
         text-align: center;
         color: black;
         font-size: 40px;
-        font-family: "Times New Roman";
+        font-family: "Times New Roman", serif;
 
     }
 
+    a{
+        text-decoration: none;
+    }
+
     .fridge-frontPage{
-        max-width: 200%;
+        max-width: 70%;
         font-size: 100px;
         margin-top: -350px;
-        margin-left: -120px;
+        margin-left: 20px;
         height: 1000px;
-        color: #181818;
+        color: #000000;
     }
 
 
@@ -154,11 +167,11 @@ Styling for the borders for the computer version
         width: 70%;
         height: 100%;
         alignment: center;
-        text-align: center;
         display: flex;
         justify-content: center;
-        margin-top: 10px;
-        color: #181818;
+        margin-top: -30px;
+        margin-left: 20px;
+        color: #000000FF;
     }
 
     /**
@@ -168,11 +181,11 @@ Styling for the borders for the computer version
         width: 70%;
         height: 100%;
         alignment: center;
-        text-align: center;
         display: flex;
         justify-content: center;
-        margin-top: 10px;
-        color: #181818;
+        margin-top: -30px;
+        margin-left: 20px;
+        color: #000000FF;
     }
 }
 
