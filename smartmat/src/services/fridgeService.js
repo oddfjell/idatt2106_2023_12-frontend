@@ -15,7 +15,23 @@ export default {
     getGroceries(token) {
         return axios.get(baseURL + '/groceries', configToken(token))
     },
-    addGrocery(account, token){
-        return axios.post(baseURL + '/add', configToken(token))
+    addGrocery(grocery, token){ //TODO account or just token??
+        return axios.post(baseURL + '/add', grocery, configToken(token))
+    },
+    removeGrocery(grocery, token){
+        return axios.post(baseURL + '/remove', grocery, configToken(token))
+    },
+    throwGrocery(grocery, token){
+        //TODO fiks
+        console.warn("FOR ØYEBLIKKET BLIR TING BARE KASTET")
+        return this.removeGrocery(baseURL + '/throw', grocery, token)
+        //return axios.post(baseURL + '/throw', configToken(token))
     }
 }
+
+/*
+alle
+add
+remove
+throw
+ */
