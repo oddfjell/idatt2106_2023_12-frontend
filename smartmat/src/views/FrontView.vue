@@ -6,13 +6,13 @@
     </RouterLink>
     <RouterLink to="/weeklyMenuView">
       <div id="border">
-        <h1>Ukemeny</h1> <fa :icon="['fas', 'cutlery']" class="fa-icon-cutlery-frontPage "/>
+        <h1>Ukemeny</h1> <fa :icon="['fas', 'cutlery']" class="fa-icon-cutlery-frontPage"/>
       </div>
     </RouterLink>
     <RouterLink to="/shoppingList">
       <div id="border">
         <h1>Handleliste</h1>
-        <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart-frontPage "/>
+        <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart-frontPage"/>
       </div>
     </RouterLink>
 </template>
