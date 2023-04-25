@@ -4,6 +4,7 @@ separate css version for phone, to make it fit nicely into the phone screen
  */
 @media (max-width: 414px) {
 
+
     /* Style user icon */
     .fa-icon-user {
         font-size: 50px;
@@ -20,7 +21,7 @@ separate css version for phone, to make it fit nicely into the phone screen
         color: black;
         position: fixed;
         top: 1505px;
-        right: 268px;
+        right: 220px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
@@ -29,7 +30,7 @@ separate css version for phone, to make it fit nicely into the phone screen
         color: black;
         position: fixed;
         top: 1505px;
-        right: 486px;
+        right: 400px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
@@ -38,7 +39,7 @@ separate css version for phone, to make it fit nicely into the phone screen
         color: black;
         position: fixed;
         top: 1505px;
-        right: 704px;
+        right: 600px;
         z-index: 9999; /* Make sure the icon is on top of other content */
         cursor: pointer;
     }
@@ -46,10 +47,13 @@ separate css version for phone, to make it fit nicely into the phone screen
 
     .fridge{
 
-        width:100px;
-        height: 60px;
-        left: 915px;
-        top: -51px;
+        width: 140px;
+        color: black;
+        position: fixed;
+        top: 1460px;
+        right: 725px;
+        z-index: 9999; /* Make sure the icon is on top of other content */
+        cursor: pointer;
 
     }
 }
@@ -104,12 +108,14 @@ Styling for the borders for the computer version
         cursor: pointer;
     }
    .fridge{
-
-        width:100px;
-        height: 60px;
-        left: 915px;
-        top: -51px;
-
+        width: 70px;
+       height: 70px;
+       color: black;
+       position: fixed;
+       top: 11px;
+       right: 160px;
+       z-index: 9999;
+       cursor: pointer;
    }
 
 
