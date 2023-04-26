@@ -116,7 +116,11 @@ Styling for the borders for the computer version
         display: flex;
         margin-top: 150px;
         justify-content: center;
-
+        height: 60vh;
+    }
+    #outer-border img{
+        height: 40vh;
+        margin-top: 0;
     }
 
 
