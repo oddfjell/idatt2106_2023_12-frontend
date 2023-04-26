@@ -5,8 +5,10 @@ import Navbar from "@/components/Navbar.vue";
 </script>
 
 <template>
-  <Navbar ></Navbar>
-  <RouterView id="routerView" />
+  <Navbar id="top-navbar"></Navbar>
+  <div id="whitespace"></div>
+  <RouterView />
+  <Navbar id="bottom-navbar"></Navbar>
 </template>
 
 <style>
@@ -14,6 +16,7 @@ import Navbar from "@/components/Navbar.vue";
     max-width: 500px;
     margin: 30px auto;
     overflow: auto;
+    border: 1px solid steelblue;
     padding: 30px;
     border-radius: 5px;
 }
@@ -35,6 +38,12 @@ import Navbar from "@/components/Navbar.vue";
         color: black;
         border-radius: 5px
 }
+@media (min-width:501px){
+  #whitespace{
+    height: 8vh;
+  }
+}
+
 
 .BlueBtn:hover {
     background-color: #4169a8;
@@ -43,8 +52,5 @@ import Navbar from "@/components/Navbar.vue";
 .GreyBtn:hover {
     background-color: #d0cece;
     cursor: pointer;
-}
-#routerView{
-    margin-top: 10%;
 }
 </style>
