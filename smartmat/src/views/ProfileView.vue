@@ -30,8 +30,8 @@ export default {
     methods:{
         logout(){
             try {
-                tokenStore().changeJWT(null)
-                tokenStore().changeUsername(null)
+                tokenStore().changeJWT("")
+                tokenStore().changeUsername("")
                 router.push("/")
             }catch (error){
                 this.error="Could not log out"
