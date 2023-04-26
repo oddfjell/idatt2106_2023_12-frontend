@@ -10,6 +10,9 @@ function mountFrontView(){
         global:{
             plugins:[router,pinia]
         },
+        computed:{
+            username(){return "bop"}
+    }
     })
 }
 describe('Frontview',()=>{

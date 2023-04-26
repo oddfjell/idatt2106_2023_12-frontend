@@ -2,12 +2,16 @@ import {mount} from "@vue/test-utils";
 import {describe, expect, it, vi,} from "vitest";
 import router from "@/router";
 import NavBar from "@/components/Navbar.vue";
+import {createPinia} from "pinia";
 
-
+const pinia = createPinia()
 function mountNavbarView() {
     return mount(NavBar, {
         global: {
-            plugins: [router]
+            plugins: [router, pinia]
+        },
+        computed:{
+            username(){return "bop"}
         }
     });
 }
