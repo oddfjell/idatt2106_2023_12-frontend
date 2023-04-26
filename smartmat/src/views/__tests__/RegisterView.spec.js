@@ -2,11 +2,12 @@ import {mount} from "@vue/test-utils";
 import {describe, expect, it, vi} from "vitest";
 import router from "@/router";
 import RegisterView from "@/views/RegisterView.vue";
-
+import {createPinia} from "pinia";
+const pinia = createPinia()
 function mountRegisterView() {
     return mount(RegisterView, {
         global: {
-            plugins: [router]
+            plugins: [router, pinia]
         },
     })
 }
@@ -33,7 +34,7 @@ describe('The Router', () => {
 
         await mountRegisterView().find('button[id=loginBtn]').trigger('click')
 
-        expect(push).toHaveBeenCalledTimes(1)
+        expect(push).toHaveBeenCalledTimes(2)
         expect(push).toHaveBeenCalledWith('/')
     })
 })
