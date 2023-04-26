@@ -5,8 +5,10 @@ import Navbar from "@/components/Navbar.vue";
 </script>
 
 <template>
-  <Navbar ></Navbar>
+  <Navbar id="top-navbar"></Navbar>
+  <div id="whitespace"></div>
   <RouterView />
+  <Navbar id="bottom-navbar"></Navbar>
 </template>
 
 <style>
@@ -36,6 +38,12 @@ import Navbar from "@/components/Navbar.vue";
         color: black;
         border-radius: 5px
 }
+@media (min-width:501px){
+  #whitespace{
+    height: 8vh;
+  }
+}
+
 
 .BlueBtn:hover {
     background-color: #4169a8;
