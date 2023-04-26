@@ -6,12 +6,17 @@
             <p id="count">Antall: {{count}}</p>
         </div>
         <div id="grocery-right">
-        <p id="category">{{grocery.categoryName}}</p>
-
-        <div class="buttonBar">
-            <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
-            <Throw/>
-        </div>
+          <p id="category">{{grocery.categoryName}}</p>
+          <div v-if="grocery.expiresInDays >= 3">
+            <p>{{grocery.expiresInDays}} days left</p>
+          </div>
+          <div v-else>
+            <p style="color: red">EXPIRES IN {{grocery.expiresInDays}} DAYS</p>
+          </div>
+          <div class="buttonBar">
+              <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
+              <Throw/>
+          </div>
         </div>
 </div>
 </template>
