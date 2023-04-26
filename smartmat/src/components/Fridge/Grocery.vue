@@ -7,7 +7,7 @@
         <div id="grocery-right">
           <p id="category">{{grocery.categoryName}}</p>
           <p v-if="grocery.expiresInDays >= 3" style="text-align: right">{{grocery.expiresInDays}} days left</p>
-          <p v-else style="color: red; text-align: right">EXPIRES IN {{grocery.expiresInDays}} DAYS</p>
+          <p v-else-if="grocery.expiresInDays < 3" style="color: red; text-align: right">EXPIRES IN {{grocery.expiresInDays}} DAYS</p>
 
           <div class="buttonBar">
               <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
