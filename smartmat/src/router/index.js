@@ -51,7 +51,7 @@ const router = createRouter({
     {
       path: '/:catchAll(.*)',  //redux pattern
       name: 'notFound',
-      component: () => import('../views/404View.vue')
+      component: LoginView
     }
   ]
 })

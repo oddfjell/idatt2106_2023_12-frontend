@@ -61,6 +61,12 @@ export default {
         onRegister(){
             router.push('/register')
         }
+    },
+    created() {
+        if(tokenStore().user.username !== ""){
+            console.log(tokenStore().user.username)
+            router.push("/home")
+        }
     }
 }
 </script>

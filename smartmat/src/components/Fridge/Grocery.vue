@@ -1,17 +1,18 @@
 <template>
     <div class="container" >
         <div id="grocery-left">
-            <img class="thumbnail" src="@/images/weeklyMenuPage.png" alt="">
             <h3 id="title">{{grocery.name}}</h3>
             <p id="count">Antall: {{count}}</p>
         </div>
         <div id="grocery-right">
-        <p id="category">{{grocery.categoryName}}</p>
+          <p id="category">{{grocery.categoryName}}</p>
+          <p v-if="grocery.expiresInDays >= 3" style="text-align: right">{{grocery.expiresInDays}} days left</p>
+          <p v-else style="color: red; text-align: right">EXPIRES IN {{grocery.expiresInDays}} DAYS</p>
 
-        <div class="buttonBar">
-            <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
-            <Throw/>
-        </div>
+          <div class="buttonBar">
+              <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
+              <Throw/>
+          </div>
         </div>
 </div>
 </template>
@@ -32,9 +33,9 @@ export default {
     },
     methods:{
       async onEat(){
-        console.log("elo")
-        await fridgeService.removeGrocery(this.grocery, tokenStore().user.jwt)
-        location.reload();
+          let deletedProduct = {name:this.grocery.name, count:1, categoryId: this.grocery.categoryId}
+        await fridgeService.removeGrocery(deletedProduct, tokenStore().user.jwt)
+       location.reload();
       }
     }
 }
@@ -54,6 +55,8 @@ export default {
     height: 100%;
     display: flex;
     justify-content: space-between;
+    border: 1px solid steelblue;
+    padding: 5px;
 
 }
 #grocery-left{
@@ -71,6 +74,7 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    width: 100%;
 }
 .buttonBar{
     margin-right: 0;

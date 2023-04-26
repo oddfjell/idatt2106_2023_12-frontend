@@ -67,6 +67,11 @@ export default {
         onLogin(){
             router.push('/')
         }
+    },
+    created() {
+        if(tokenStore().user.username !== ""){
+            router.push("/home")
+        }
     }
 }
 </script>

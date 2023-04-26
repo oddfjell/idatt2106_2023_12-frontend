@@ -1,4 +1,5 @@
 <template>
+    <div v-if="username">
   <Carousel ref="carousel" :wrap-around="false" :items-to-show="1">
     <Slide v-for="recipe in displayRecipes" :key="recipe">
       <div class="carousel__item"> {{ recipe.title }}</div>
@@ -17,6 +18,9 @@
     <button @click="addToShoppingList">
       Legg til varer i handleliste</button>
   </div>
+
+    </div>
+  <div v-else><h1>Please log in</h1></div>
 </template>
 
 <script>
@@ -26,6 +30,7 @@ import recipeService from '../services/recipeService'
 import { tokenStore } from "@/stores/tokenStore";
 
 import 'vue3-carousel/dist/carousel.css'
+import router from "@/router";
 
 export default defineComponent({
   name: 'Basic',
@@ -87,6 +92,16 @@ export default defineComponent({
         this.displayRecipes=recipeEntities
         this.recipesShown=recipeEntities.slice(0)
   },
+    created() {
+        if(tokenStore().user.username == null ){
+            router.push("/")
+        }
+    },
+  computed:{
+      username(){
+          return tokenStore().user.username
+      }
+  }
 })
 </script>
 

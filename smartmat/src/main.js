@@ -20,8 +20,6 @@ app.component('fa', FontAwesomeIcon)
 app.mount('#app')
 
 
-import './assets/style/main.css'
-
 //library.add(fas);
 
 

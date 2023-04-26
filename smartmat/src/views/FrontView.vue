@@ -1,4 +1,5 @@
 <template xmlns="http://www.w3.org/1999/html">
+    <div v-if="username">
   <div id="outer-border">
     <RouterLink to="/refrigerator">
         <div id="border">
@@ -19,15 +20,24 @@
       </div>
     </RouterLink>
   </div>
+    </div>
+  <div v-else class="container"><h1>Please log in</h1></div>
 </template>
 <script>
 import {tokenStore} from "@/stores/tokenStore";
+import router from "@/router";
 
 export default {
+    computed:{
+        username(){
+            return tokenStore().user.username
+        }
+    },
     created() {
-        console.log(tokenStore().user.username)
-        console.log(tokenStore().user.jwt)
-    }
+            if(tokenStore().user.username == null ){
+                router.push("/")
+            }
+        }
 }
 </script>
 

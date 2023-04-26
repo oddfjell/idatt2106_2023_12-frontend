@@ -2,12 +2,15 @@ import {mount} from "@vue/test-utils";
 import {describe, expect, it, vi} from "vitest";
 import LoginView from "@/views/LoginView.vue";
 import router from "@/router";
+import {createPinia} from "pinia";
+const pinia = createPinia()
 
 function mountLoginView() {
     return mount(LoginView, {
         global: {
-            plugins: [router]
-        }
+            plugins: [router, pinia]
+        },
+
     })
 }
 describe("LoginView", () => {
@@ -34,7 +37,7 @@ describe('The Router', () => {
 
         await mountLoginView().find('button[id=registerBtn]').trigger('click')
 
-        expect(push).toHaveBeenCalledTimes(1)
+        expect(push).toHaveBeenCalledTimes(2)
         expect(push).toHaveBeenCalledWith('/register')
     })
 })
