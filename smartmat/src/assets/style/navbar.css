@@ -14,7 +14,7 @@ nav{
     gap: 30px;
     margin-top: 2vh;
     margin-right: 3vh;
-
+    z-index: 9999;
 }
 
 nav img{
@@ -27,7 +27,16 @@ nav img{
         visibility: hidden;
     }
     #bottom-navbar{
+        display: flex;
         background-color: #C43168;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        z-index: 9999;
+        left: 0;
+    }
+    #bottom-navbar nav{
+        gap: 70px;
     }
 }
 
@@ -41,7 +50,8 @@ Styling for the borders for the computer version
         background-color: #C43168;
         justify-content: right;
         position: fixed;
-        margin-top: -1vh;
+        z-index: 9999;
+        left: 0;
     }
 
 
