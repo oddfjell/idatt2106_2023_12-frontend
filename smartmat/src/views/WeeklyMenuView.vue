@@ -24,6 +24,7 @@ import recipeService from '../services/recipeService'
 import { tokenStore } from "@/stores/tokenStore";
 
 import 'vue3-carousel/dist/carousel.css'
+import router from "@/router";
 
 export default defineComponent({
   name: 'Basic',
@@ -79,9 +80,14 @@ export default defineComponent({
         this.displayRecipes=recipeEntities
         this.recipesShown=recipeEntities
   },
+    created() {
+        if(tokenStore().user.username == null ){
+            router.push("/")
+        }
+    },
   computed:{
       username(){
-          tokenStore().user.username
+          return tokenStore().user.username
       }
   }
 })

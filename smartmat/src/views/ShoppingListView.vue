@@ -28,6 +28,7 @@ import groceryService from "@/services/groceryService";
 import Dropdown from '@/components/Common/Dropdown.vue';
 import shoppingListService from "@/services/shoppingListService";
 import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
+import router from "@/router";
 
 
 export default {
@@ -76,6 +77,11 @@ export default {
         let groceries = groceriesResponse.data
         for(let grocery of groceries){
             this.groceries.push(grocery)
+        }
+    },
+    mounted() {
+        if(tokenStore().user.username == null ){
+            router.push("/")
         }
     },
     computed:{

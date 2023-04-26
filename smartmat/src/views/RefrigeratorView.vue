@@ -9,12 +9,18 @@
 <script>
 import GroceryGrid from "@/components/Fridge/GroceryGrid.vue";
 import {tokenStore} from "@/stores/tokenStore";
+import router from "@/router";
 export default {
   name: "RefrigeratorView",
     components: {GroceryGrid},
     computed:{
     username(){
         return tokenStore().user.username
+        }
+    },
+    created() {
+        if(tokenStore().user.username == null ){
+            router.push("/")
         }
     }
 }
