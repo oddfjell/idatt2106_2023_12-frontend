@@ -25,6 +25,7 @@
 </template>
 <script>
 import {tokenStore} from "@/stores/tokenStore";
+import router from "@/router";
 
 export default {
     computed:{
@@ -32,6 +33,11 @@ export default {
             return tokenStore().user.username
         }
     },
+    created() {
+            if(tokenStore().user.username == null ){
+                router.push("/")
+            }
+        }
 }
 </script>
 
