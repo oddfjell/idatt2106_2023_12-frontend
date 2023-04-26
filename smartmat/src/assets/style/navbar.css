@@ -16,11 +16,16 @@ nav{
     margin-right: 3vh;
     z-index: 9999;
 }
-
-nav img{
-    width: 4vh;
-    height: 4vh;
+.material-symbols-outlined {
+    font-size: 5vh;
+    font-variation-settings:
+            'FILL' 1,
+            'wght' 700,
+            'GRAD' 200,
+            'opsz' 48
 }
+
+
 
 @media (max-width:500px) {
     #top-navbar{

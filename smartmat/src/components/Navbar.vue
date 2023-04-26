@@ -1,22 +1,23 @@
 <template>
   <header>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <div id="navbar-frame">
     <nav v-if="username">
         <RouterLink to="/home">
-            <fa :icon="['fas', 'home']" class="fa-icon-home" />
+            <span class="material-symbols-outlined">home</span>
         </RouterLink>
         <RouterLink to="/refrigerator">
-            <img class="fridge" src="../images/fridge.svg" alt="Kjøleskap">
+          <span class="material-symbols-outlined">kitchen</span>
         </RouterLink>
         <RouterLink to="/weeklyMenu">
-            <fa :icon="['fas', 'cutlery']" class="fa-icon-cutlery" />
+          <span class="material-symbols-outlined">restaurant</span>
         </RouterLink>
     <RouterLink to="/shoppingList">
-    <fa :icon="['fas', 'cart-shopping']" class="fa-icon-cart"/>
+      <span class="material-symbols-outlined">shopping_cart</span>
       </RouterLink>
 
         <RouterLink to="/profile" >
-            <fa :icon="['fas', 'user']" class="fa-icon-user" />
+<span class="material-symbols-outlined">person</span>
         </RouterLink>
     </nav>
     </div>
