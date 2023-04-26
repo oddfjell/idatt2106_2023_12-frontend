@@ -14,6 +14,9 @@ function mountRefrigeratorView() {
     return mount(RefrigeratorView, {
         global: {
             plugins: [router, pinia]
+        },
+        computed:{
+            username(){return "bop"}
         }
     })
 }
