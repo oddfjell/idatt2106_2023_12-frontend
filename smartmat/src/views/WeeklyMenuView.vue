@@ -81,7 +81,7 @@ export default defineComponent({
   },
   computed:{
       username(){
-          tokenStore().user.username
+          return tokenStore().user.username
       }
   }
 })
