@@ -13,6 +13,12 @@
       </button>
     </template>
   </Carousel>
+
+  <div class="addToShoppingList">
+    <button @click="addToShoppingList">
+      Legg til varer i handleliste</button>
+  </div>
+
     </div>
   <div v-else><h1>Please log in</h1></div>
 </template>
@@ -41,8 +47,8 @@ export default defineComponent({
     const recipesShown = ref([])
 
     const changeRecipe = (index, recipesResponse) => {
-      recipesShown.value.push(displayRecipes.value[index])
-      displayRecipes.value.splice(index, 1, recipesResponse)
+      let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
+      recipesShown.value.push(oldRecipe[0])
     }
 
     const getAndChangeRecipe = async () => {
@@ -56,12 +62,18 @@ export default defineComponent({
         
         }
     }
+
+    const addToShoppingList = () => {
+      recipeService.addToShoppingList(tokenStore().user.jwt, displayRecipes.value)
+    }
+
     return {
       displayRecipes,
       changeRecipe,
       getAndChangeRecipe,
       carousel,
-      recipesShown
+      recipesShown,
+      addToShoppingList
     }
   },
   async mounted() {
@@ -78,7 +90,7 @@ export default defineComponent({
         
         }
         this.displayRecipes=recipeEntities
-        this.recipesShown=recipeEntities
+        this.recipesShown=recipeEntities.slice(0)
   },
     created() {
         if(tokenStore().user.username == null ){
@@ -114,18 +126,12 @@ export default defineComponent({
 .carousel__next {
   box-sizing: content-box;
 }
-button {
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  background-color: inherit;
-  transition: transform 0.3s ease-in-out;
-}
 
-button:hover {
-  transform: scale(1.2);
+.addToShoppingList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 img {
   width: 20px;

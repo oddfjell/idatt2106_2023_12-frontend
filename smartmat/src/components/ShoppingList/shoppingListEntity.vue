@@ -23,7 +23,6 @@ export default {
     methods:{
         updateValue(){
             try{
-                console.log("checked updated")
                 shoppingListService.updateChecked(this.listEntity.name, tokenStore().user.jwt)
             }catch (error){
                 console.log(error)
