@@ -12,6 +12,11 @@
       </button>
     </template>
   </Carousel>
+
+  <div class="addToShoppingList">
+    <button @click="addToShoppingList">
+      Legg til varer i handleliste</button>
+  </div>
 </template>
 
 <script>
@@ -54,7 +59,7 @@ export default defineComponent({
     }
 
     const addToShoppingList = () => {
-      recipeService.addToShoppingList(tokenStore.user.jwt, displayRecipes.value)
+      recipeService.addToShoppingList(tokenStore().user.jwt, displayRecipes.value)
     }
 
     return {
@@ -106,18 +111,12 @@ export default defineComponent({
 .carousel__next {
   box-sizing: content-box;
 }
-button {
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  background-color: inherit;
-  transition: transform 0.3s ease-in-out;
-}
 
-button:hover {
-  transform: scale(1.2);
+.addToShoppingList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 img {
   width: 20px;

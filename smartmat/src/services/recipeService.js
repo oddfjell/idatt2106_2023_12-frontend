@@ -32,7 +32,7 @@ function addHeader(token) {
     getRecipe(token){
         return recipeApiClient.get('/asdasd', addHeader(token))
       },
-    addToShoppingList(token, ingredients){
-      return 
+    addToShoppingList(token,menuRecipes){
+      return shoppingListApiClient.post('/addAllFromMenu', menuRecipes, addHeader(token))
     }
 }
