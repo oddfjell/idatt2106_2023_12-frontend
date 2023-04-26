@@ -7,7 +7,7 @@ function mountRegisterView() {
     return mount(RegisterView, {
         global: {
             plugins: [router]
-        }
+        },
     })
 }
 describe("RegisterView", () => {

@@ -24,7 +24,6 @@ export default {
     },
     computed:{
         username(){
-            console.log(tokenStore().user.username)
             return tokenStore().user.username
         }
     },

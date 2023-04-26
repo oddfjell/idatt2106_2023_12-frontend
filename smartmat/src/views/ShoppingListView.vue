@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="username" class="container">
   <h1>Handleliste</h1>
       <div id="header">
       <Dropdown id="dropdown"
@@ -15,6 +15,9 @@
       <div class="Btn">
       <button class="BlueBtn" id="addSelected" @click="buy">Kjøp valgte varer</button>
       </div>
+  </div>
+  <div v-else>
+      <h1>Please log in</h1>
   </div>
 </template>
 
@@ -74,7 +77,12 @@ export default {
         for(let grocery of groceries){
             this.groceries.push(grocery)
         }
-    }
+    },
+    computed:{
+        username(){
+            return tokenStore().user.username
+        }
+    },
 }
 
 

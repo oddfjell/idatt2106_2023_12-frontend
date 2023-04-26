@@ -1,7 +1,6 @@
 <template>
     <div class="container" >
         <div id="grocery-left">
-            <img class="thumbnail" src="@/images/weeklyMenuPage.png" alt="">
             <h3 id="title">{{grocery.name}}</h3>
             <p id="count">Antall: {{count}}</p>
         </div>
@@ -78,6 +77,7 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    width: 100%;
 }
 .buttonBar{
     margin-right: 0;

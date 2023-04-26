@@ -63,12 +63,12 @@ export default {
         grid-template-columns: repeat(4, 1fr)
     }
 }
-@media only screen and (max-width: 1320px) {
+@media only screen and (max-width: 2000px) {
     #grocery_grid{
         grid-template-columns: 1fr 1fr 1fr
     }
 }
-@media only screen and (max-width: 1020px) {
+@media only screen and (max-width: 1400px) {
     #grocery_grid{
         grid-template-columns: 1fr 1fr}
 }

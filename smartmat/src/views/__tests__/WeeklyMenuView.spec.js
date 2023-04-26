@@ -9,6 +9,9 @@ function mountWeeklyMenu(){
         global:{
             plugins:[router, pinia]
         },
+        computed:{
+            username(){return "bop"}
+        }
     })
 }
 describe('WeeklyMenuView',()=>{
