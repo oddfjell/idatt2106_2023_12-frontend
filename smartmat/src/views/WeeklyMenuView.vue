@@ -1,4 +1,5 @@
 <template>
+    <div v-if="username">
   <Carousel ref="carousel" :wrap-around="false" :items-to-show="1">
     <Slide v-for="recipe in displayRecipes" :key="recipe">
       <div class="carousel__item"> {{ recipe.title }}</div>
@@ -12,6 +13,8 @@
       </button>
     </template>
   </Carousel>
+    </div>
+  <div v-else><h1>Please log in</h1></div>
 </template>
 
 <script>
@@ -76,6 +79,11 @@ export default defineComponent({
         this.displayRecipes=recipeEntities
         this.recipesShown=recipeEntities
   },
+  computed:{
+      username(){
+          tokenStore().user.username
+      }
+  }
 })
 </script>
 

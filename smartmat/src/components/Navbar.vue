@@ -1,12 +1,7 @@
-<script setup>
-import { RouterLink} from 'vue-router'
-
-</script>
-
 <template>
   <header>
     <div id="navbar-frame">
-    <nav>
+    <nav v-if="username">
         <RouterLink to="/home">
             <fa :icon="['fas', 'home']" class="fa-icon-home" />
         </RouterLink>
@@ -28,6 +23,18 @@ import { RouterLink} from 'vue-router'
 
   </header>
 </template>
+<script>
+import { RouterLink} from 'vue-router'
+import {tokenStore} from "@/stores/tokenStore";
+export default{
+    computed:{
+        username(){
+            return tokenStore().user.username
+        }
+    }
+}
+</script>
+
 
 <style scoped>
 @import "../assets/style/navbar.css";
