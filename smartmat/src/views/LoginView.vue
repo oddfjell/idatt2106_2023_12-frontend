@@ -63,7 +63,7 @@ export default {
         }
     },
     created() {
-        if(tokenStore().user.username !== null ){
+        if(tokenStore().user.username !== null || tokenStore().user.username !== "" ){
             router.push("/home")
         }
     }
