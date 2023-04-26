@@ -8,18 +8,18 @@ nav a{
 }
 
 nav{
-    font-size: 40px;
+    font-size: 4vh;
     height: 6vh;
     display: flex;
-    gap: 30px;
+    gap: 3vh;
     margin-top: 2vh;
     margin-right: 3vh;
     z-index: 9999;
 }
 
 nav img{
-    width: 45px;
-    height: 45px;
+    width: 4vh;
+    height: 4vh;
 }
 
 @media (max-width:500px) {
@@ -36,7 +36,7 @@ nav img{
         left: 0;
     }
     #bottom-navbar nav{
-        gap: 70px;
+        gap: 8vh;
     }
 }
 
