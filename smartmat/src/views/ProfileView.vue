@@ -48,5 +48,6 @@ export default {
 <style scoped>
 .container{
     text-align: center;
+    border: 1px solid black;
 }
 </style>

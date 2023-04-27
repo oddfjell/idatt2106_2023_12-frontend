@@ -47,7 +47,7 @@ export default {
 <style scoped>
 #shoppingList_grid{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 30%;
+    grid-template-columns: 1fr;
+    grid-gap:0;
 }
 </style>
