@@ -49,6 +49,14 @@ separate css version for phone, to make it fit nicely into the phone screen
         display: flex;
 
     }
+    #except-user-top{
+        gap: 7vh;
+        display: flex;
+    }
+    #all-icons-bottom{
+        gap: 7vh;
+        display: flex;
+    }
 }
 
 
@@ -75,7 +83,15 @@ Styling for the borders for the computer version
     #nav-icons{
         gap: 3vh;
         display: flex;
-
     }
+    #except-user-top{
+        gap: 3vh;
+        display: flex;
+    }
+
+    #all-icons-bottom{
+        visibility: hidden;
+    }
+
 }
 
