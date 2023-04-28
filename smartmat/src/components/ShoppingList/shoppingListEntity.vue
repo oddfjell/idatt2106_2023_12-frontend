@@ -17,7 +17,6 @@ delete</span>
 </template>
 
 <script>
-//import NumberInput from "@/components/Common/NumberInput.vue";
 
 import shoppingListService from "@/services/shoppingListService";
 import {tokenStore} from "@/stores/tokenStore";
@@ -44,24 +43,19 @@ export default {
                 console.log(error)
             }
         },
-
-  decrement(){
-    if(this.listEntity.count>1){
-      // eslint-disable-next-line vue/no-mutating-props
-     this.listEntity.count--;
-    }
-  },
-  increment(){
-    // eslint-disable-next-line vue/no-mutating-props
-    this.listEntity.count++;
-  },
-  resetCounter(){
-    // eslint-disable-next-line vue/no-mutating-props
-          this.listEntity.count=0;
-  }
-  },
+        decrement(){
+            if(this.listEntity.count>1){
+                this.listEntity.count--;
+            }
+        },
+        increment(){
+                this.listEntity.count++;
+        },
+        resetCounter(){
+                this.listEntity.count=0;
+        }
+    },
     created() {
-        console.log(this.listEntity)
     },
 }
 </script>
@@ -71,15 +65,12 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-
 .decrement,
 .increment{
   margin: 10px;
-
 }
 .counter{
   display: inline-block;
   justify-content: center;
-
 }
 </style>
