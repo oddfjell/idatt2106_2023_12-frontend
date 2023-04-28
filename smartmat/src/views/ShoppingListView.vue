@@ -80,7 +80,7 @@ export default {
         }
     },
     mounted() {
-        if(tokenStore().user.username === "" ){
+        if(!tokenStore().user.username){
             router.push("/")
         }
     },

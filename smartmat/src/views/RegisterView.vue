@@ -69,7 +69,7 @@ export default {
         }
     },
     created() {
-        if(tokenStore().user.username !== ""){
+        if(tokenStore().user.username){
             router.push("/home")
         }
     }
