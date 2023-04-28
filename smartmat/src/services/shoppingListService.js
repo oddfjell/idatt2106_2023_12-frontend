@@ -16,8 +16,8 @@ export default {
     getProducts(token){
         return axios.get(baseURL+'/', config(token))//Var add header
     },
-    saveChanges(changes, token){
-        return axios.post(baseURL+'/save', changes, config(token))
+    saveChanges(shoppingList, token){
+        return axios.put(baseURL+'/save', shoppingList, config(token))
     },
     buyChecked(token){
         return axios.post(baseURL+'/buy',null,  config(token))
