@@ -27,6 +27,7 @@ export default {
               let listEntityCopy = this.listEntity
                 listEntityCopy.foundInStore = event.target.checked
               shoppingListStore().updateShoppingListEntity(listEntityCopy)
+            shoppingListStore().setStateSaved(false)
             this.$emit("updateChecked")
         },
         decrement(){
@@ -34,6 +35,7 @@ export default {
                 let listEntityCopy = this.listEntity
                 listEntityCopy.count--
                 shoppingListStore().updateShoppingListEntity(listEntityCopy)
+                shoppingListStore().setStateSaved(false)
             }
         },
         increment(){
@@ -41,12 +43,14 @@ export default {
                 let listEntityCopy = this.listEntity
                 listEntityCopy.count++
                 shoppingListStore().updateShoppingListEntity(listEntityCopy)
+                shoppingListStore().setStateSaved(false)
             }
         },
         resetCounter(){
             let listEntityCopy = this.listEntity
             listEntityCopy.count = 0
             shoppingListStore().updateShoppingListEntity(listEntityCopy)
+            shoppingListStore().setStateSaved(false)
             this.$emit("updateChecked")
         }
     },

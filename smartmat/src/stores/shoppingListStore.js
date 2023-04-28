@@ -4,6 +4,7 @@ import {ref} from "vue";
 export const shoppingListStore = defineStore("shoppingList",() =>{
     const shoppingList = ref({
         shoppingListEntities:[],
+        saved:true
     });
 
     const getShoppingListEntities = () =>{
@@ -28,7 +29,13 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
             shoppingListEntity = updatedEntity
             return true;
         } else return false
+    }
 
+    const getStateSaved= () =>{
+        return shoppingList.value.saved
+    }
+    const setStateSaved = (boolean) =>{
+        shoppingList.value.saved = boolean
     }
 
     return{
@@ -36,6 +43,8 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
         setShoppingListEntities,
         addShoppingListEntity,
         updateShoppingListEntity,
+        getStateSaved,
+        setStateSaved,
     };
 })
 

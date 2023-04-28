@@ -46,7 +46,6 @@ export default {
           loading:true,
           trigger:false,
           info:" ",
-          saved:true
       }
     },
     methods:{
@@ -62,7 +61,7 @@ export default {
         async buy(){
             try {
                 await this.save()
-                this.saved=true
+                shoppingListStore().setStateSaved(true)
                 this.info = "Legger til i handleliste ..."
                 await shoppingListService.buyChecked(tokenStore().user.jwt)
                 shoppingListStore().setShoppingListEntities([])
@@ -75,7 +74,7 @@ export default {
             this.info="Lagrer... "
             try{
                 await shoppingListService.saveChanges(shoppingListStore().getShoppingListEntities(), tokenStore().user.jwt)
-                this.saved=true
+                shoppingListStore().setStateSaved(true)
                 this.info="Lagret!"
             } catch (error){
                 console.log(error)
@@ -85,6 +84,7 @@ export default {
         async addShoppingListEntity(){
             let product = {name:this.selected.name, count: 1, foundInStore:false}
             shoppingListStore().addShoppingListEntity(product)
+            shoppingListStore().setStateSaved(false)
             this.trigger=!this.trigger
             this.onSelection(null)
             if(this.$refs.grid){this.$refs.grid.updateChecked()}
@@ -120,9 +120,10 @@ export default {
         }
     },
     async beforeUnmount() {
-        if(!this.saved){
+        if(!shoppingListStore().getStateSaved()){
             if(confirm("You have unsaved changes. Save?")){
                 await this.save()
+                shoppingListStore().setStateSaved(true)
                 alert("Saved!")
             }
         }
