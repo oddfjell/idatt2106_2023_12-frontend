@@ -30,7 +30,7 @@ separate css version for phone, to make it fit nicely into the phone screen
  */
 @media (max-width:500px) {
     #top-navbar{
-        visibility: hidden;
+        display: none;
     }
     #bottom-navbar{
         display: flex;
@@ -62,7 +62,7 @@ Styling for the borders for the computer version
 
 
     #bottom-navbar{
-        visibility: hidden;
+        display: none;
     }
 }
 
