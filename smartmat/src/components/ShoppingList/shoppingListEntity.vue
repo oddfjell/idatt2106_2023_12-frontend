@@ -10,6 +10,8 @@
       <button @click.prevent="decrement">-</button>
       <span>{{listEntity.count}}</span>
       <button @click.prevent="increment">+</button>
+        <button @click.prevent="resetCounter" class="trash">
+        TRASH</button>
       </div>
     </div>
 </template>
@@ -52,7 +54,12 @@ export default {
   increment(){
     // eslint-disable-next-line vue/no-mutating-props
     this.listEntity.count++;
-  } },
+  },
+  resetCounter(){
+    // eslint-disable-next-line vue/no-mutating-props
+          this.listEntity.count=0;
+  }
+  },
     created() {
         console.log(this.listEntity)
     },
