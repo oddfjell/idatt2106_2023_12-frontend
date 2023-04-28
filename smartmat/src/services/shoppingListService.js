@@ -16,14 +16,8 @@ export default {
     getProducts(token){
         return axios.get(baseURL+'/', config(token))//Var add header
     },
-    addToShoppingList(product, token){
-        return axios.post(baseURL+'/add', product, config(token))
-    },
-    removeFromShoppingList(productID, token){
-        return axios.delete(baseURL+'/remove/'+productID, config(token))
-    },
-    updateChecked(productname, token){
-        return axios.post(baseURL+'/mark', productname, config(token))
+    saveChanges(changes, token){
+        return axios.post(baseURL+'/save', changes, config(token))
     },
     buyChecked(token){
         return axios.post(baseURL+'/buy',null,  config(token))
