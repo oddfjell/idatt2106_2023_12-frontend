@@ -4,7 +4,6 @@ import {ref} from "vue";
 export const shoppingListStore = defineStore("shoppingList",() =>{
     const shoppingList = ref({
         shoppingListEntities:[],
-        changes: [],
     });
 
     const getShoppingListEntities = () =>{
@@ -14,29 +13,29 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
     const setShoppingListEntities = (newShoppingListEntities) =>{
         shoppingList.value.shoppingListEntities= newShoppingListEntities
     }
-
-    const getChanges = () =>{
-        return shoppingList.value.changes
-    }
-
-    const addChange = (change) =>{
-        for(const entity of shoppingList.value.changes){
-            if(entity.name === change.name){
-                shoppingList.value.changes.splice(shoppingList.value.changes.indexOf(entity),1)
-            }
+    const addShoppingListEntity = (newShoppingListEntity) =>{
+        let shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
+        if(shoppingListEntity){
+            shoppingListEntity.count++
+        } else{
+            shoppingList.value.shoppingListEntities.push(newShoppingListEntity)
         }
-        shoppingList.value.changes.push(change)
     }
-    const removeChanges = () =>{
-        shoppingList.value.changes=[]
+
+    const updateShoppingListEntity = (updatedEntity) =>{
+        let shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===updatedEntity.name)
+        if(shoppingListEntity){
+            shoppingListEntity = updatedEntity
+            return true;
+        } else return false
+
     }
 
     return{
         getShoppingListEntities,
         setShoppingListEntities,
-        getChanges,
-        addChange,
-        removeChanges,
+        addShoppingListEntity,
+        updateShoppingListEntity,
     };
 })
 
