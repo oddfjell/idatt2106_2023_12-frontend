@@ -9,11 +9,12 @@
       </Dropdown>
           <button @click="addShoppingListEntity">Legg til vare</button>
       </div>
-      <div class="container">
+      <div class="container" id="shoppingGridContainer">
+          <div id="buttonBar" class="Btn">
+              <button class="BlueBtn" id="saveChanges" @click="save">Lagre endringer</button>
+              <button class="BlueBtn" id="addSelected" @click="buy">Kjøp valgte varer</button>
+          </div>
      <ShoppingListGrid/>
-      </div>
-      <div class="Btn">
-      <button class="BlueBtn" id="addSelected" @click="buy">Kjøp valgte varer</button>
       </div>
   </div>
   <div v-else>
@@ -40,7 +41,8 @@ export default {
           amount:1,
           selected:null,
           groceries:[],
-          shoppingListEntities:[]
+          shoppingListEntities:[],
+          changes:[]
       }
     },
     methods:{
@@ -105,8 +107,17 @@ export default {
     align-items: center;
     gap: 5%;
 }
+#shoppingGridContainer{
+    border: none;
+    padding: 0;
+}
 
 #dropdown{
     width:80%;
+}
+
+#buttonBar{
+    display: flex;
+    justify-content: space-evenly;
 }
 </style>
