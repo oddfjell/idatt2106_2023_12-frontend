@@ -140,7 +140,7 @@ export default {
 <style scoped>
 .container{
     max-width: 100vh;
-    min-height: 50vh;
+    min-height: 70vh;
     border: 1px solid steelblue;
     padding-bottom: 0;
     padding-top: 0;
@@ -174,5 +174,13 @@ export default {
 .GreyBtn{
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+@media(max-width:500px ){
+    .container{
+        margin: 0;
+        padding: 20px;
+        border: none;
+    }
 }
 </style>
