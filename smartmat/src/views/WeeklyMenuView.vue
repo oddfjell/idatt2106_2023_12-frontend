@@ -96,7 +96,7 @@ export default defineComponent({
         this.recipesShown=recipeEntities.slice(0)
   },
     created() {
-        if(tokenStore().user.username === "" ){
+        if(!tokenStore().user.username){
             router.push("/")
         }
     },
