@@ -31,7 +31,7 @@ import Navbar from "@/components/Navbar.vue";
         border-radius: 5px;
 }
 .GreyBtn{
-        background: #b7b7b7;
+        background: #d0cece;
         border: 0;
         padding: 10px 20px;
         color: black;
@@ -49,7 +49,7 @@ import Navbar from "@/components/Navbar.vue";
     cursor: pointer;
 }
 .GreyBtn:hover {
-    background-color: #d0cece;
+    background-color: #b7b7b7;
     cursor: pointer;
 }
 </style>
