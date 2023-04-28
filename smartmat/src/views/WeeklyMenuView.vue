@@ -18,7 +18,7 @@
         <div class="container" v-if="this.carousel">
             <h1>Ingredienser</h1>
         <p style="display: none">{{currentSlide}}</p>
-            <a :href="this.displayRecipes[currentSlide._value].url">Se på matprat</a>
+            <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
             <p :key="ingredient" v-for="ingredient in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
         </div>
 
@@ -105,7 +105,6 @@ export default defineComponent({
           return tokenStore().user.username
       },
       currentSlide(){
-          console.log(this.displayRecipes)
           return this.carousel.data.currentSlide
       },
   }
