@@ -2,9 +2,17 @@
     <div id="container">
     <input type="checkbox" :checked="listEntity.foundInStore" @change="updateValue">
         <p>{{ listEntity.name }}</p>
-        <p>{{listEntity.count}}</p>
-        <button class="button" @click="remove" >-</button>
+
+
+
        <!--<VueNumberInput :model-value="listEntity.count" @update:model-value="updateValue" /> //TODO -->
+      <div class="counter">
+      <button class="decrement" @click.prevent="decrement">-</button>
+      <span>{{listEntity.count}}</span>
+      <button class="increment" @click.prevent="increment">+</button>
+        <span class="material-symbols-outlined" @click.prevent="resetCounter">
+delete</span>
+      </div>
     </div>
 </template>
 
@@ -24,6 +32,7 @@ export default {
         updateValue(){
             try{
                 shoppingListService.updateChecked(this.listEntity.name, tokenStore().user.jwt)
+
             }catch (error){
                 console.log(error)
             }
@@ -34,8 +43,23 @@ export default {
             }catch (error){
                 console.log(error)
             }
-        }
-    },
+        },
+
+  decrement(){
+    if(this.listEntity.count>1){
+      // eslint-disable-next-line vue/no-mutating-props
+     this.listEntity.count--;
+    }
+  },
+  increment(){
+    // eslint-disable-next-line vue/no-mutating-props
+    this.listEntity.count++;
+  },
+  resetCounter(){
+    // eslint-disable-next-line vue/no-mutating-props
+          this.listEntity.count=0;
+  }
+  },
     created() {
         console.log(this.listEntity)
     },
@@ -47,8 +71,15 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-.button{
-    height: fit-content;
-}
 
+.decrement,
+.increment{
+  margin: 10px;
+
+}
+.counter{
+  display: inline-block;
+  justify-content: center;
+
+}
 </style>
