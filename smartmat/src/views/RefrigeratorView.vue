@@ -34,6 +34,7 @@ export default {
 #fridgeContainer{
     margin-left: 10%;
     margin-right: 10%;
+    padding: 0;
 
 }
 @media(max-width:500px ){
