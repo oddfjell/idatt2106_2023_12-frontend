@@ -6,7 +6,7 @@
         </div>
         <div id="grocery-right">
           <p id="category">{{grocery.categoryName}}</p>
-          <p >{{expiredText}}</p>
+          <p class="rigth" :class="{red:expiredWarning}" >{{expiredText}}</p>
 
           <div class="buttonBar">
               <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
@@ -52,8 +52,12 @@ export default {
             } else{
                 return ""
             }
+        },
+        expiredWarning(){
+          return this.grocery.expiresInDays <= 3;
         }
-    }
+    },
+
 }
 </script>
 <style scoped>
@@ -111,5 +115,11 @@ export default {
 #eatBtn:hover {
     background-color: #048100;
     cursor: pointer;
+}
+.red{
+    color:red
+}
+.rigth{
+    text-align: right;
 }
 </style>
