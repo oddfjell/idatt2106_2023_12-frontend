@@ -2,9 +2,15 @@
     <div id="container">
     <input type="checkbox" :checked="listEntity.foundInStore" @change="updateValue">
         <p>{{ listEntity.name }}</p>
-        <p>{{listEntity.count}}</p>
-        <button class="button" @click="remove" >-</button>
+
+
+
        <!--<VueNumberInput :model-value="listEntity.count" @update:model-value="updateValue" /> //TODO -->
+      <div>
+      <button @click.prevent="decrement">-</button>
+      <span>{{listEntity.count}}</span>
+      <button @click.prevent="increment">+</button>
+      </div>
     </div>
 </template>
 
@@ -24,6 +30,7 @@ export default {
         updateValue(){
             try{
                 shoppingListService.updateChecked(this.listEntity.name, tokenStore().user.jwt)
+
             }catch (error){
                 console.log(error)
             }
@@ -34,8 +41,18 @@ export default {
             }catch (error){
                 console.log(error)
             }
-        }
-    },
+        },
+
+  decrement(){
+    if(this.listEntity.count>1){
+      // eslint-disable-next-line vue/no-mutating-props
+     this.listEntity.count--;
+    }
+  },
+  increment(){
+    // eslint-disable-next-line vue/no-mutating-props
+    this.listEntity.count++;
+  } },
     created() {
         console.log(this.listEntity)
     },
