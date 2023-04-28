@@ -16,7 +16,6 @@ import Navbar from "@/components/Navbar.vue";
     max-width: 500px;
     margin: 30px auto;
     overflow: auto;
-    border: 1px solid steelblue;
     padding: 30px;
     border-radius: 5px;
 }

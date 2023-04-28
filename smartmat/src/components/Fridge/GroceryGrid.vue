@@ -54,8 +54,9 @@ export default {
 #grocery_grid{
     display:grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1%;
+    grid-gap: 5vh;
     margin: auto;
+    padding: 10px;
 }
 
 @media only screen and (max-width: 1420px) {

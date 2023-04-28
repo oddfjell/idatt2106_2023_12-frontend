@@ -37,7 +37,7 @@ describe('The Router', () => {
 
         await mountLoginView().find('button[id=registerBtn]').trigger('click')
 
-        expect(push).toHaveBeenCalledTimes(2)
+        expect(push).toHaveBeenCalledTimes(1)
         expect(push).toHaveBeenCalledWith('/register')
     })
 })

@@ -3,7 +3,7 @@
     <input type="checkbox" :checked="listEntity.foundInStore" @change="updateValue">
         <p>{{ listEntity.name }}</p>
         <p>{{listEntity.count}}</p>
-        <button @click="remove" >-</button>
+        <button class="button" @click="remove" >-</button>
        <!--<VueNumberInput :model-value="listEntity.count" @update:model-value="updateValue" /> //TODO -->
     </div>
 </template>
@@ -46,6 +46,9 @@ export default {
 #container{
     display: flex;
     justify-content: space-between;
+}
+.button{
+    height: fit-content;
 }
 
 </style>
