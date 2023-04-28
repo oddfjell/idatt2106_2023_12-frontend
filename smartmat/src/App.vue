@@ -43,6 +43,14 @@ import Navbar from "@/components/Navbar.vue";
   }
 }
 
+@media(max-width:500px ){
+    .container{
+        margin: 0;
+        padding: 20px;
+        border: none;
+    }
+}
+
 
 .BlueBtn:hover {
     background-color: #4169a8;
