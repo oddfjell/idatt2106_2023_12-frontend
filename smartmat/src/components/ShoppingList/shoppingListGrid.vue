@@ -1,7 +1,7 @@
 <template>
 <div>
     <div v-if="loading">Laster ...</div>
-    <div v-else-if="shoppingListEntities.length" id="shoppingListEntitiesGrid">
+    <div v-else-if="shoppingListStore().getShoppingListEntities()" id="shoppingListEntitiesGrid">
     <div id="unchecked_list">
         <div v-for="(uncheckedEntity, index) in uncheckedEntities" :key="index">
             <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" :count="uncheckedEntity.count" />
@@ -21,6 +21,7 @@
 import ShoppingListEntity from "@/components/ShoppingList/shoppingListEntity.vue";
 import shoppingListService from "@/services/shoppingListService";
 import {tokenStore} from "@/stores/tokenStore";
+import {shoppingListStore} from "@/stores/shoppingListStore";
 
 export default {
     name: "shoppingListGrid",
@@ -28,22 +29,22 @@ export default {
     data(){
         return{
             loading:true,
-            shoppingListEntities:null,
             uncheckedEntities:Array,
             checkedEntities:Array,
         }
     },
     methods:{
+        shoppingListStore,
         updateChecked(){
             let uncheckedEntities = []
-            for (const entity of this.shoppingListEntities) {
+            for (const entity of shoppingListStore().getShoppingListEntities()) {
                 console.log(entity.foundInStore)
                 if(!entity.foundInStore){
                     uncheckedEntities.push(entity)
                 }
             }
             let checkedEntities = []
-            for (const entity of this.shoppingListEntities) {
+            for (const entity of shoppingListStore().getShoppingListEntities()) {
                 if(entity.foundInStore){
                     checkedEntities.push(entity)
                 }
@@ -66,7 +67,7 @@ export default {
         {
            this.loading=false
         }
-        this.shoppingListEntities=listEntities
+        shoppingListStore().setShoppingListEntities(listEntities)
         this.updateChecked();
     }
 }
