@@ -1,15 +1,16 @@
 <template>
 <div>
-    <div v-if="loading">Laster ...</div>
-    <div v-else-if="shoppingListStore().getShoppingListEntities()" id="shoppingListEntitiesGrid">
-    <div id="unchecked_list">
-        <div v-for="(uncheckedEntity, index) in uncheckedEntities" :key="index">
-            <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" :count="uncheckedEntity.count" />
+    <div v-if="uncheckedEntities || checkedEntities" id="shoppingListEntitiesGrid">
+        <div id="unchecked_list">
+            <h3>Ikke funnet</h3>
+            <div v-for="(uncheckedEntity, index) in uncheckedEntities" :key="uncheckedEntity.name">
+                <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" @updateChecked="updateChecked" :count="uncheckedEntity.count" />
+            </div>
         </div>
-    </div>
         <div id="checked_list">
-            <div v-for="(checkedEntity, index) in checkedEntities" :key="index">
-                <ShoppingListEntity :tabindex="index+1" :listEntity="checkedEntity" :count="checkedEntity.count" />
+            <h3>Funnet</h3>
+            <div v-for="(checkedEntity, index) in checkedEntities" :key="checkedEntity.name">
+                <ShoppingListEntity :tabindex="index+1" :listEntity="checkedEntity" @updateChecked="updateChecked" :count="checkedEntity.count" />
             </div>
         </div>
     </div>
@@ -19,8 +20,6 @@
 
 <script>
 import ShoppingListEntity from "@/components/ShoppingList/shoppingListEntity.vue";
-import shoppingListService from "@/services/shoppingListService";
-import {tokenStore} from "@/stores/tokenStore";
 import {shoppingListStore} from "@/stores/shoppingListStore";
 
 export default {
@@ -28,7 +27,6 @@ export default {
     components: {ShoppingListEntity},
     data(){
         return{
-            loading:true,
             uncheckedEntities:Array,
             checkedEntities:Array,
         }
@@ -38,14 +36,13 @@ export default {
         updateChecked(){
             let uncheckedEntities = []
             for (const entity of shoppingListStore().getShoppingListEntities()) {
-                console.log(entity.foundInStore)
-                if(!entity.foundInStore){
+                if(!entity.foundInStore && entity.count!==0){
                     uncheckedEntities.push(entity)
                 }
             }
             let checkedEntities = []
             for (const entity of shoppingListStore().getShoppingListEntities()) {
-                if(entity.foundInStore){
+                if(entity.foundInStore && entity.count!==0){
                     checkedEntities.push(entity)
                 }
             }
@@ -53,23 +50,9 @@ export default {
             this.checkedEntities=checkedEntities
         },
     },
-    async created(){
-        let listEntities = []
-        try {
-            let shoppingListResponse = await shoppingListService.getProducts(tokenStore().user.jwt)
-            let shoppinglistEntities = shoppingListResponse.data
-            for (let shoppinglistEntity of shoppinglistEntities) {
-                listEntities.push(shoppinglistEntity)
-            }
-        }catch (error){
-            console.log(error)
-        }finally
-        {
-           this.loading=false
-        }
-        shoppingListStore().setShoppingListEntities(listEntities)
+    mounted(){
         this.updateChecked();
-    }
+    },
 }
 </script>
 
@@ -81,13 +64,21 @@ export default {
 }
 
 #unchecked_list{
+    text-align: center;
     border: 1px solid steelblue;
     padding: 10px;
     border-radius: 5px;
+    min-height: 60vh;
+    max-height: 90vh;
+    overflow: auto;
 }
 #checked_list{
+    text-align: center;
     border: 1px solid steelblue;
     padding: 10px;
     border-radius: 5px;
+    min-height: 60vh;
+    max-height: 90vh;
+    overflow: auto;
 }
 </style>
