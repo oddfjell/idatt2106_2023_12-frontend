@@ -36,7 +36,7 @@ export default {
         };
     },
     created() {
-        this.$emit('selected', this.selected);
+        //this.$emit('selected', this.selected);
     },
     computed: {
         filteredOptions() {

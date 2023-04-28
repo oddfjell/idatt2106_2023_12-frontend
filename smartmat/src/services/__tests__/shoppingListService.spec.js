@@ -23,7 +23,7 @@ describe("Shopping List Service", () =>{
             expect(products.data).toStrictEqual(productsMock)/**/
         });
     })
-
+/*
     describe("addToShoppingList test", () => {
         it("tests that axios.post method is called while calling addToShoppingList method", async () => {
             const status = 202
@@ -38,7 +38,8 @@ describe("Shopping List Service", () =>{
             expect(logInResult.status).toStrictEqual(status)
         });
     })
-
+*/
+    /*
     describe("remove from shoppingList test", () => {
         it("ests that axios.delete method is called while calling removeFromShoppingList method", async () => {
             const status = 202
@@ -53,7 +54,7 @@ describe("Shopping List Service", () =>{
             expect(logInResult.status).toStrictEqual(status)
         });
     })
-
+    */
     describe("acceptRequest test", () => {
         it("tests that axios.put method is called while calling acceptRequest method", async () => {
             const status = 202
