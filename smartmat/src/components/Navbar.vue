@@ -2,7 +2,8 @@
   <header>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <div id="navbar-frame">
-    <nav v-if="username">
+    <nav>
+      <div v-if="username" id="nav-icons">
         <RouterLink to="/home">
             <span class="material-symbols-outlined">home</span>
         </RouterLink>
@@ -19,6 +20,8 @@
         <RouterLink to="/profile" >
 <span class="material-symbols-outlined">person</span>
         </RouterLink>
+      </div>
+
     </nav>
     </div>
 

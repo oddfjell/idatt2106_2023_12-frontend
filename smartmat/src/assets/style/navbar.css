@@ -44,6 +44,11 @@ separate css version for phone, to make it fit nicely into the phone screen
     #bottom-navbar nav{
         gap: 8vh;
     }
+    #nav-icons{
+        gap: 7vh;
+        display: flex;
+
+    }
 }
 
 
@@ -63,6 +68,14 @@ Styling for the borders for the computer version
 
     #bottom-navbar{
         visibility: hidden;
+    }
+        .material-symbols-outlined:hover {
+        font-size: 5.2vh;
+    }
+    #nav-icons{
+        gap: 3vh;
+        display: flex;
+
     }
 }
 
