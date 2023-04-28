@@ -38,4 +38,8 @@ export default {
     return axios.post(baseURL + '/remove', account, configToken(token));
   },
 
+  getAllProfiles(token){
+    return axios.get(baseURL + '/profiles', configToken(token))
+  }
+
 };

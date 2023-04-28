@@ -5,6 +5,7 @@ import RegisterView from "@/views/RegisterView.vue";
 import WeeklyMenuView from "@/views/WeeklyMenuView.vue";
 import RefrigeratorView from "@/views/RefrigeratorView.vue";
 import ShoppingListView from "@/views/ShoppingListView.vue";
+import AccountView from "@/views/AccountView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 
 
@@ -44,8 +45,13 @@ const router = createRouter({
       component: ShoppingListView
     },
     {
-      path: '/profile',
-      name: 'Profile',
+      path: '/account',
+      name: 'Account',
+      component: AccountView
+    },
+    {
+      path: "/profile",
+      name: "Profile",
       component: ProfileView
     },
     {

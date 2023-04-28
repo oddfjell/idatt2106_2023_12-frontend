@@ -34,7 +34,7 @@ export default {
             for (let grocery of groceries) {
                 fridgeEntities.push(grocery)
             }
-            fridgeEntities.sor
+
         }catch (error){
             console.log(error)
         }finally {

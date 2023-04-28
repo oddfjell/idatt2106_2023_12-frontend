@@ -1,52 +1,56 @@
 <template>
-<div v-if="username" class="container">
-    <p>You are logged in as: </p>
-    <h1>{{username}}</h1>
-
-    <button @click="logout" class="GreyBtn Btn">Log out</button>
-    <p v-if="error">{{error}}</p>
-</div>
-  <div v-else class="container">
-      <h1>You are not logged in</h1>
+  <div id="profiles">
+    <div v-for="(profile, index) in profiles" :key="index">
+      <ProfileIcon :profile="profile"></ProfileIcon>
+    </div>
   </div>
+
+
 </template>
 
 <script>
-import {tokenStore} from "@/stores/tokenStore";
-import router from "@/router";
+import {tokenStore} from "../stores/tokenStore";
+import accountService from "../services/accountService";
+import ProfileIcon from "../components/Common/ProfileIcon.vue";
 
 export default {
-    name: "ProfileView",
-    data(){
-        return{
-            error:null
-        }
-    },
-    computed:{
-        username(){
-            return tokenStore().user.username
-        }
-    },
-    methods:{
-        logout(){
-            try {
-                tokenStore().changeJWT("")
-                tokenStore().changeUsername("")
-                router.push("/")
-            }catch (error){
-                this.error="Could not log out"
-            }
-        }
-    },
-    created() {
-        console.log(tokenStore().user.username)
+  name: "ProfileView",
+  components: {ProfileIcon},
+  data(){
+    return {
+      profiles:[]
     }
+  },
+  methods:{
+
+  },
+
+  async created() {
+    let profileList = await accountService.getAllProfiles(tokenStore().user.jwt);
+    let profileListData = profileList.data;
+
+    for (let profile of profileListData){
+      this.profiles.push(profile);
+    }
+
+  }
+
+
+
 }
+
 
 </script>
 
 <style scoped>
-.container{
-    text-align: center;
+
+#profiles{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10vh;
+  height: 70vh;
 }
+
 </style>
