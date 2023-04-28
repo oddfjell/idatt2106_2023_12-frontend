@@ -6,12 +6,12 @@
 
 
        <!--<VueNumberInput :model-value="listEntity.count" @update:model-value="updateValue" /> //TODO -->
-      <div>
-      <button @click.prevent="decrement">-</button>
+      <div class="counter">
+      <button class="decrement" @click.prevent="decrement">-</button>
       <span>{{listEntity.count}}</span>
-      <button @click.prevent="increment">+</button>
-        <button @click.prevent="resetCounter" class="trash">
-        TRASH</button>
+      <button class="increment" @click.prevent="increment">+</button>
+        <span class="material-symbols-outlined" @click.prevent="resetCounter">
+delete</span>
       </div>
     </div>
 </template>
@@ -71,8 +71,15 @@ export default {
     display: flex;
     justify-content: space-between;
 }
-.button{
-    height: fit-content;
-}
 
+.decrement,
+.increment{
+  margin: 10px;
+
+}
+.counter{
+  display: inline-block;
+  justify-content: center;
+
+}
 </style>
