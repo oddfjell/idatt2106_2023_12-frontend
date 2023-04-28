@@ -30,6 +30,7 @@ import Dropdown from '@/components/Common/Dropdown.vue';
 import shoppingListService from "@/services/shoppingListService";
 import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
 import router from "@/router";
+import {shoppingListStore} from "@/stores/shoppingListStore";
 
 
 export default {
@@ -41,7 +42,6 @@ export default {
           amount:1,
           selected:null,
           groceries:[],
-          shoppingListEntities:[],
           changes:[]
       }
     },
@@ -51,18 +51,26 @@ export default {
             this.selectedText=selection.name
             console.log(selection.name + " has been selected");
         },
-        buy(){
+        async buy(){
             try {
+                await this.save()
                 console.log(tokenStore().user.jwt)
-                shoppingListService.buyChecked(tokenStore().user.jwt)
+                await shoppingListService.buyChecked(tokenStore().user.jwt)
                 location.reload()
             }catch (error){
                 console.log(error)
             }
         },
+        async save(){
+            try{
+                await shoppingListService.saveChanges(shoppingListStore().getChanges(), tokenStore().user.jwt)
+                await shoppingListStore().removeChanges()
+            } catch (error){
+                console.log(error)
+            }
+        },
         async addShoppingListEntity(){
             let product = {name:this.selected.name, count: this.amount}
-            console.log(product)
             try {
                 await shoppingListService.addToShoppingList(product, tokenStore().user.jwt)
                 location.reload()
