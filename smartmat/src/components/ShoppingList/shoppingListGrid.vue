@@ -3,13 +3,13 @@
     <button class="hamburgerBtn Btn GreyBtn" @click="toggleCheckedList"> {{toggleBtnText}}</button>
     <div v-if="uncheckedEntities || checkedEntities" id="shoppingListEntitiesGrid">
         <div id="unchecked_list">
-            <h3>Ikke funnet</h3>
+            <h3>Ikke valgt</h3>
             <div v-for="(uncheckedEntity, index) in uncheckedEntities" :key="uncheckedEntity.name">
                 <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" @updateChecked="updateChecked" :count="uncheckedEntity.count" />
             </div>
         </div>
         <div id="checked_list">
-            <h3>Funnet</h3>
+            <h3>Valgt</h3>
             <div v-for="(checkedEntity, index) in checkedEntities" :key="checkedEntity.name">
                 <ShoppingListEntity :tabindex="index+1" :listEntity="checkedEntity" @updateChecked="updateChecked" :count="checkedEntity.count" />
             </div>
@@ -30,7 +30,7 @@ export default {
         return{
             uncheckedEntities:Array,
             checkedEntities:Array,
-            toggleBtnText:"Vis funnet"
+            toggleBtnText:"Vis valgte"
         }
     },
     methods:{
@@ -57,11 +57,11 @@ export default {
             if(checkedList.style.display === "block"){
                checkedList.style.display = "none"
                 uncheckedList.style.display= "block"
-                this.toggleBtnText="Vis funnet"
+                this.toggleBtnText="Vis valgte"
             } else{
                 checkedList.style.display = "block"
                 uncheckedList.style.display= "none"
-                this.toggleBtnText="Vis ikke funnet"
+                this.toggleBtnText="Vis ikke valgte"
             }
         }
     },
