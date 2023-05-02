@@ -44,7 +44,7 @@ Styling for the borders for the computer version
 
     #outer-border{
         display: flex;
-        margin-top: 150px;
+        margin-top: 5%;
         justify-content: center;
         height: 60vh;
     }
@@ -79,8 +79,8 @@ Styling for the borders for the computer version
     .card h1 {
         text-align: center;
         color: black;
-        font-size: 5vh;
-        font-family: "Times New Roman", serif;
+        font-size: 4.5vh;
+        font-family: Hack, monospace;
 
     }
 
