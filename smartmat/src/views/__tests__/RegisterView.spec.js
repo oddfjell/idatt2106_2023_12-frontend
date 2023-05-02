@@ -13,7 +13,7 @@ function mountRegisterView() {
 }
 describe("RegisterView", () => {
     it("mounts properly",async () => {
-        expect(mountRegisterView().text()).toContain('Register')
+        expect(mountRegisterView().text()).toContain('Registrer')
     })
     it(" is rendering username and password correctly",async () => {
         const username = mountRegisterView().find("input[name=username]");
@@ -26,7 +26,7 @@ describe("RegisterView", () => {
 });
 describe('The Router', () => {
     it('mounts properly', () => {
-        expect(mountRegisterView().text()).toContain('Login')
+        expect(mountRegisterView().text()).toContain('Logg inn')
     })
 
     it('clicks the registerButton', async () => {
