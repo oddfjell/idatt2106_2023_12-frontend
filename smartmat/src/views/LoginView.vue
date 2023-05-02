@@ -3,10 +3,10 @@
         <h1>Logg inn</h1>
   <form @submit.prevent>
     <label class="loginLabel" for="username">Brukernavn: </label>
-    <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required id="username">
+    <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required id="login-username">
 
     <label class="loginLabel" for="password">Passord: </label>
-    <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required id="password">
+    <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required id="login-password">
 
       <p id="error" v-if="error">{{error}} </p>
 

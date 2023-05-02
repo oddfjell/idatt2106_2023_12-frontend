@@ -1,27 +1,12 @@
 
 
-.container{
-    text-align: center;
-    border: 1vh solid #fafffa;
-    font-size: 3vh;
-    height: 65vh;
-    width: 40vh;
-    font-family: Hack, monospace;
-    margin-top: 12vh ;
-    border-radius: 2vh;
-    box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
-    background-color: #fafffa;
-
-}
-
-
 .loginLabel{
     size: 4vh;
     float: left;
     margin-top: 2vh;
 }
 
-#username {
+#login-username {
     size: 1vh;
     alignment: center;
     background-color: #b1f6b3;
@@ -31,7 +16,7 @@
 
 
 }
-#password{
+#login-password{
     size: 1vh;
     alignment: center;
     background-color: #b1f6b3;

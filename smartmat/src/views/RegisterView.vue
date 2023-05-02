@@ -1,20 +1,20 @@
 <template>
     <div class="container">
-        <h1>Register</h1>
+        <h1>Registrer</h1>
         <form @submit.prevent >
             <label class="registerLabel" for="username">Brukernavn: </label>
-            <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required>
+            <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required id="register-username">
 
             <label class="registerLabel" for="password">Passord: </label>
-            <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
+            <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required id="register-password">
 
             <p id="error" v-if="error">{{error}} </p>
 
             <div class="Btn">
-                <button class="BlueBtn" id="registerBtn" @click="onSubmit" type="submit">Register</button>
+                <button class="BlueBtn" id="registerBtn" @click="onSubmit" type="submit">Registrer</button>
             </div>
             <div class="Btn">
-                <button class="GreyBtn" id="loginBtn" @click="onLogin" >Have an account? Login here!</button>
+                <button class="GreyBtn" id="loginBtn" @click="onLogin" >Har du allerede konto? Logg inn her!</button>
             </div>
 
         </form>
@@ -79,15 +79,7 @@ export default {
 <style scoped>
 
 @import "../assets/style/register.css";
-#registerBtn {
-    width: 80%;
-}
-#loginBtn {
-    width: 60%;
-}
-#error{
-    color:red
-}
+
 
 
 </style>
