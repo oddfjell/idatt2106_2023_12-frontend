@@ -1,8 +1,9 @@
 <template>
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <div class="popup">
     <div class="popup-inner">
       <form @submit.prevent="login">
+        <span class="material-symbols-outlined" @click="close">close</span>
         <h1>PIN</h1>
         <input type="text" v-model="password">
         <p>{{error}}</p>
@@ -29,6 +30,11 @@ export default {
       error: ""
     }
   },
+  emits:{
+    close:{
+
+    }
+  },
   methods:{
 
     async login() {
@@ -47,6 +53,10 @@ export default {
         this.error = "Feil password";
       }
 
+    },
+
+    close(){
+      this.$emit("closePopup");
     }
 
   }
@@ -74,6 +84,18 @@ export default {
   width: 25vh;
   height: 20vh;
   transition-duration: 2s;
+}
+
+ .material-symbols-outlined {
+   font-variation-settings:
+       'FILL' 0,
+       'wght' 400,
+       'GRAD' 0,
+       'opsz' 48
+ }
+
+.material-symbols-outlined:hover {
+  cursor: pointer;
 }
 
 
