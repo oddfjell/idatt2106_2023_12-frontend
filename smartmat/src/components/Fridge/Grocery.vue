@@ -6,8 +6,7 @@
         </div>
         <div id="grocery-right">
           <p id="category">{{grocery.categoryName}}</p>
-          <p v-if="grocery.expiresInDays >= 3" style="text-align: right">{{grocery.expiresInDays}} days left</p>
-          <p v-else-if="grocery.expiresInDays < 3" style="color: red; text-align: right">EXPIRES IN {{grocery.expiresInDays}} DAYS</p>
+          <p class="rigth" :class="{red:expiredWarning}" >{{expiredText}}</p>
 
           <div class="buttonBar">
               <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
@@ -37,7 +36,28 @@ export default {
         await fridgeService.removeGrocery(deletedProduct, tokenStore().user.jwt)
        location.reload();
       }
-    }
+    },
+    computed:{
+        expiredText(){
+            if(this.grocery.expiresInDays>3){
+                return this.grocery.expiresInDays + " dager igjen"
+            } else if(this.grocery.expiresInDays===1){
+                return  "Utgår om 1 dag"
+            } else if(this.grocery.expiresInDays===0) {
+                return "Utgår i dag"
+            }else if(this.grocery.expiresInDays===-1){
+                return "Utgått for 1 dag siden"
+            } else if(this.grocery.expiresInDay<0){
+                return "Utgått for " -this.grocery.expiresInDays + "dager siden"
+            } else{
+                return ""
+            }
+        },
+        expiredWarning(){
+          return this.grocery.expiresInDays <= 3;
+        }
+    },
+
 }
 </script>
 <style scoped>
@@ -95,5 +115,11 @@ export default {
 #eatBtn:hover {
     background-color: #048100;
     cursor: pointer;
+}
+.red{
+    color:red
+}
+.rigth{
+    text-align: right;
 }
 </style>

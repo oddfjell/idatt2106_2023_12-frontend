@@ -1,43 +1,58 @@
 <template>
     <div id="container">
-    <input type="checkbox" :checked="listEntity.foundInStore" @change="updateValue">
-        <p>{{ listEntity.name }}</p>
-        <p>{{listEntity.count}}</p>
-        <button @click="remove" >-</button>
-       <!--<VueNumberInput :model-value="listEntity.count" @update:model-value="updateValue" /> //TODO -->
+    <input type="checkbox" :checked="listEntity.foundInStore" @change="updateChecked">
+        <p>{{ listEntity.name}}</p>
+        <div class="counter">
+            <span>{{listEntity.count}}</span>
+            <button class="decrement" :disabled="listEntity.count<=1" @click.prevent="decrement">-</button>
+            <button class="increment" :disabled="listEntity.count>=99" @click.prevent="increment">+</button>
+            <span class="material-symbols-outlined" @click.prevent="resetCounter">delete</span>
+        </div>
     </div>
 </template>
 
 <script>
-//import NumberInput from "@/components/Common/NumberInput.vue";
 
-import shoppingListService from "@/services/shoppingListService";
-import {tokenStore} from "@/stores/tokenStore";
+import {shoppingListStore} from "@/stores/shoppingListStore";
 
 export default {
     name: "shoppingListEntity",
     components: {},
     props:{
-        listEntity:Object
+        listEntity:Object,
+
     },
     methods:{
-        updateValue(){
-            try{
-                shoppingListService.updateChecked(this.listEntity.name, tokenStore().user.jwt)
-            }catch (error){
-                console.log(error)
+        updateChecked(event){
+              let listEntityCopy = this.listEntity
+                listEntityCopy.foundInStore = event.target.checked
+              shoppingListStore().updateShoppingListEntity(listEntityCopy)
+            shoppingListStore().setStateSaved(false)
+            this.$emit("updateChecked")
+        },
+        decrement(){
+            if(this.listEntity.count>1){
+                let listEntityCopy = this.listEntity
+                listEntityCopy.count--
+                shoppingListStore().updateShoppingListEntity(listEntityCopy)
+                shoppingListStore().setStateSaved(false)
             }
         },
-        remove(){
-            try{
-                shoppingListService.removeFromShoppingList(this.listEntity.name, tokenStore().user.jwt)
-            }catch (error){
-                console.log(error)
+        increment(){
+            if(this.listEntity.count<100) {
+                let listEntityCopy = this.listEntity
+                listEntityCopy.count++
+                shoppingListStore().updateShoppingListEntity(listEntityCopy)
+                shoppingListStore().setStateSaved(false)
             }
+        },
+        resetCounter(){
+            let listEntityCopy = this.listEntity
+            listEntityCopy.count = 0
+            shoppingListStore().updateShoppingListEntity(listEntityCopy)
+            shoppingListStore().setStateSaved(false)
+            this.$emit("updateChecked")
         }
-    },
-    created() {
-        console.log(this.listEntity)
     },
 }
 </script>
@@ -46,6 +61,17 @@ export default {
 #container{
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 }
-
+.decrement{
+ margin-left: 5px;
+}
+.increment{
+    margin-right: 5px;
+}
+.counter{
+  display: inline-block;
+  justify-content: center;
+    align-items: flex-end;
+}
 </style>

@@ -1,11 +1,9 @@
 <template>
     <div v-if="username">
-  <Carousel ref="carousel" :wrap-around="false" :items-to-show="1">
+  <Carousel ref="carousel" :wrap-around="false" :items-to-show="3">
     <Slide v-for="recipe in displayRecipes" :key="recipe">
       <div class="carousel__item"> {{ recipe.title }}</div>
     </Slide>
-    <div></div>
-
     <template #addons>
       <Navigation />
       <button @click="getAndChangeRecipe">
@@ -13,11 +11,16 @@
       </button>
     </template>
   </Carousel>
-
-  <div class="addToShoppingList">
-    <button @click="addToShoppingList">
-      Legg til varer i handleliste</button>
-  </div>
+        <div class=" Btn addToShoppingList">
+            <button class="BlueBtn" @click="addToShoppingList">
+                Legg til varer i handleliste</button>
+        </div>
+        <div class="container" v-if="this.carousel">
+            <h1>Ingredienser</h1>
+        <p style="display: none">{{currentSlide}}</p>
+            <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
+            <p :key="ingredient" v-for="ingredient in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
+        </div>
 
     </div>
   <div v-else><h1>Please log in</h1></div>
@@ -93,14 +96,17 @@ export default defineComponent({
         this.recipesShown=recipeEntities.slice(0)
   },
     created() {
-        if(tokenStore().user.username == null ){
+        if(!tokenStore().user.username){
             router.push("/")
         }
     },
   computed:{
       username(){
           return tokenStore().user.username
-      }
+      },
+      currentSlide(){
+          return this.carousel.data.currentSlide
+      },
   }
 })
 </script>
@@ -132,7 +138,9 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
-
+ .container{
+     border: 1px solid black
+ }
 img {
   width: 20px;
   height: 20px;
