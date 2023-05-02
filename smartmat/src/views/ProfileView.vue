@@ -1,12 +1,14 @@
 <template>
   <div id="row">
-    <div v-for="(profile, index) in profiles" :key="index">
-      <ProfileIcon :profile="profile"></ProfileIcon>
+    <div v-for="(profile, index) in profiles" :key="index" >
+      <ProfileIcon :profile="profile" @selectProfile="passwordPopup"></ProfileIcon>
     </div>
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
 
-  <PasswordPopup></PasswordPopup>
+  <div v-if="popup">
+    <PasswordPopup></PasswordPopup>
+  </div>
 
 </template>
 
@@ -24,7 +26,13 @@ export default {
       profiles: [],
       addProfile: {
         username: "Add"
-      }
+      },
+      popup: false
+    }
+  },
+
+  methods:{
+    passwordPopup(){
     }
   },
 

@@ -17,15 +17,24 @@ export default {
     profile:Object,
     add:null
   },
+  data(){
+    return {
+      password:""
+    }
+  },
   methods:{
     async selectProfile() {
+      this.$emit("selectProfile");
+
+
+/*
       if(this.profile.username === "Add"){
         await router.push("/registerProfile")
       }else{
         tokenStore().changeUsername(this.profile.username);
         tokenStore().changeRestriction(this.profile.restricted);
         await router.push("/home")
-      }
+      }*/
     }
   }
 }
@@ -66,5 +75,13 @@ export default {
   visibility: hidden;
   position: absolute;
 }
+
+ .material-symbols-outlined {
+   font-variation-settings:
+       'FILL' 0,
+       'wght' 700,
+       'GRAD' 200,
+       'opsz' 48
+ }
 
 </style>

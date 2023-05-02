@@ -1,8 +1,13 @@
 <template>
 
   <div class="popup">
-    <h1>PIN</h1>
-    <input type="text" v-model="password">
+    <div class="popup-inner">
+      <form>
+        <h1>PIN</h1>
+        <input type="text" v-model="password">
+        <button type="submit">Logg inn</button>
+      </form>
+    </div>
   </div>
 
 </template>
@@ -22,13 +27,22 @@ export default {
 
 .popup{
   position: fixed;
-  margin: auto;
   z-index: 99999;
-  background-color: red;
-  padding: 10vh;
-  width: 10vh;
-  height: 10vh;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  background-color: rgba(0,0,0,0.2);
+  height: 100vh;
+  transition: 0.25s;
+  display: flex;
+  justify-content: center;
+}
 
+.popup-inner{
+  margin-top: 35vh;
+  background-color: white;
+  width: 25vh;
+  height: 20vh;
 }
 
 
