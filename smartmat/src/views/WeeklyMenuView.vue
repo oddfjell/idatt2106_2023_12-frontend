@@ -51,6 +51,7 @@ export default defineComponent({
 
     const changeRecipe = (index, recipesResponse) => {
       let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
+      console.log(recipesResponse)
       recipesShown.value.push(oldRecipe[0])
     }
 

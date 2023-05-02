@@ -1,6 +1,6 @@
 import {mount} from "@vue/test-utils";
 import RefrigeratorView from "@/views/RefrigeratorView.vue";
-import ShoppingListGrid from "@/components/ShoppingList/ShoppingListGrid.vue";
+import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
 import router from "@/router";
 import {describe,it, expect} from "vitest";
 import {createPinia} from "pinia";
