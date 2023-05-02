@@ -62,10 +62,10 @@ export default {
                         await router.push("/profile")
                     } else {
                         this.error = response.status
-                        console.log("Login failed")
+                        console.log("Innlogging feilet")
                     }
                 }catch (error) {
-                    this.error="Could not find this user"
+                    this.error="Kunne ikke finne konto"
                 }
             }
         },
