@@ -3,7 +3,10 @@
     <p>You are logged in as: </p>
     <h1>{{username}}</h1>
 
-    <button @click="logout" class="GreyBtn Btn">Log out</button>
+
+    <button @click="logout" class="logout-Btn">Log out
+      <span class="material-symbols-outlined">logout
+  </span></button>
     <p v-if="error">{{error}}</p>
 </div>
   <div v-else class="container">
@@ -46,8 +49,5 @@ export default {
 </script>
 
 <style scoped>
-.container{
-    text-align: center;
-    border: 1px solid black;
-}
+@import '@/assets/style/profile.css';
 </style>

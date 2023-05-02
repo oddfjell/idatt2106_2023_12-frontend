@@ -1,25 +1,25 @@
 <template>
     <div class="container">
-        <h1>Login</h1>
+        <h1>Logg inn</h1>
   <form @submit.prevent>
       <!-- Label and input for the username field -->
     <label class="loginLabel" for="username">Brukernavn: </label>
-    <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required>
+    <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required id="login-username">
 
       <!-- Label and input for the password field -->
     <label class="loginLabel" for="password">Passord: </label>
-    <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
+    <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required id="login-password">
 
       <!-- Text field for displaying error messages -->
       <p id="error" v-if="error">{{error}} </p>
 
       <!-- Button for logging in  -->
       <div class="Btn">
-          <button class="BlueBtn" id="loginBtn" @click="onSubmit" type="submit">Sign in</button>
+          <button class="BlueBtn" id="loginBtn" @click="onSubmit" type="submit">Logg inn</button>
       </div>
       <!-- Button redirecting to register-page -->
       <div class="Btn">
-          <button class="GreyBtn" id="registerBtn" @click="onRegister" >Dont have an account? Register here!</button>
+          <button class="GreyBtn" id="registerBtn" @click="onRegister" >Har du ikke konto? <br/> Registrer deg her!</button>
       </div>
   </form>
 
@@ -91,16 +91,6 @@ export default {
 
 @import "../assets/style/login.css";
 
-#loginBtn{
-    width: 80%;
-}
-#registerBtn{
-    width: 60%;
-}
-
-#error{
-    color:red
-}
 
 
 </style>
