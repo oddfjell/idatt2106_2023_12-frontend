@@ -44,7 +44,7 @@ Styling for the borders for the computer version
 
     #outer-border{
         display: flex;
-        margin-top: 150px;
+        margin-top: 5%;
         justify-content: center;
         height: 60vh;
     }

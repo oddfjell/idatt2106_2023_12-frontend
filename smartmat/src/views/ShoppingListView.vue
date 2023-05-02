@@ -64,8 +64,8 @@ export default {
                 shoppingListStore().setStateSaved(true)
                 this.info = "Legger til i handleliste ..."
                 await shoppingListService.buyChecked(tokenStore().user.jwt)
-                shoppingListStore().setShoppingListEntities([])
                 this.info = "Lagt til!"
+                await this.getListEntities()
             }catch (error){
                 console.log(error)
             }
@@ -82,31 +82,42 @@ export default {
             }
         },
         async addShoppingListEntity(){
-            let product = {name:this.selected.name, count: 1, foundInStore:false}
-            shoppingListStore().addShoppingListEntity(product)
-            shoppingListStore().setStateSaved(false)
-            this.trigger=!this.trigger
-            this.onSelection(null)
-            if(this.$refs.grid){this.$refs.grid.updateChecked()}
+            try {
+                let product = {name: this.selected.name, count: 1, foundInStore: false}
+                shoppingListStore().addShoppingListEntity(product)
+                this.info="Lagt til " + product.name
+                shoppingListStore().setStateSaved(false)
+                this.trigger = !this.trigger
+                this.onSelection(null)
+                if (this.$refs.grid) {
+                    this.$refs.grid.updateChecked()
+                }
+            }catch (error){
+                console.log(error)
+                this.info="Ikke lagt til"
+            }
         },
+        async getListEntities(){
+            //get shoppingListEntities and update Store
+            let listEntities = []
+            try {
+                let shoppingListResponse = await shoppingListService.getProducts(tokenStore().user.jwt)
+                let shoppinglistEntities = shoppingListResponse.data
+                for (let shoppinglistEntity of shoppinglistEntities) {
+                    listEntities.push(shoppinglistEntity)
+                }
+            }catch (error){
+                console.log(error)
+            }
+            shoppingListStore().setShoppingListEntities(listEntities)
+            if (this.$refs.grid) {
+                this.$refs.grid.updateChecked()
+            }
+        }
     },
     async created() {
-      //get shoppingListEntities and update Store
-        let listEntities = []
-        try {
-            let shoppingListResponse = await shoppingListService.getProducts(tokenStore().user.jwt)
-            let shoppinglistEntities = shoppingListResponse.data
-            for (let shoppinglistEntity of shoppinglistEntities) {
-                listEntities.push(shoppinglistEntity)
-            }
-        }catch (error){
-            console.log(error)
-        }finally
-        {
-            this.loading=false
-        }
-        shoppingListStore().setShoppingListEntities(listEntities)
-
+        await this.getListEntities()
+        this.loading=false
         //Get groceries from database
        let groceriesResponse = await groceryService.getProducts(tokenStore().user.jwt)
         let groceries = groceriesResponse.data
@@ -124,7 +135,6 @@ export default {
             if(confirm("You have unsaved changes. Save?")){
                 await this.save()
                 shoppingListStore().setStateSaved(true)
-                alert("Saved!")
             }
         }
     },
