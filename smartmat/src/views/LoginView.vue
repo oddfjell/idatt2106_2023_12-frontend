@@ -2,23 +2,25 @@
     <div class="container">
         <h1>Login</h1>
   <form @submit.prevent>
+      <!-- Label and input for the username field -->
     <label class="loginLabel" for="username">Brukernavn: </label>
     <input type="text" v-model="user.username" placeholder="Skriv ditt brukernavn " name="username" required>
 
+      <!-- Label and input for the password field -->
     <label class="loginLabel" for="password">Passord: </label>
     <input type="password" v-model="user.password" placeholder="Skriv ditt passord" name="password" required>
 
+      <!-- Text field for displaying error messages -->
       <p id="error" v-if="error">{{error}} </p>
 
+      <!-- Button for logging in  -->
       <div class="Btn">
           <button class="BlueBtn" id="loginBtn" @click="onSubmit" type="submit">Sign in</button>
       </div>
+      <!-- Button redirecting to register-page -->
       <div class="Btn">
           <button class="GreyBtn" id="registerBtn" @click="onRegister" >Dont have an account? Register here!</button>
       </div>
-
-
-
   </form>
 
   </div>
@@ -29,6 +31,10 @@ import router from "@/router";
 import {tokenStore} from "@/stores/tokenStore";
 
 export default {
+    /**
+     * Login-credentials and error message
+     * @returns {{error: string, user: {password: string, username: string}}}
+     */
     data() {
         return {
             user: {
@@ -39,6 +45,11 @@ export default {
         }
     },
     methods:{
+        /**
+         *Triggered when pressing the login button. Sends a loginrequest. If it is valid it sets the token and username as the
+         * logged-in user
+         * @returns {Promise<void>}
+         */
         async onSubmit(){
             console.log(this.user.username)
             if(this.user.username !== undefined || "" ){
@@ -58,10 +69,16 @@ export default {
                 }
             }
         },
+        /**
+         * Sends user to the register page
+         */
         onRegister(){
             router.push('/register')
         }
     },
+    /**
+     * If the user is already logged in, they will be sent to the homepage
+     */
     created() {
         if(tokenStore().user.username){
             router.push("/home")
