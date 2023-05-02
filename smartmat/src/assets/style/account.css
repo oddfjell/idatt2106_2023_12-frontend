@@ -1,0 +1,104 @@
+
+
+ #user {
+     font-size: 15vh;
+     font-variation-settings:
+             'FILL' 1,
+             'wght' 400,
+             'GRAD' 200,
+             'opsz' 48
+ }
+
+#loggedin-user{
+}
+.logout-Btn {
+    font-family: Hack, monospace;
+    background: #6dbd5e;
+    color: #2c2c2c;
+    cursor: pointer;
+    font-size: 4vh;
+    padding: 1.5rem;
+    border: 0;
+    transition: all 0.5s;
+    border-radius: 1vh;
+    width: auto;
+    position: relative;
+    min-width: 5vh;
+    margin-top: 5vh;
+}
+
+.logout-Btn#logout{
+    visibility: hidden;
+}
+
+.logout-Btn::after {
+    font-family: "Material Icons";
+    position: absolute;
+    left: 70%;
+    top: 55%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+.logout-Btn::after.material-symbols-outlined {
+    font-variation-settings: 'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
+
+}
+
+.logout-Btn:hover {
+    background: black;
+    transition: all 0.5s;
+    border-radius: 1vh;
+    box-shadow: 0px 1vh 2vh #6dbd5e;
+    padding: 1.5rem 3rem 1.5rem 1rem;
+    color: #ffffff;
+}
+
+.logout-Btn:hover::after {
+     opacity: 1;
+     transition: all 0.5s;
+     color: #ffffff;
+
+ }
+
+
+@media (max-width: 500px) {
+    .container {
+        text-align: center;
+        border: 1vh solid #fafffa;
+        font-size: 3vh;
+        font-family: Hack, monospace;
+        margin-top: 18vh;
+        border-radius: 2vh;
+        box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+        background-color: #fafffa;
+        height: 65vh;
+        width: 40vh;
+        margin-left: 7vh;
+        margin-top: 10vh;
+    }
+}
+
+@media (min-width: 501px) {
+    .container {
+        text-align: center;
+        border: 1vh solid #fafffa;
+        font-size: 3vh;
+        font-family: Hack, monospace;
+        margin-top: 18vh;
+        border-radius: 2vh;
+        box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+        background-color: #fafffa;
+        height: 65vh;
+        width: 40vh;
+        margin-top: 10vh;
+    }
+}
+
+
+

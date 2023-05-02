@@ -64,7 +64,7 @@ export default {
                                 let data= response.data
                                 tokenStore().changeJWT(data.jwt)
                                 tokenStore().changeUsername(data.username)
-                                await router.push("/home")
+                                await router.push("/profile")
                             }
                         }catch (error){
                             await router.push("/")
@@ -90,8 +90,8 @@ export default {
      * If user is already logged in, the frontpage will be displayed instead.
      */
     created() {
-        if(tokenStore().user.username){
-            router.push("/home")
+        if(tokenStore().user.username !== ""){
+            router.push("/profile")
         }
     }
 }
