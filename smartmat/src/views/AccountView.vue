@@ -1,11 +1,14 @@
 <template>
   <div v-if="username" class="container">
     <p>Du er logget inn som: </p>
-    <h1>{{username}}</h1>
+    <span id="user" class="material-symbols-outlined">
+  account_circle
+  </span>
+    <h1 id="loggedin-user">{{username}}</h1>
 
 
     <button @click="logout" class="logout-Btn">Logg ut
-      <span class="material-symbols-outlined">logout
+      <span id="logout" class="material-symbols-outlined">logout
   </span></button>
     <p v-if="error">{{error}}</p>
   </div>
