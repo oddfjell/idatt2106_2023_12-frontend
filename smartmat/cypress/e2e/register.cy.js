@@ -3,7 +3,6 @@ describe('Register', () => {
         cy.visit('/register');
     });
 
-
     it('Register components render in'), () => {
         cy.contains("Register");
         cy.contains("Brukernavn");
