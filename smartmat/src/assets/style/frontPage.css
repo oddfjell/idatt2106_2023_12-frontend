@@ -2,32 +2,14 @@
 
 @media (max-width:500px) {
     .card {
-        border: 1vh solid black;
-        height: 25vh;
-        transform-style: preserve-3d;
-        display: block;
-        box-sizing: border-box;
-        border-radius: 5vh;
-        text-align: center;
+        visibility: hidden;
     }
     #outer-border{
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        gap: 2vh;
-        top: -5vh;
+        visibility: hidden;
     }
 
-
-    /*
-    styling for the text on the page "handleliste", "Ukemeny" and "Kjøleskap"
-     */
     .card h1 {
-        text-align: center;
-        color: black;
-        font-family: "Times New Roman", serif;
-        position: relative;
-        top: 5vh;
+        visibility: hidden;
     }
 
     a{
@@ -36,17 +18,8 @@
 
     .material-symbols-outlined {
 
-        color: black;
-        font-size: 15vh;
-        position: relative;
-        top: -7vh;
-        left: -20vh;
+        visibility: hidden;
 
-        font-variation-settings:
-                'FILL' 1,
-                'wght' 700,
-                'GRAD' 200,
-                'opsz' 48
     }
 
 }
@@ -71,7 +44,7 @@ Styling for the borders for the computer version
 
     #outer-border{
         display: flex;
-        margin-top: 150px;
+        margin-top: 5%;
         justify-content: center;
         height: 60vh;
     }

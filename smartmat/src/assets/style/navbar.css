@@ -1,5 +1,4 @@
 
-
 nav a{
     color: black;
 }
@@ -13,8 +12,13 @@ nav{
     margin-top: 2vh;
     margin-right: 3vh;
     z-index: 9999;
+
 }
 .material-symbols-outlined {
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.5s;
     font-size: 5vh;
     font-variation-settings:
             'FILL' 1,
@@ -23,10 +27,13 @@ nav{
             'opsz' 48
 }
 
+#placeholder-space{
+    width: 140vh;
+}
 
 
 /*
-separate css version for phone, to make it fit nicely into the phone screen
+Phone version
  */
 @media (max-width:500px) {
     #top-navbar{
@@ -34,35 +41,85 @@ separate css version for phone, to make it fit nicely into the phone screen
     }
     #bottom-navbar{
         display: flex;
-        background-color: #C43168;
+        background-color: #6dbd5e;
         justify-content: center;
         position: fixed;
         bottom: 0;
         z-index: 9999;
         left: 0;
+        opacity: 1;
     }
     #bottom-navbar nav{
         gap: 8vh;
+        z-index: 9999;
+
+    }
+    #nav-icons{
+        gap: 7vh;
+        display: flex;
+
+    }
+    #except-user-top{
+        gap: 7vh;
+        display: flex;
+    }
+    #all-icons-bottom{
+        gap: 7vh;
+        display: flex;
+    }
+    #logo{
+        display: none;
     }
 }
 
 
 /*
-Styling for the borders for the computer version
+Computer version
  */
 @media (min-width:501px) {
     #top-navbar{
         display: flex;
-        background-color: #C43168;
+        background-color: #6dbd5e;
         justify-content: right;
         position: fixed;
         z-index: 9999;
         left: 0;
+        opacity: 1;
     }
 
 
     #bottom-navbar{
         display: none;
     }
+    .material-symbols-outlined:hover {
+        transform: scale(1.2);
+        background: linear-gradient(to right, #5e5e5e, #384238);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.2s ease;
+    }
+
+    #nav-icons{
+        gap: 3vh;
+        display: flex;
+    }
+    #except-user-top{
+        gap: 3vh;
+        display: flex;
+    }
+
+    #all-icons-bottom{
+        visibility: hidden;
+    }
+
+    #logo{
+        width: 12vh;
+        height:auto;
+        float: left;
+    }
+    #logo-frame{
+        float: left;
+    }
+
 }
 
