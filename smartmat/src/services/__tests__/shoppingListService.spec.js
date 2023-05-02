@@ -69,4 +69,10 @@ describe("Shopping List Service", () =>{
             expect(logInResult.status).toStrictEqual(status)
         });
     })
+
+    describe("save changes test", () => {
+        it("tests that changes are saved to backend when calling saveChanges method", async () => {
+            
+        })
+    })
 })

@@ -105,6 +105,7 @@ export default {
         {
             this.loading=false
         }
+        console.log(listEntities)
         shoppingListStore().setShoppingListEntities(listEntities)
 
         //Get groceries from database
