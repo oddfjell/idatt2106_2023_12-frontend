@@ -15,26 +15,26 @@ describe('Login', () => {
     }
 
     it('login redirects to register', () => {
-        cy.wait('#loginBtn').click();
+        cy.get('#registerBtn').click();
         cy.url().should('include', '/register')
     })
 
 
-    it('login redirects to home page', () => {
-        cy.fixture('user').then((users) => {
-            const {user1} = users;
-            cy.get('input[name=username]').type(user1.username);
-            cy.get('input[name=password]').type(user1.password);
-            cy.wait('#loginBtn').click();
-            cy.url().should('include', '/home')
-        });
+        it('login redirects to home page', () => {
+            cy.fixture('user').then((users) => {
+                const {user1} = users;
+                cy.get('input[name=username]').type(user1.username);
+                cy.get('input[name=password]').type(user1.password);
+                cy.get('#loginBtn').click();
+                cy.url().should('include', '/home')
+            });
 
         it('invalid username ', () => {
             cy.fixture('user').then((users) => {
                 const {user1} = users;
                 cy.get('input[name=username]').type('invalidusername');
                 cy.get('input[name=password]').type(user1.password);
-                cy.wait('#loginBtn').click();
+                cy.get('#loginBtn').click();
                 cy.get('error').should('contain', 'Could not find user')
             });
 
@@ -43,7 +43,7 @@ describe('Login', () => {
                     const {user1} = users;
                     cy.get('input[name=username]').type(user1.username);
                     cy.get('input[name=password]').type('invalidpassword');
-                    cy.wait('#loginBtn').click();
+                    cy.get('#loginBtn').click();
                     cy.get('error').should('contain', 'Could not find user')
 
                 });
