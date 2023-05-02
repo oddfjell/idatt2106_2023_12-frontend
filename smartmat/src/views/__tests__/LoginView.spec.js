@@ -15,7 +15,7 @@ function mountLoginView() {
 }
 describe("LoginView", () => {
     it("mounts properly",async () => {
-        expect(mountLoginView().text()).toContain('Login')
+        expect(mountLoginView().text()).toContain('Logg inn')
     })
     it(" is rendering username and password correctly",async () => {
         const username = mountLoginView().find("input[name=username]");
@@ -29,7 +29,7 @@ describe("LoginView", () => {
 
 describe('The Router', () => {
     it('mounts properly', () => {
-        expect(mountLoginView().text()).toContain('Register')
+        expect(mountLoginView().text()).toContain('Registrer')
     })
 
     it('clicks the registerButton', async () => {

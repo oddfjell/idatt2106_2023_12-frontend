@@ -1,10 +1,10 @@
 
-nav a{
+nav a {
     color: black;
 }
 
 
-nav{
+nav {
     font-size: 4vh;
     height: 6vh;
     display: flex;
@@ -14,20 +14,20 @@ nav{
     z-index: 9999;
 
 }
+
 .material-symbols-outlined {
     background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: background 0.5s;
     font-size: 5vh;
-    font-variation-settings:
-            'FILL' 1,
-            'wght' 700,
-            'GRAD' 200,
-            'opsz' 48
+    font-variation-settings: 'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
 }
 
-#placeholder-space{
+#placeholder-space {
     width: 140vh;
 }
 
@@ -35,11 +35,12 @@ nav{
 /*
 Phone version
  */
-@media (max-width:500px) {
-    #top-navbar{
+@media (max-width: 500px) {
+    #top-navbar {
         display: none;
     }
-    #bottom-navbar{
+
+    #bottom-navbar {
         display: flex;
         background-color: #6dbd5e;
         justify-content: center;
@@ -49,25 +50,30 @@ Phone version
         left: 0;
         opacity: 1;
     }
-    #bottom-navbar nav{
+
+    #bottom-navbar nav {
         gap: 8vh;
         z-index: 9999;
 
     }
-    #nav-icons{
+
+    #nav-icons {
         gap: 7vh;
         display: flex;
 
     }
-    #except-user-top{
+
+    #except-user-top {
         gap: 7vh;
         display: flex;
     }
-    #all-icons-bottom{
+
+    #all-icons-bottom {
         gap: 7vh;
         display: flex;
     }
-    #logo{
+
+    #logo {
         display: none;
     }
 }
@@ -76,8 +82,8 @@ Phone version
 /*
 Computer version
  */
-@media (min-width:501px) {
-    #top-navbar{
+@media (min-width: 501px) {
+    #top-navbar {
         display: flex;
         background-color: #6dbd5e;
         justify-content: right;
@@ -88,9 +94,10 @@ Computer version
     }
 
 
-    #bottom-navbar{
+    #bottom-navbar {
         display: none;
     }
+
     .material-symbols-outlined:hover {
         transform: scale(1.2);
         background: linear-gradient(to right, #5e5e5e, #384238);
@@ -99,25 +106,27 @@ Computer version
         transition: all 0.2s ease;
     }
 
-    #nav-icons{
-        gap: 3vh;
-        display: flex;
-    }
-    #except-user-top{
+    #nav-icons {
         gap: 3vh;
         display: flex;
     }
 
-    #all-icons-bottom{
+    #except-user-top {
+        gap: 3vh;
+        display: flex;
+    }
+
+    #all-icons-bottom {
         visibility: hidden;
     }
 
-    #logo{
+    #logo {
         width: 12vh;
-        height:auto;
+        height: auto;
         float: left;
     }
-    #logo-frame{
+
+    #logo-frame {
         float: left;
     }
 

@@ -1,8 +1,9 @@
 <template>
     <div v-if="username">
-  <Carousel ref="carousel" :wrap-around="false" :items-to-show="3">
+  <Carousel ref="carousel" :wrap-around="false" :items-to-show="1">
     <Slide v-for="recipe in displayRecipes" :key="recipe">
-      <div class="carousel__item"> {{ recipe.title }}</div>
+      <div class="carousel__item" :style="{backgroundImage: 'url(' + recipe.image + ')' }">
+          <h3 id="slideTitle"> {{ recipe.title }} </h3></div>
     </Slide>
     <template #addons>
       <Navigation />
@@ -11,6 +12,7 @@
       </button>
     </template>
   </Carousel>
+        <p id="info">{{info}}</p>
         <div class=" Btn addToShoppingList">
             <button class="BlueBtn" @click="addToShoppingList">
                 Legg til varer i handleliste</button>
@@ -18,8 +20,10 @@
         <div class="container" v-if="this.carousel">
             <h1>Ingredienser</h1>
         <p style="display: none">{{currentSlide}}</p>
+            <div v-if="this.displayRecipes[currentSlide.value]">
             <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
-            <p :key="ingredient" v-for="ingredient in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
+            <p :key="this.displayRecipes[currentSlide._value] + index" v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
+            </div>
         </div>
 
     </div>
@@ -42,6 +46,11 @@ export default defineComponent({
     Slide,
     Navigation,
   },
+    data(){
+      return{
+          info:""
+      }
+    },
   setup() {
     const carousel = ref(null)
 
@@ -67,8 +76,14 @@ export default defineComponent({
         }
     }
 
-    const addToShoppingList = () => {
-      recipeService.addToShoppingList(tokenStore().user.jwt, displayRecipes.value)
+    async function addToShoppingList(){
+        this.info="Lagrer til handleliste..."
+        try {
+            await recipeService.addToShoppingList(tokenStore().user.jwt, displayRecipes.value)
+            this.info="Lagret!"
+        }catch (error){
+            console.log(error)
+        }
     }
 
     return {
@@ -115,7 +130,7 @@ export default defineComponent({
 <style scoped>
 .carousel__item {
   min-height: 200px;
-  width: 100%;
+    padding: 50px;
   background-color: lightblue;
   color: black;
   font-size: 20px;
@@ -123,6 +138,10 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+
 }
 
 .carousel__slide {
@@ -145,5 +164,14 @@ export default defineComponent({
 img {
   width: 20px;
   height: 20px;
+}
+#slideTitle{
+    background-color: rgb(76, 75, 75, 0.6);
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    width: 100%;
+}
+#info{
+    text-align: center;
 }
 </style>
