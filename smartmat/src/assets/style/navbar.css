@@ -37,7 +37,7 @@ Phone version
  */
 @media (max-width:500px) {
     #top-navbar{
-        visibility: hidden;
+        display: none;
     }
     #bottom-navbar{
         display: flex;
@@ -85,7 +85,7 @@ Computer version
 
 
     #bottom-navbar{
-        visibility: hidden;
+        display: none;
     }
     .material-symbols-outlined:hover {
         transform: scale(1.2);

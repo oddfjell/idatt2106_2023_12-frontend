@@ -7,11 +7,11 @@ const pinia = createPinia();
 function mountWeeklyMenu(){
     return mount(WeeklyMenuView,{
         global:{
-            plugins:[router, pinia]
+            plugins:[router, pinia],
         },
         computed:{
             username(){return "bop"}
-        }
+        },
     })
 }
 describe('WeeklyMenuView',()=>{

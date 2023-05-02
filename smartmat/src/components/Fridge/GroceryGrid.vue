@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        <div v-if="loading">Laster ...</div>
+        <div v-if="loading"><h3 style="text-align: center;">Laster ...</h3></div>
         <div v-else-if="fridgeEntities.length" id="grocery_grid">
             <div v-for="(fridgeEntity, index) in fridgeEntities" :key="fridgeEntity.id">
            <GroceryComponent :tabindex="index+1" :grocery="fridgeEntity" :count="fridgeEntity.count" />
             </div>
         </div>
-        <div v-else><h1>No groceries :(</h1></div>
+        <div v-else><h3 style="text-align: center">Ingen varer i kjøleskapet</h3></div>
     </div>
 </template>
 
@@ -34,7 +34,6 @@ export default {
             for (let grocery of groceries) {
                 fridgeEntities.push(grocery)
             }
-            fridgeEntities.sor
         }catch (error){
             console.log(error)
         }finally {
@@ -54,8 +53,9 @@ export default {
 #grocery_grid{
     display:grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1%;
+    grid-gap: 5vh;
     margin: auto;
+    padding: 10px;
 }
 
 @media only screen and (max-width: 1420px) {

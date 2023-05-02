@@ -16,7 +16,6 @@ import Navbar from "@/components/Navbar.vue";
     max-width: 500px;
     margin: 30px auto;
     overflow: auto;
-    border: 1px solid steelblue;
     padding: 30px;
     border-radius: 5px;
 }
@@ -32,7 +31,7 @@ import Navbar from "@/components/Navbar.vue";
         border-radius: 5px;
 }
 .GreyBtn{
-        background: #b7b7b7;
+        background: #d0cece;
         border: 0;
         padding: 10px 20px;
         color: black;
@@ -44,13 +43,21 @@ import Navbar from "@/components/Navbar.vue";
   }
 }
 
+@media(max-width:500px ){
+    .container{
+        margin: 0;
+        padding: 20px;
+        border: none;
+    }
+}
+
 
 .BlueBtn:hover {
     background-color: #4169a8;
     cursor: pointer;
 }
 .GreyBtn:hover {
-    background-color: #d0cece;
+    background-color: #b7b7b7;
     cursor: pointer;
 }
 </style>

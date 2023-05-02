@@ -19,7 +19,7 @@ export default {
         }
     },
     created() {
-        if(tokenStore().user.username == null ){
+        if(!tokenStore().user.username){
             router.push("/")
         }
     }
@@ -29,11 +29,16 @@ export default {
 <style scoped>
 .container{
     max-width: none;
-    min-height: 90vh;
+    min-height: 100vh;
 }
 #fridgeContainer{
     margin-left: 10%;
     margin-right: 10%;
 
+}
+@media(max-width:500px ){
+    .container{
+        padding: 0;
+    }
 }
 </style>
