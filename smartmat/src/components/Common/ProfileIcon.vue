@@ -22,11 +22,18 @@ export default {
       password:""
     }
   },
+  emits:{
+    selectProfile(profile){
+    }
+  },
+
   methods:{
     async selectProfile() {
-      this.$emit("selectProfile");
-
-
+      if(this.profile.username === "Add"){
+        await router.push("/registerProfile")
+      }else{
+        this.$emit("selectProfile", this.profile);
+      }
 /*
       if(this.profile.username === "Add"){
         await router.push("/registerProfile")

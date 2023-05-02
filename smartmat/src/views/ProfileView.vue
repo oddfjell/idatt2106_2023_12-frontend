@@ -7,7 +7,7 @@
   </div>
 
   <div v-if="popup">
-    <PasswordPopup></PasswordPopup>
+    <PasswordPopup :profile="selectedProfile"></PasswordPopup>
   </div>
 
 </template>
@@ -27,12 +27,15 @@ export default {
       addProfile: {
         username: "Add"
       },
-      popup: false
+      popup: false,
+      selectedProfile: null
     }
   },
 
   methods:{
-    passwordPopup(){
+    passwordPopup(profile){
+      this.selectedProfile = profile;
+      this.popup = true;
     }
   },
 
