@@ -1,7 +1,7 @@
 import {mount} from "@vue/test-utils";
 import {describe, expect, it, vi,} from "vitest";
 import router from "@/router";
-import ShoppingListGrid from "@/components/ShoppingListGrid.vue";
+import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
 import {createPinia} from "pinia";
 
 const pinia = createPinia()

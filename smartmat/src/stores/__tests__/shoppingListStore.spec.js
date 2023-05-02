@@ -1,13 +1,15 @@
 import { beforeEach, describe, it, expect} from "vitest";
 import { setActivePinia, createPinia } from 'pinia'
 import { shoppingListStore } from '@/stores/shoppingListStore'
+import { createApp } from "vue";
+import { ref } from "vue";
 
 describe('shoppingListStore', () => {
+    const app = createApp({})
     beforeEach(() => {
-        // creates a fresh pinia and make it active so it's automatically picked
-        // up by any useStore() call without having to pass it to it:
-        // `useStore(pinia)`
-        setActivePinia(createPinia())
+        const pinia = createPinia().use(ref)
+        app.use(pinia)
+        setActivePinia(pinia)
     })
 
     it('updates changes to store', () => {
@@ -15,6 +17,6 @@ describe('shoppingListStore', () => {
         const shoppingListEntities = [{ "name": "Melk", "count": 1, "foundInStore":true },   
                                         {"name": "Yoghurt", "count": 1, "foundInStore": true }]
         store.setShoppingListEntities(shoppingListEntities)
-        expect(store.getShoppingListEntities).toBe(shoppingListEntities)
+        expect(store.shoppingList.shoppingListEntities).toStrictEqual(shoppingListEntities)
     })
 })
