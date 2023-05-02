@@ -49,15 +49,17 @@ input{
 
 #registerBtn{
     margin-top: 4vh;
-    background-color: #42b983;
+    background-color: #6dbd5e;
     font-family: Hack, monospace;
     font-size: 2vh;
+    color: black;
     box-shadow: rgba(0, 0, 0, 0.25) 0vh 2vh 4vh, rgba(0, 0, 0, 0.22) 0vh 1vh 1vh;
     width: 25vh;
     margin-bottom: 1vh;
 }
 #registerBtn:hover{
-    background-color: #348f69;
+    background-color: black;
+    color: white;
 }
 #loginBtn{
     font-family: Hack, monospace;
