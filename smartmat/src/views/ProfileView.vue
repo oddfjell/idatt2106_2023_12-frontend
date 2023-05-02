@@ -5,16 +5,20 @@
     </div>
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
+
+  <PasswordPopup></PasswordPopup>
+
 </template>
 
 <script>
 import {tokenStore} from "@/stores/tokenStore";
 import accountService from "../services/accountService";
 import ProfileIcon from "../components/Common/ProfileIcon.vue";
+import PasswordPopup from "../components/Common/PasswordPopup.vue";
 
 export default {
   name: "ProfileView",
-  components: {ProfileIcon},
+  components: {PasswordPopup, ProfileIcon},
   data() {
     return {
       profiles: [],

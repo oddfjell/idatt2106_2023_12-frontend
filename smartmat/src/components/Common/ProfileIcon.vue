@@ -5,7 +5,6 @@
     <div v-else class="material-symbols-outlined" id="icon">add</div>
     <div>{{profile.username}}</div>
   </div>
-
 </template>
 
 <script>
@@ -61,6 +60,11 @@ export default {
 #profile-row:hover #icon{
   transition-duration: 0.5s;
   background-color: blue;
+}
+
+#password{
+  visibility: hidden;
+  position: absolute;
 }
 
 </style>
