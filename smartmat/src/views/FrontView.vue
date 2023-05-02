@@ -40,6 +40,8 @@ export default {
             if(tokenStore().user.username == null ){
                 router.push("/")
             }
+            console.log(tokenStore().user.username);
+            console.log(tokenStore().user.restricted);
         }
 }
 </script>

@@ -49,7 +49,7 @@ export default {
                                 let data= response.data
                                 tokenStore().changeJWT(data.jwt)
                                 tokenStore().changeUsername(data.username)
-                                await router.push("/home")
+                                await router.push("/profile")
                             }
                         }catch (error){
                             await router.push("/")
@@ -70,7 +70,7 @@ export default {
     },
     created() {
         if(tokenStore().user.username !== ""){
-            router.push("/home")
+            router.push("/profile")
         }
     }
 }

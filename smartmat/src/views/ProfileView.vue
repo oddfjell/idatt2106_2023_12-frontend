@@ -1,40 +1,37 @@
 <template>
-  <div id="profiles">
+  <div id="row">
     <div v-for="(profile, index) in profiles" :key="index">
       <ProfileIcon :profile="profile"></ProfileIcon>
     </div>
+    <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
-
-
 </template>
 
 <script>
-import {tokenStore} from "../stores/tokenStore";
+import {tokenStore} from "@/stores/tokenStore";
 import accountService from "../services/accountService";
 import ProfileIcon from "../components/Common/ProfileIcon.vue";
 
 export default {
   name: "ProfileView",
   components: {ProfileIcon},
-  data(){
+  data() {
     return {
-      profiles:[]
+      profiles: [],
+      addProfile: {
+        username: "Add"
+      }
     }
-  },
-  methods:{
-
   },
 
   async created() {
     let profileList = await accountService.getAllProfiles(tokenStore().user.jwt);
     let profileListData = profileList.data;
 
-    for (let profile of profileListData){
+    for (let profile of profileListData) {
       this.profiles.push(profile);
     }
-
   }
-
 
 
 }
@@ -44,13 +41,12 @@ export default {
 
 <style scoped>
 
-#profiles{
+#row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 10vh;
-  height: 70vh;
+  justify-content: space-evenly;
+  margin-top: 25vh;
 }
 
 </style>

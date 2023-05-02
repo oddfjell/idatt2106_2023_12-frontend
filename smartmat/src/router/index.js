@@ -7,6 +7,7 @@ import RefrigeratorView from "@/views/RefrigeratorView.vue";
 import ShoppingListView from "@/views/ShoppingListView.vue";
 import AccountView from "@/views/AccountView.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import RegisterProfile from "@/views/RegisterProfile.vue";
 
 
 const router = createRouter({
@@ -53,6 +54,11 @@ const router = createRouter({
       path: "/profile",
       name: "Profile",
       component: ProfileView
+    },
+    {
+      path: "/registerProfile",
+      name: "RegisterProfile",
+      component: RegisterProfile
     },
     {
       path: '/:catchAll(.*)',  //redux pattern

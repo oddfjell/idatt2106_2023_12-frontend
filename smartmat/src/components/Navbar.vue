@@ -16,7 +16,7 @@
       <span class="material-symbols-outlined">shopping_cart</span>
       </RouterLink>
 
-        <RouterLink to="/profile" >
+        <RouterLink to="/account" >
 <span class="material-symbols-outlined">person</span>
         </RouterLink>
     </nav>

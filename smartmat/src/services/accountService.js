@@ -40,6 +40,9 @@ export default {
 
   getAllProfiles(token){
     return axios.get(baseURL + '/profiles', configToken(token))
-  }
+  },
 
+  registerProfile(profile,token){
+    return axios.post(baseURL + '/registerProfile', profile,configToken(token))
+  }
 };

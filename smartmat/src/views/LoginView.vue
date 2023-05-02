@@ -48,7 +48,7 @@ export default {
                         let data=response.data
                         tokenStore().changeJWT(data.jwt)
                         tokenStore().changeUsername(data.username)
-                        await router.push("/home")
+                        await router.push("/profile")
                     } else {
                         this.error = response.status
                         console.log("Login failed")
@@ -65,7 +65,7 @@ export default {
     created() {
         if(tokenStore().user.username !== ""){
             console.log(tokenStore().user.username)
-            router.push("/home")
+            router.push("/profile")
         }
     }
 }
