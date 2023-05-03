@@ -4,7 +4,7 @@
     <span id="user" class="material-symbols-outlined">
   account_circle
   </span>
-    <h1 id="loggedin-user">{{username}}</h1>
+    <h1 id="loggedin-user">{{ username }}</h1>
 
 
     <div id="buttons">
@@ -14,7 +14,7 @@
     </div>
 
 
-    <p v-if="error">{{error}}</p>
+    <p v-if="error">{{ error }}</p>
   </div>
   <div v-else class="container">
     <h1>Du er ikke logget inn</h1>
@@ -27,27 +27,27 @@ import router from "@/router";
 
 export default {
   name: "ProfileView",
-  data(){
-    return{
-      error:null
+  data() {
+    return {
+      error: null
     }
   },
-  computed:{
-    username(){
+  computed: {
+    username() {
       return tokenStore().user.username
     }
   },
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       try {
         tokenStore().changeJWT("")
         tokenStore().changeUsername("")
         router.push("/")
-      }catch (error){
-        this.error="Kunne ikke logge ut"
+      } catch (error) {
+        this.error = "Kunne ikke logge ut"
       }
     },
-    changeProfile(){
+    changeProfile() {
       tokenStore().changeUsername("")
       router.push("/profile")
     }
@@ -60,5 +60,6 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/style/account.css';
+
+@import "../assets/style/account.css";
 </style>

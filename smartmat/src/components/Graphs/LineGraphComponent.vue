@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h3 style="text-align: center">Penger tapt på kasting siste måned</h3>
 <Line v-if="loaded"  id="my-chart-id"
        :options="chartOptions"
        :data="chartData"/>
@@ -45,7 +46,11 @@ export default {
                     fill: false,
                     borderColor: '#6DBD5E',
                     backgroundColor:"#6DBD5E",
-                    tension: 0.1
+                    tension: 0.1,
+                    datalabels: {
+                        anchor: "end",
+                        align: "end",
+                    },
             }],
             },
             chartOptions: {
@@ -53,7 +58,7 @@ export default {
                     x:{
                       title:{
                           display:true,
-                          text:"Måned"
+                          text:"Dag"
                       }
                     },
                     y:{
@@ -61,10 +66,33 @@ export default {
                         title:{
                             display:true,
                             text:"Penger tapt på å kaste"
+                        },
+                        ticks: {
+                            // add "kr" behind the tick label
+                            callback: function (value, index, values) {
+                                return value + " kr";
+                            },
                         }
                     }
                 },
-            }
+                plugins: {
+                    // display the data label below the point and add "kr" behind it
+                    datalabels: {
+                        display: true,
+                        color: 'black',
+                        align: 'center',
+                        offset: 10,
+                        font: {
+                            weight: 'bold',
+                            size: 14,
+                        },
+                        formatter: function (value, context) {
+                            return value + " kr";
+                        },
+                    },
+                },
+            },
+
         }
     },
     async created() {

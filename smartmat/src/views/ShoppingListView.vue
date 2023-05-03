@@ -4,9 +4,9 @@
     <div id="header">
       <!-- The shopping list dropdown component -->
       <Dropdown id="dropdown"
-                :options="groceries"
+              :options="groceries"
                 :placeholder="selectedText"
-                v-on:selected="onSelection">
+              v-on:selected="onSelection">
       </Dropdown>
       <!-- Button for adding the selected item to shoppinglist -->
       <button class="buttons" @click="addShoppingListEntity">Legg til vare</button>
@@ -30,6 +30,7 @@
     <h1 class="font"> Vennligst logg inn </h1>
   </div>
 </template>
+
 <script>
 
 import {tokenStore} from "@/stores/tokenStore";

@@ -31,7 +31,6 @@
 import ShoppingListEntity from "@/components/ShoppingList/shoppingListEntity.vue";
 import {shoppingListStore} from "@/stores/shoppingListStore";
 
-
 export default {
     name: "shoppingListGrid",
     components: {ShoppingListEntity},

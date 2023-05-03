@@ -1,6 +1,6 @@
 <template>
   <div id="row">
-    <div v-for="(profile, index) in profiles" :key="index" >
+    <div v-for="(profile, index) in profiles" :key="index">
       <ProfileIcon :profile="profile" @selectProfile="passwordPopup"></ProfileIcon>
     </div>
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
@@ -32,12 +32,12 @@ export default {
     }
   },
 
-  methods:{
-    passwordPopup(profile){
+  methods: {
+    passwordPopup(profile) {
       this.selectedProfile = profile;
       this.popup = true;
     },
-    closeThePopup(){
+    closeThePopup() {
       this.selectedProfile = null;
       this.popup = false;
     }
@@ -60,15 +60,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../assets/style/profile.css";
 
-#row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  top: 10em;
-  position: relative;
-  gap: 3em;
-}
 
 </style>
