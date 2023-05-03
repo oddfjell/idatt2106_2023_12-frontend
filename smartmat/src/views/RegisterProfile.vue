@@ -4,6 +4,8 @@
     <form @submit.prevent >
       <label class="registerLabel">Brukernavn: </label>
       <input type="text" v-model="profile.username" placeholder="Skriv ditt brukernavn " name="username" required>
+      <label class="registerLabel">Passord: </label>
+      <input type="password" v-model="profile.password" placeholder="Skriv ditt passord " name="password" required>
       <div id="row">
         <label class="registerLabel">Restricted </label>
         <input type="checkbox" v-model="profile.restricted" name="restricted"/>
@@ -32,7 +34,8 @@ export default {
     return {
       profile: {
         username: "",
-        restricted: false
+        restricted: false,
+        password: ""
       },
       error:""
     }

@@ -5,7 +5,7 @@
       <form @submit.prevent="login">
         <span class="material-symbols-outlined" @click="close">close</span>
         <h1>PIN</h1>
-        <input type="text" v-model="password">
+        <input type="password" v-model="password">
         <p>{{error}}</p>
         <button type="submit">Logg inn</button>
       </form>
