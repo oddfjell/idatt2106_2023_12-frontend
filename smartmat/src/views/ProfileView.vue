@@ -67,8 +67,10 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
+  height: auto;
   top: 50%;
   gap: 3%;
+  margin: 5% auto auto;
 }
 
 </style>
