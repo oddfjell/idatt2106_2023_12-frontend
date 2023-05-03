@@ -61,16 +61,34 @@ export default {
 
 <style scoped>
 
-#row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: auto;
-  top: 50%;
-  gap: 3%;
-  margin: 5% auto auto;
+@media (min-width: 501px ) {
+  #row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: auto;
+    top: 50%;
+    gap: 3%;
+    margin: 5% auto auto;
+  }
 }
+
+@media (max-width: 500px) {
+  #row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: auto;
+    top: 50%;
+    gap: 3%;
+    margin: 5% auto auto;
+    font-size: 10px;
+  }
+}
+
 
 </style>
