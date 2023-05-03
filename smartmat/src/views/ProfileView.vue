@@ -66,9 +66,9 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  top: 10em;
   position: relative;
-  gap: 3em;
+  top: 50%;
+  gap: 3%;
 }
 
 </style>
