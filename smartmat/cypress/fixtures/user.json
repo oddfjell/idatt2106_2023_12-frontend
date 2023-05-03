@@ -1,20 +1,4 @@
 {
-  "user1": {
-    "username": "ingf",
-    "password": "ingf"
-  },
-  "user2": {
-    "username": "",
-    "password": "testpassword2"
-  },
-  "user3": {
-    "username": "testuser3",
-    "password": ""
-  },
-  "user3": {
-    "username": "testuser4",
-    "password": "testuser4"
-  },
   "testUser": {
     "username": "testUser",
     "password": "dNA3@j@uN53k"
