@@ -157,7 +157,7 @@ export default defineComponent({
 }
 
 #carousel {
-  width: 100%;
+  width: 50%;
   margin: auto;
 }
 
