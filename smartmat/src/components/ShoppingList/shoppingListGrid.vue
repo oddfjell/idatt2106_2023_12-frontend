@@ -70,56 +70,6 @@ export default {
     },
 }
 </script>
-
 <style scoped>
-#shoppingListEntitiesGrid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap:5px;
-}
-
-#unchecked_list{
-    text-align: center;
-    border: 1px solid steelblue;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 60vh;
-    max-height: 90vh;
-    overflow: auto;
-}
-#checked_list{
-    text-align: center;
-    border: 1px solid steelblue;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 60vh;
-    max-height: 90vh;
-    overflow: auto;
-}
-
-.hamburgerBtn{
-    display: none;
-}
-
-@media(max-width:500px ){
-    .hamburgerBtn{
-        display: block;
-        margin: 0 auto 5px;
-    }
-
-    #shoppingListEntitiesGrid{
-        grid-template-columns: 1fr;
-    }
-    #checked_list{
-        display: none;
-    }
-}
-@media (min-width: 501px) {
-    #checked_list{
-        display: block !important;
-    }
-    #unchecked_list{
-        display: block !important;
-    }
-}
+@import "../../assets/style/shoppingListGrid.css";
 </style>

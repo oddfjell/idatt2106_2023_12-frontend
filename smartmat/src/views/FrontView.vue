@@ -1,13 +1,14 @@
 <template xmlns="http://www.w3.org/1999/html">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 
-  <div v-if="username">
+  <div id="frontViewContainer" v-if="username">
     <div id="outer-border">
       <RouterLink to="/refrigerator">
-          <div class="card" id="card1">
+        <div class="card" id="card1">
           <h1>Kjøleskap</h1> <span class="material-symbols-outlined">kitchen</span>
 
-          </div>
+        </div>
       </RouterLink>
 
       <RouterLink to="/weeklyMenu">
@@ -23,29 +24,38 @@
         </div>
       </RouterLink>
     </div>
+      <div id="graphGrid">
+      <GraphComponent id="lineChart"/>
+      <PieChart id="pieChart"/>
+    </div>
   </div>
   <div v-else class="container"><h1>Please log in</h1></div>
 </template>
 <script>
 import {tokenStore} from "@/stores/tokenStore";
 import router from "@/router";
+import GraphComponent from "@/components/Graphs/LineGraphComponent.vue";
+import PieChart from "@/components/Graphs/PieChart.vue";
 
 export default {
-    computed:{
-        username(){
-            return tokenStore().user.username
-        }
-    },
-    created() {
-            if(!tokenStore().user.username){
-                router.push("/")
-            }
-            console.log(tokenStore().user.username);
-            console.log(tokenStore().user.restricted);
-        }
+  components: {GraphComponent, PieChart},
+  computed: {
+    username() {
+      return tokenStore().user.username
+    }
+  },
+  created() {
+    if (!tokenStore().user.username) {
+      router.push("/")
+    }
+    console.log(tokenStore().user.username);
+    console.log(tokenStore().user.restricted);
+    console.log(tokenStore().user.jwt)
+  }
 }
 </script>
 
 <style scoped>
-@import '@/assets/style/frontPage.css';
+
+@import "../assets/style/frontPage.css";
 </style>

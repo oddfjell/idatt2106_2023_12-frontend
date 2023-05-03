@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import {RouterView} from 'vue-router'
 
 import Navbar from "@/components/Navbar.vue";
 </script>
@@ -7,57 +7,10 @@ import Navbar from "@/components/Navbar.vue";
 <template>
   <Navbar id="top-navbar"></Navbar>
   <div id="whitespace"></div>
-  <RouterView />
+  <RouterView/>
   <Navbar id="bottom-navbar"></Navbar>
 </template>
 
 <style>
-.container {
-    max-width: 500px;
-    margin: 30px auto;
-    overflow: auto;
-    padding: 30px;
-    border-radius: 5px;
-}
-.Btn{
-    margin: 20px auto;
-    text-align: center;
-}
-.BlueBtn{
-        background: #0b6dff;
-        border: 0;
-        padding: 10px 20px;
-        color: white;
-        border-radius: 5px;
-}
-.GreyBtn{
-        background: #d0cece;
-        border: 0;
-        padding: 10px 20px;
-        color: black;
-        border-radius: 5px
-}
-@media (min-width:501px){
-  #whitespace{
-    height: 10vh;
-  }
-}
-
-@media(max-width:500px ){
-    .container{
-        margin: 0;
-        padding: 20px;
-        border: none;
-    }
-}
-
-
-.BlueBtn:hover {
-    background-color: #4169a8;
-    cursor: pointer;
-}
-.GreyBtn:hover {
-    background-color: #b7b7b7;
-    cursor: pointer;
-}
+@import "./assets/style/app.css";
 </style>
