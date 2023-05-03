@@ -7,9 +7,13 @@
     <h1 id="loggedin-user">{{username}}</h1>
 
 
-    <button @click="logout" class="logout-Btn">Logg ut
-      <span id="logout" class="material-symbols-outlined">logout
-  </span></button>
+    <div id="buttons">
+      <button @click="changeProfile" class="logout-Btn">Bytt bruker</button>
+      <button @click="logout" class="logout-Btn">Logg ut
+        <span class="material-symbols-outlined">logout</span></button>
+    </div>
+
+
     <p v-if="error">{{error}}</p>
   </div>
   <div v-else class="container">
@@ -42,6 +46,10 @@ export default {
       }catch (error){
         this.error="Kunne ikke logge ut"
       }
+    },
+    changeProfile(){
+      tokenStore().changeUsername("")
+      router.push("/profile")
     }
   },
   created() {
