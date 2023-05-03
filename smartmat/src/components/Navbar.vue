@@ -65,11 +65,5 @@ export default {
 <style scoped>
 @import "../assets/style/navbar.css";
 
-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 </style>
