@@ -58,7 +58,7 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  font-size: 20vh;
+  font-size: 12rem;
   position: relative;
 }
 
