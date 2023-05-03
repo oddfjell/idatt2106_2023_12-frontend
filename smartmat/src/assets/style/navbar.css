@@ -51,13 +51,13 @@ Phone version
     }
 
     #nav-icons {
-        gap: 2.5em;
+        gap: 4em;
         display: flex;
 
     }
 
     #except-user-top {
-        gap: 2.5em;
+        gap: 4em;
         display: flex;
     }
 
