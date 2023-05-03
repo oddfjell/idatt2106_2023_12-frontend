@@ -7,8 +7,8 @@
         <h1 class="popup-title">PIN</h1>
         <input type="password" v-model="password" class="popup-input">
         <p>{{error}}</p>
-        <button v-if="!deleteProfile" type="submit" class="popup-button">Logg inn</button>
-        <button v-else-if="deleteProfile" type="submit" class="popup-button">SLETT PROFIL</button>
+        <button v-if="!deleteProfile" type="submit" class="popup-button" id="login">Logg inn</button>
+        <button v-else-if="deleteProfile" type="submit" class="popup-button" id="delete">SLETT PROFIL</button>
       </form>
     </div>
   </div>
@@ -123,7 +123,6 @@ export default {
 
 
 .popup-button {
-  background-color: #e50914;
   color: #fff;
   padding: 1em 2em;
   border: none;
@@ -136,9 +135,20 @@ export default {
   width: 50%;
 }
 
+#login{
+  background: #6dbd5e;
+}
 
-.popup-button:hover {
-  background-color: #7c060c;
+#delete{
+  background: red;
+}
+
+#login:hover{
+  background: black;
+}
+
+#delete:hover{
+  background: black;
 }
 
 
