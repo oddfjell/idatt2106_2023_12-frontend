@@ -7,7 +7,7 @@
     </Slide>
     <template #addons>
       <Navigation />
-      <button @click="getAndChangeRecipe">
+      <button id="refreshRecipeBtn" @click="getAndChangeRecipe">
         <img src="../images/refresh-icon.png" alt="refresh-icon">
       </button>
     </template>
