@@ -7,7 +7,8 @@
         <h1 class="popup-title">PIN</h1>
         <input type="password" v-model="password" class="popup-input">
         <p>{{error}}</p>
-        <button type="submit" class="popup-button">Logg inn</button>
+        <button v-if="!deleteProfile" type="submit" class="popup-button" id="login">Logg inn</button>
+        <button v-else-if="deleteProfile" type="submit" class="popup-button" id="delete">SLETT PROFIL</button>
       </form>
     </div>
   </div>
@@ -22,7 +23,8 @@ import router from "@/router";
 export default {
   name: "PasswordPopup",
   props:{
-    profile:Object
+    profile:Object,
+    deleteProfile:false
   },
   data() {
     return {
@@ -43,15 +45,26 @@ export default {
         restricted: this.profile.restricted,
         password: this.password
       }
-      try{
-        await accountService.loginProfile(loginProfile, tokenStore().user.jwt)
+      if(this.deleteProfile){
+        try {
+          await accountService.deleteProfile(loginProfile, tokenStore().user.jwt)
+          location.reload();
+        }catch (error){
+          this.error = "Feil password";
+        }
 
-        tokenStore().changeUsername(this.profile.username);
-        tokenStore().changeRestriction(this.profile.restricted);
-        await router.push("/home")
-      }catch (error){
-        this.error = "Feil password";
+      }else{
+        try{
+          await accountService.loginProfile(loginProfile, tokenStore().user.jwt)
+
+          tokenStore().changeUsername(this.profile.username);
+          tokenStore().changeRestriction(this.profile.restricted);
+          await router.push("/home")
+        }catch (error){
+          this.error = "Feil password";
+        }
       }
+
 
     },
 
@@ -110,7 +123,6 @@ export default {
 
 
 .popup-button {
-  background-color: #e50914;
   color: #fff;
   padding: 1em 2em;
   border: none;
@@ -123,9 +135,20 @@ export default {
   width: 50%;
 }
 
+#login{
+  background: #6dbd5e;
+}
 
-.popup-button:hover {
-  background-color: #7c060c;
+#delete{
+  background: red;
+}
+
+#login:hover{
+  background: black;
+}
+
+#delete:hover{
+  background: black;
 }
 
 

@@ -1,9 +1,9 @@
 <template>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <div id="profile-card">
       <div v-if="!add" class="material-symbols-outlined" id="remove" @click="removeProfile">Remove</div>
       <div id="choose" @click="selectProfile">
-        <div v-if="!add" class="material-symbols-outlined" id="icon">person</div>
+        <div v-if="!add && profile.restricted" class="material-symbols-outlined" id="icon">person</div>
+        <div v-if="!add && !profile.restricted" class="material-symbols-outlined" id="icon">shield_person</div>
         <div v-else class="material-symbols-outlined" id="icon">add</div>
          <div id="title">{{profile.username}}</div>
       </div>
@@ -38,7 +38,7 @@ export default {
       }
     },
     async removeProfile(){
-        console.log("remove")
+        this.$emit("deleteProfile", this.profile);
     }
   }
 }

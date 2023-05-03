@@ -95,14 +95,14 @@
     .container {
         text-align: center;
         border: 1em solid #fafffa;
-        font-size: 1.5em;
+        font-size: 120%;
         font-family: Hack, monospace;
         border-radius: 2em;
         box-shadow: rgba(0, 0, 0, 0.25) 0 1em 3em, rgba(0, 0, 0, 0.22) 0 1em 1em;
         background-color: #fafffa;
-        height: 28em;
-        width: 20em;
-        margin-top: 1em;
+        height: 70%;
+        width: 80%;
+        margin-top: 1%;
     }
 }
 
