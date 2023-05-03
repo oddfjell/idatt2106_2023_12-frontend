@@ -42,23 +42,23 @@ export default {
 
 #profile-card{
   position: relative;
-  margin: 20px;
-  width: 200px;
-  height: 300px;
+  margin: 2em;
+  width: 12em;
+  height: 17em;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 1em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: transform 0.3s;
   cursor: pointer;
 }
 
 #icon{
-  top: 3vh;
+  top: 0.1em;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  font-size: 12rem;
+  font-size: 12em;
   position: relative;
 }
 
@@ -67,19 +67,19 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px;
+  padding: 1em;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  font-size: 18px;
+  font-size: 1em;
   font-weight: bold;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1em 1em 1em rgba(0, 0, 0, 0.5);
 }
 
 #profile-card:hover {
   transform: scale(1.1);
   z-index: 1;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3em rgba(0, 0, 0, 0.5);
 }
 
  .material-symbols-outlined {
