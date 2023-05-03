@@ -46,9 +46,12 @@ export default {
 </script>
 
 <style scoped>
+
 .container{
     max-width: none;
     padding: 1%;
+    font-family: Hack, monospace;
+
 }
 #grocery_grid{
     display:grid;
@@ -56,6 +59,8 @@ export default {
     grid-gap: 5vh;
     margin: auto;
     padding: 10px;
+
+
 }
 
 @media only screen and (max-width: 1420px) {
