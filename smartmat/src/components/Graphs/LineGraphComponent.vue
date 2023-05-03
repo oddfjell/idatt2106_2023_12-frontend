@@ -58,7 +58,7 @@ export default {
                     x:{
                       title:{
                           display:true,
-                          text:"Måned"
+                          text:"Dag"
                       }
                     },
                     y:{
