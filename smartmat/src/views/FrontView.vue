@@ -73,9 +73,10 @@ pie-chart{
     margin: auto auto 30px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     #graphGrid{
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 </style>
