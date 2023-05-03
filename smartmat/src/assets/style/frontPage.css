@@ -28,10 +28,10 @@ Styling for the borders for the computer version
  */
 @media (min-width:501px) {
     .card {
-        width: 80%;
+        width: 68%;
         border: 0.6em solid black;
-        padding: 25%;
-        height: 100%;
+        padding: 30%;
+        height: 80%;
         margin: auto;
         cursor: pointer;
         display: inline-block;
@@ -81,7 +81,7 @@ Styling for the borders for the computer version
     .card h1 {
         text-align: center;
         color: black;
-        font-size: 2em;
+        font-size: 1.4em;
         font-family: Hack, monospace;
 
     }
@@ -96,9 +96,9 @@ Styling for the borders for the computer version
  .material-symbols-outlined {
 
      color: black;
-     font-size: 14em;
+     font-size: 10em;
      position: relative;
-     right: 7%;
+     right: 15%;
 
      font-variation-settings:
              'FILL' 1,
