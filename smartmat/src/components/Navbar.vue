@@ -39,7 +39,7 @@
             <span class="material-symbols-outlined">shopping_cart</span>
           </RouterLink>
         </div>
-        <RouterLink to="/profile" >
+        <RouterLink id="profile" to="/profile" >
           <span class="material-symbols-outlined">person</span>
         </RouterLink>
       </div>
