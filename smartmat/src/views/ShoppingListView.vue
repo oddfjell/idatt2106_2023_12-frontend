@@ -17,7 +17,6 @@
       <div id="buttonBar">
         <!-- Button for saving changes related to the shoppinglist-->
         <button class="buttons" id="saveChanges" @click="save">Lagre endringer</button>
-
         <!-- Button for moving checked items to the fridge, and removing them from the shoppinglist-->
         <button class="buttons" id="addSelected" @click="buy">Kjøp valgte varer</button>
       </div>
