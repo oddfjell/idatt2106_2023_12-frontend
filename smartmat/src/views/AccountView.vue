@@ -8,8 +8,8 @@
 
 
     <div id="buttons">
-      <button @click="changeProfile" class="logout-Btn">Bytt bruker</button>
-      <button @click="logout" class="logout-Btn">Logg ut
+      <button @click="changeProfile" id="changeProfile" class="logout-Btn">Bytt bruker</button>
+      <button @click="logout" id="logout" class="logout-Btn">Logg ut
         <span class="material-symbols-outlined">logout</span></button>
     </div>
 
