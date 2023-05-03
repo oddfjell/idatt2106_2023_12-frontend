@@ -24,8 +24,7 @@
         </div>
       </RouterLink>
     </div>
-    <h1 style="text-align: center">Statistikk</h1>
-    <div id="graphGrid">
+      <div id="graphGrid">
       <GraphComponent id="lineChart"/>
       <PieChart id="pieChart"/>
     </div>

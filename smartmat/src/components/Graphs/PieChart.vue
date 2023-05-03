@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h3 style="text-align: center">Penger tapt på kasting per kategori</h3>
     <Pie v-if="loaded" id="my-chart-id" :data="chartData" :options="options" />
     </div>
 </template>
@@ -35,14 +36,14 @@ export default {
     },
     async created() {
         this.loaded=false
-        let categories = ['Category']
-        let percentage = [100]
+        let categories = []
+        let percentage = []
         try{
             let response = await wasteService.getMoneyLostPerCategory(tokenStore().user.jwt)
             console.log(response)
             for (const data of response.data) {
                 categories.push(data.category)
-                percentage.push(data.total)
+                percentage.push(data.money_lost)
             }
         }catch (error){
             console.log(error)
