@@ -40,54 +40,6 @@ export default {
 
 <style scoped>
 
-#profile-card{
-  position: relative;
-  margin: 2em;
-  width: 12em;
-  height: 17em;
-  background-color: #fff;
-  border-radius: 1em;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  transition: transform 0.3s;
-  cursor: pointer;
-}
 
-#icon{
-  top: 0.1em;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  font-size: 12em;
-  position: relative;
-}
-
-#profile-card #title{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1em;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  text-align: center;
-  font-size: 1em;
-  font-weight: bold;
-  text-shadow: 1em 1em 1em rgba(0, 0, 0, 0.5);
-}
-
-#profile-card:hover {
-  transform: scale(1.1);
-  z-index: 1;
-  box-shadow: 0 0 3em rgba(0, 0, 0, 0.5);
-}
-
- .material-symbols-outlined {
-   font-variation-settings:
-       'FILL' 1,
-       'wght' 700,
-       'GRAD' 200,
-       'opsz' 48
- }
-
+@import "../../assets/style/passwordPopup.css";
 </style>
