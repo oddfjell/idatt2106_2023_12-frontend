@@ -58,7 +58,6 @@ export default {
                     if (response.status === 200) {
                         let data=response.data
                         tokenStore().changeJWT(data.jwt)
-                        tokenStore().changeUsername(data.username)
                         await router.push("/profile")
                     } else {
                         this.error = response.status

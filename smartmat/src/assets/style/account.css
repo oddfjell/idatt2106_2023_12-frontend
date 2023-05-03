@@ -66,6 +66,12 @@
 
  }
 
+#buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+
 
 @media (max-width: 500px) {
     .container {
