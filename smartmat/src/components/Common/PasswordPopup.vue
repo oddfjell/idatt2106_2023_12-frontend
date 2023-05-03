@@ -81,17 +81,17 @@ export default {
 .popup-container {
   position: relative;
   background-color: #fff;
-  width: 400px;
+  width: 25em;
   max-width: 90%;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 2.5em;
+  border-radius: 2em;
+  box-shadow: 0 0 4em rgba(0, 0, 0, 0.5);
 }
 
 
 .popup-title {
   margin-top: 0;
-  font-size: 24px;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
   color: #333;
@@ -100,22 +100,22 @@ export default {
 
 .popup-input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
+  padding: 0.5em;
+  margin-bottom: 2em;
+  font-size: 1em;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
 }
 
 
 .popup-button {
   background-color: #e50914;
   color: #fff;
-  padding: 10px 20px;
+  padding: 1em 2em;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 3em;
+  font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s;
   display: block;
@@ -125,15 +125,15 @@ export default {
 
 
 .popup-button:hover {
-  background-color: #d10812;
+  background-color: #7c060c;
 }
 
 
 #popup-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
+  top: 1em;
+  right: 1em;
+  font-size: 1.5em;
   font-weight: bold;
   color: #333;
   cursor: pointer;
@@ -142,7 +142,7 @@ export default {
 
 
 #popup-close:hover {
-  color: #e50914;
+  color: #de1726;
 }
 
  .material-symbols-outlined {

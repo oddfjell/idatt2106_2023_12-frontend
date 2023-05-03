@@ -28,9 +28,9 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: none;
-  min-height: 100vh;
+.container{
+    max-width: none;
+    min-height: 100em;
 }
 
 #fridgeContainer {

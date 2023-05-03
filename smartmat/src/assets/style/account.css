@@ -16,15 +16,14 @@
     background: #6dbd5e;
     color: #2c2c2c;
     cursor: pointer;
-    font-size: 4vh;
-    padding: 1.5rem;
+    font-size: 1.5em;
+    padding: 0.8em;
     border: 0;
     transition: all 0.5s;
-    border-radius: 1vh;
+    border-radius: 0.4em;
     width: auto;
     position: relative;
-    min-width: 5vh;
-    margin-top: 5vh;
+    min-width: 5em;
 }
 
 .logout-Btn#logout{
@@ -53,9 +52,9 @@
 .logout-Btn:hover {
     background: black;
     transition: all 0.5s;
-    border-radius: 1vh;
-    box-shadow: 0px 1vh 2vh #6dbd5e;
-    padding: 1.5rem 3rem 1.5rem 1rem;
+    border-radius: 0.5em;
+    box-shadow: 0px 1em 2em #6dbd5e;
+    padding: 0.9em 2em 0.9em 1em;
     color: #ffffff;
 }
 
@@ -69,40 +68,37 @@
 #buttons{
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 0.5em;
 }
 
 
 @media (max-width: 500px) {
     .container {
         text-align: center;
-        border: 1vh solid #fafffa;
-        font-size: 3vh;
+        border: 1em solid #fafffa;
+        font-size: 1.5em;
         font-family: Hack, monospace;
-        margin-top: 18vh;
-        border-radius: 2vh;
-        box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+        border-radius: 2em;
+        box-shadow: rgba(0, 0, 0, 0.25) 0em 1em 3em, rgba(0, 0, 0, 0.22) 0em 1em 1em;
         background-color: #fafffa;
-        height: 65vh;
-        width: 40vh;
-        margin-left: 7vh;
-        margin-top: 10vh;
+        height: 25em;
+        width: 70vw;
+        margin: 1em auto auto;
     }
 }
 
 @media (min-width: 501px) {
     .container {
         text-align: center;
-        border: 1vh solid #fafffa;
-        font-size: 3vh;
+        border: 1em solid #fafffa;
+        font-size: 1.5em;
         font-family: Hack, monospace;
-        margin-top: 18vh;
-        border-radius: 2vh;
-        box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+        border-radius: 2em;
+        box-shadow: rgba(0, 0, 0, 0.25) 0em 1em 3em, rgba(0, 0, 0, 0.22) 0em 1em 1em;
         background-color: #fafffa;
-        height: 65vh;
-        width: 40vh;
-        margin-top: 10vh;
+        height: 28em;
+        width: 20em;
+        margin-top: 1em;
     }
 }
 
