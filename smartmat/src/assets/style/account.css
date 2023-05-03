@@ -26,10 +26,6 @@
     min-width: 5em;
 }
 
-.logout-Btn#logout{
-    visibility: hidden;
-}
-
 .logout-Btn::after {
     font-family: "Material Icons";
     position: absolute;
@@ -69,6 +65,14 @@
     display: flex;
     flex-direction: column;
     gap: 0.5em;
+}
+
+#removeAccount{
+    color: white;
+    background: #ff2f2f;
+}
+#removeAccount:hover{
+    box-shadow: 0px 1em 2em #ff2f2f;
 }
 
 
