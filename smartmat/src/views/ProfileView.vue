@@ -1,53 +1,74 @@
 <template>
-<div v-if="username" class="container">
-    <p>You are logged in as: </p>
-    <h1>{{username}}</h1>
-
-    <button @click="logout" class="GreyBtn Btn">Log out</button>
-    <p v-if="error">{{error}}</p>
-</div>
-  <div v-else class="container">
-      <h1>You are not logged in</h1>
+  <div id="row">
+    <div v-for="(profile, index) in profiles" :key="index" >
+      <ProfileIcon :profile="profile" @selectProfile="passwordPopup"></ProfileIcon>
+    </div>
+    <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
+
+  <div v-if="popup">
+    <PasswordPopup :profile="selectedProfile" @closePopup="closeThePopup"></PasswordPopup>
+  </div>
+
 </template>
 
 <script>
 import {tokenStore} from "@/stores/tokenStore";
-import router from "@/router";
+import accountService from "../services/accountService";
+import ProfileIcon from "../components/Common/ProfileIcon.vue";
+import PasswordPopup from "../components/Common/PasswordPopup.vue";
 
 export default {
-    name: "ProfileView",
-    data(){
-        return{
-            error:null
-        }
-    },
-    computed:{
-        username(){
-            return tokenStore().user.username
-        }
-    },
-    methods:{
-        logout(){
-            try {
-                tokenStore().changeJWT("")
-                tokenStore().changeUsername("")
-                router.push("/")
-            }catch (error){
-                this.error="Could not log out"
-            }
-        }
-    },
-    created() {
-        console.log(tokenStore().user.username)
+  name: "ProfileView",
+  components: {PasswordPopup, ProfileIcon},
+  data() {
+    return {
+      profiles: [],
+      addProfile: {
+        username: "Add"
+      },
+      popup: false,
+      selectedProfile: null
     }
+  },
+
+  methods:{
+    passwordPopup(profile){
+      this.selectedProfile = profile;
+      this.popup = true;
+    },
+    closeThePopup(){
+      this.selectedProfile = null;
+      this.popup = false;
+    }
+
+  },
+
+  async created() {
+    let profileList = await accountService.getAllProfiles(tokenStore().user.jwt);
+    let profileListData = profileList.data;
+
+    for (let profile of profileListData) {
+      this.profiles.push(profile);
+    }
+  }
+
+
 }
+
 
 </script>
 
 <style scoped>
-.container{
-    text-align: center;
-    border: 1px solid black;
+
+#row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  top: 15vh;
+  position: relative;
+  gap: 4vh;
 }
+
 </style>

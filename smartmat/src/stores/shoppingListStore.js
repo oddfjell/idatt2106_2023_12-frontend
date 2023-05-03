@@ -45,6 +45,7 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
         updateShoppingListEntity,
         getStateSaved,
         setStateSaved,
+        shoppingList,
     };
 })
 

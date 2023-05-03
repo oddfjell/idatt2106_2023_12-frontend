@@ -16,7 +16,7 @@
             </template>
             <template #footer>
                 <button class="Btn throwModalBtn" id="throwModalBtn" @click="close">Kast</button>  <!--id="throwModalBtn"-->
-                <button class="Btn" @click="close" id="cancelBtn" >Avbryt</button>
+                <button class="Btn" @click="exit" id="cancelBtn" >Avbryt</button>
             </template>
         </BaseModal>
     </Teleport>
@@ -33,8 +33,11 @@ export default {
     data() {
         return {
             showThrowModal: false,
-            value:100
+            value:100,
         }
+    },
+    props:{
+      grocery:Object
     },
     methods:{
         onSliderInput(event){
@@ -42,8 +45,14 @@ export default {
         },
         async close(){
             this.showThrowModal=false
-            await fridgeService.throwGrocery(this.grocery, tokenStore().user.jwt)
+            console.log(this.grocery.name)
+          //TODO pris
+            let thrownProduct = {name:this.grocery.name, newMoneyValue:this.value}
+            await fridgeService.throwGrocery(thrownProduct, tokenStore().user.jwt)
             location.reload();
+        },
+        async exit(){
+          this.showThrowModal=false
         }
     }
 }

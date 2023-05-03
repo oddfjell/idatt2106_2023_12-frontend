@@ -10,6 +10,8 @@ function configToken (token) {
         withCredentials: true
     }
 }
+
+
 export default {
     //should get account from Token
     getGroceries(token) {
@@ -19,10 +21,12 @@ export default {
         return axios.post(baseURL + '/add', grocery, configToken(token))
     },
     removeGrocery(grocery, token){
+        console.log(grocery)
         return axios.post(baseURL + '/remove', grocery, configToken(token))
     },
-    throwGrocery(grocery, token){
-        return axios.post(baseURL + '/throw', grocery, configToken(token))
+    throwGrocery(waste, token){
+        console.log(waste)
+        return axios.post(baseURL + '/throw', waste, configToken(token))
     }
 }
 

@@ -7,7 +7,7 @@
     </Slide>
     <template #addons>
       <Navigation />
-      <button @click="getAndChangeRecipe">
+      <button id="refreshRecipeBtn" @click="getAndChangeRecipe">
         <img src="../images/refresh-icon.png" alt="refresh-icon">
       </button>
     </template>
@@ -60,6 +60,7 @@ export default defineComponent({
 
     const changeRecipe = (index, recipesResponse) => {
       let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
+      console.log(recipesResponse)
       recipesShown.value.push(oldRecipe[0])
     }
 
