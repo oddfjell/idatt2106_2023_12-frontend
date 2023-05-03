@@ -5,12 +5,11 @@ nav a {
 
 
 nav {
-    font-size: 4vh;
-    height: 6vh;
+    font-size: 1em;
+    height: 3.5em;
     display: flex;
-    gap: 3vh;
-    margin-top: 2vh;
-    margin-right: 3vh;
+    margin-top: 1em;
+    margin-right: 1em;
     z-index: 9999;
 
 }
@@ -27,9 +26,6 @@ nav {
     'opsz' 48
 }
 
-#placeholder-space {
-    width: 140vh;
-}
 
 
 /*
@@ -52,24 +48,23 @@ Phone version
     }
 
     #bottom-navbar nav {
-        gap: 8vh;
+        gap: 8em;
         z-index: 9999;
 
     }
 
     #nav-icons {
-        gap: 7vh;
+        gap: 2.5em;
         display: flex;
 
     }
 
     #except-user-top {
-        gap: 7vh;
+        gap: 2.5em;
         display: flex;
     }
 
     #all-icons-bottom {
-        gap: 7vh;
         display: flex;
     }
 
@@ -86,7 +81,6 @@ Computer version
     #top-navbar {
         display: flex;
         background-color: #6dbd5e;
-        justify-content: right;
         position: fixed;
         z-index: 9999;
         left: 0;
@@ -107,12 +101,12 @@ Computer version
     }
 
     #nav-icons {
-        gap: 3vh;
+        gap: 0.7em;
         display: flex;
     }
 
     #except-user-top {
-        gap: 3vh;
+        gap: 0.8em;
         display: flex;
     }
 
@@ -121,9 +115,11 @@ Computer version
     }
 
     #logo {
-        width: 12vh;
+        width: 6em;
         height: auto;
         float: left;
+        left: 2em;
+        position: relative;
     }
 
     #logo-frame {
