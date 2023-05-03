@@ -102,6 +102,28 @@ Styling for the borders for the computer version
              'GRAD' 200,
              'opsz' 48
  }
+    #lineChart{
+        flex-grow: 1;
+    }
+    pie-chart{
+        flex-grow: 0.5;
+    }
+
+    #graphGrid{
+        width: 80%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: normal;
+        margin: auto auto 30px;
+    }
+
+    @media (max-width: 800px) {
+        #graphGrid{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
 
 
 }

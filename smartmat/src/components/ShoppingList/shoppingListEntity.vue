@@ -58,20 +58,5 @@ export default {
 </script>
 
 <style scoped>
-#container{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-.decrement{
- margin-left: 5px;
-}
-.increment{
-    margin-right: 5px;
-}
-.counter{
-  display: inline-block;
-  justify-content: center;
-    align-items: flex-end;
-}
+@import "../../assets/style/shoppingListEntity.css";
 </style>
