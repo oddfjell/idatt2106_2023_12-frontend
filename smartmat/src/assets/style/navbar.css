@@ -5,11 +5,8 @@ nav a {
 
 
 nav {
-    font-size: 1em;
-    height: 3.5em;
+    font-size: 10px;
     display: flex;
-    margin-top: 1em;
-    margin-right: 1em;
     z-index: 9999;
 
 }
@@ -86,6 +83,7 @@ Computer version
         z-index: 9999;
         left: 0;
         opacity: 1;
+        height: 10%;
     }
 
 
@@ -102,12 +100,12 @@ Computer version
     }
 
     #nav-icons {
-        gap: 0.7em;
+        gap: 3em;
         display: flex;
     }
 
     #except-user-top {
-        gap: 0.8em;
+        gap: 4em;
         display: flex;
     }
 
@@ -125,6 +123,11 @@ Computer version
 
     #logo-frame {
         float: left;
+    }
+
+    #navbar-frame{
+        position: relative;
+        right: 2%;
     }
 
 }
