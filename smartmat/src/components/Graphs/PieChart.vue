@@ -18,8 +18,6 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 export default {
     name: "GraphComponent",
     components:{Pie},
-    dates:[],
-    totalMoneyLost:[],
     data(){
         return{
             loaded:false,
@@ -31,8 +29,8 @@ export default {
                             anchor: "end",
                             align: "start",
                         },
-                        backgroundColor: [],
-                        data: []
+                        backgroundColor: ["Yellow"],
+                        data: [100]
                     }
                 ],
             },
@@ -72,6 +70,9 @@ export default {
         this.chartData.datasets[0].data= percentage
         this.chartData.datasets[0].backgroundColor = colors
         this.loaded=true
+        if(this.chartData.datasets[0].data.length===0){
+            this.chartData.labels=["No data"]
+        }
     }
 }
 </script>
