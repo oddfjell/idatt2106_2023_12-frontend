@@ -31,7 +31,7 @@ export default {
                             anchor: "end",
                             align: "start",
                         },
-                        backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+                        backgroundColor: [],
                         data: []
                     }
                 ],
@@ -46,7 +46,7 @@ export default {
                             weight:"bold"
                         }
                     }
-                }
+                },
             },
         }
     },
@@ -54,6 +54,7 @@ export default {
         this.loaded=false
         let categories = []
         let percentage = []
+        let colors = ['#00D8FF', '#E46651', '#41B883', '#DD1B16']
         try{
             let response = await wasteService.getMoneyLostPerCategory(tokenStore().user.jwt)
             console.log(response)
@@ -64,8 +65,12 @@ export default {
         }catch (error){
             console.log(error)
         }
+        for (let i = 4; i < categories.length; i++) {
+            colors.push('#'+Math.floor(Math.random()*16777215).toString(16));
+        }
         this.chartData.labels=categories
         this.chartData.datasets[0].data= percentage
+        this.chartData.datasets[0].backgroundColor = colors
         this.loaded=true
     }
 }
