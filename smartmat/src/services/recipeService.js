@@ -23,11 +23,11 @@ function addHeader(token) {
 }
   export default{
   //add Product
-    getWeekMenu(token){
-      return recipeApiClient.get('/weekMenu', addHeader(token))
+    getWeekMenu(token, servingsNr){
+      return recipeApiClient.get('/weekMenu/'+servingsNr, addHeader(token))
     },
-    getNewRecipe(token, recipes){
-        return recipeApiClient.post('/newRecipe', recipes, addHeader(token))
+    getNewRecipe(token, recipes, servingsNr){
+        return recipeApiClient.post('/newRecipe/'+servingsNr, recipes, addHeader(token))
       },
     getRecipe(token){
         return recipeApiClient.get('/asdasd', addHeader(token))

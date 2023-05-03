@@ -13,6 +13,11 @@
     </template>
   </Carousel>
         <p id="info">{{info}}</p>
+        <div id="serving-wrapper">
+          <button class="incrementbutton" @click="minusServing">-</button>
+          <p id="serving-size"> {{ servings }}</p>
+          <button class="incrementbutton" @click="plusServing">+</button>
+        </div>
         <div class=" Btn addToShoppingList">
             <button class="BlueBtn" @click="addToShoppingList">
                 Legg til varer i handleliste</button>
@@ -31,7 +36,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import recipeService from '../services/recipeService'
 import { tokenStore } from "@/stores/tokenStore";
@@ -46,6 +51,11 @@ export default defineComponent({
     Slide,
     Navigation,
   },
+  methods: {
+    async loadRecipes() {
+      
+    }
+  },
     data(){
       return{
           info:""
@@ -58,16 +68,31 @@ export default defineComponent({
 
     const recipesShown = ref([])
 
+    const servings = ref(4)
+
     const changeRecipe = (index, recipesResponse) => {
       let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
-      console.log(recipesResponse)
       recipesShown.value.push(oldRecipe[0])
+    }
+
+    const plusServing = () => {
+      if(servings.value < 25) {
+        servings.value++
+        loadRecipes();
+      }
+    }
+
+    const minusServing = () => {
+      if(servings.value > 1){
+      servings.value--
+      loadRecipes();
+    }
     }
 
     const getAndChangeRecipe = async () => {
         try {
             let carouselIndex = carousel.value.data.currentSlide._value
-            let recipesResponse = await recipeService.getNewRecipe(tokenStore().user.jwt, recipesShown.value);
+            let recipesResponse = await recipeService.getNewRecipe(tokenStore().user.jwt, recipesShown.value, servings.value);
             changeRecipe(carouselIndex, recipesResponse.data)
         }catch (error){
             console.log(error)
@@ -75,6 +100,27 @@ export default defineComponent({
         
         }
     }
+
+    const loadRecipes = async () => {
+      let recipeEntities = [];
+        try {
+            let recipesResponse = await recipeService.getWeekMenu(tokenStore().user.jwt, servings.value);
+            let recipes = recipesResponse.data
+            for (let recipe of recipes) {
+                recipeEntities.push(recipe)
+            }
+        }catch (error){
+            console.log(error)
+        }finally {
+        
+        }
+        displayRecipes.value=recipeEntities
+        recipesShown.value=recipeEntities.slice(0)
+    }
+
+    onMounted(() => {
+      loadRecipes()
+    })
 
     async function addToShoppingList(){
         this.info="Lagrer til handleliste..."
@@ -92,24 +138,15 @@ export default defineComponent({
       getAndChangeRecipe,
       carousel,
       recipesShown,
-      addToShoppingList
+      addToShoppingList,
+      servings,
+      plusServing,
+      minusServing,
+      loadRecipes
     }
   },
   async mounted() {
-    let recipeEntities = [];
-        try {
-            let recipesResponse = await recipeService.getWeekMenu(tokenStore().user.jwt);
-            let recipes = recipesResponse.data
-            for (let recipe of recipes) {
-                recipeEntities.push(recipe)
-            }
-        }catch (error){
-            console.log(error)
-        }finally {
-        
-        }
-        this.displayRecipes=recipeEntities
-        this.recipesShown=recipeEntities.slice(0)
+    
   },
     created() {
         if(!tokenStore().user.username){
@@ -173,5 +210,11 @@ img {
 }
 #info{
     text-align: center;
+}
+
+#serving-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
