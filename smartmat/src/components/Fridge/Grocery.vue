@@ -6,7 +6,7 @@
         </div>
         <div id="grocery-right">
           <p id="category">{{grocery.categoryName}}</p>
-          <p class="rigth" :class="{red:expiredWarning}" >{{expiredText}}</p>
+          <p class="rigth" :class="   {red:expiredWarning}" >{{expiredText}}</p>
 
           <div class="buttonBar">
               <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
@@ -75,8 +75,9 @@ export default {
     height: 100%;
     display: flex;
     justify-content: space-between;
-    border: 1px solid steelblue;
     padding: 5px;
+     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  font-family: Hack, monospace;
 
 }
 #grocery-left{

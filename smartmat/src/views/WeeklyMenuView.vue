@@ -1,6 +1,6 @@
 <template>
     <div v-if="username">
-  <Carousel ref="carousel" :wrap-around="false" :items-to-show="1">
+  <Carousel ref="carousel" :wrap-around="false" :items-to-show="1" id="carousel">
     <Slide v-for="recipe in displayRecipes" :key="recipe">
       <div class="carousel__item" :style="{backgroundImage: 'url(' + recipe.image + ')' }">
           <h3 id="slideTitle"> {{ recipe.title }} </h3></div>
@@ -18,11 +18,11 @@
                 Legg til varer i handleliste</button>
         </div>
         <div class="container" v-if="this.carousel">
-            <h1>Ingredienser</h1>
+            <h1 class="ingredients-title">Ingredienser</h1>
         <p style="display: none">{{currentSlide}}</p>
             <div v-if="this.displayRecipes[currentSlide.value]">
             <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
-            <p :key="this.displayRecipes[currentSlide._value] + index" v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
+            <p class="ingredients-text" :key="this.displayRecipes[currentSlide._value] + index" v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
             </div>
         </div>
 
@@ -129,19 +129,26 @@ export default defineComponent({
 
 <style scoped>
 .carousel__item {
-  min-height: 200px;
-    padding: 50px;
+  min-height: 10em;
+    padding: 4em;
   background-color: lightblue;
   color: black;
-  font-size: 20px;
-  border-radius: 8px;
+  font-size: 1.2em;
+  border-radius: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center;
+  max-width: 50em;
+  margin: auto;
 
+}
+
+#carousel{
+  width: 50em;
+  margin: auto;
 }
 
 .carousel__slide {
@@ -159,19 +166,40 @@ export default defineComponent({
   align-items: center;
 }
  .container{
-     border: 1px solid black
+   background-color: #f7f7f7;
+   border-radius: 1.25em; /* 20px / 16px = 1.25em */
+   padding: 1.875em; /* 30px / 16px = 1.875em */
+   margin-bottom: 2.5em; /* 40px / 16px = 2.5em */
+   width: 50em;
  }
 img {
-  width: 20px;
-  height: 20px;
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
 }
 #slideTitle{
     background-color: rgb(76, 75, 75, 0.6);
     color: white;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 2em 2em 2em black;
     width: 100%;
 }
 #info{
     text-align: center;
 }
+.ingredients-title {
+  font-size: 2.5em; /* 40px / 16px = 2.5em */
+  font-weight: bold;
+  margin-bottom: 1.25em; /* 20px / 16px = 1.25em */
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.125em; /* 2px / 16px = 0.125em */
+  text-align: center;
+}
+
+.ingredients-text {
+  color: #555;
+  font-size: 1.25em; /* 20px / 16px = 1.25em */
+  line-height: 1.4;
+}
+
 </style>
