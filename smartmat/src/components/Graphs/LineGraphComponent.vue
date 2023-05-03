@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h3 style="text-align: center">Penger tapt på kasting siste måned</h3>
 <Line v-if="loaded"  id="my-chart-id"
        :options="chartOptions"
        :data="chartData"/>
