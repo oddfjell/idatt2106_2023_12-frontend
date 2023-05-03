@@ -49,7 +49,7 @@
     background: black;
     transition: all 0.5s;
     border-radius: 0.5em;
-    box-shadow: 0px 1em 2em #6dbd5e;
+    box-shadow: 0 1em 2em #6dbd5e;
     padding: 0.9em 2em 0.9em 1em;
     color: #ffffff;
 }
@@ -72,7 +72,7 @@
     background: #ff2f2f;
 }
 #removeAccount:hover{
-    box-shadow: 0px 1em 2em #ff2f2f;
+    box-shadow: 0 1em 2em #ff2f2f;
 }
 
 
@@ -83,7 +83,7 @@
         font-size: 1.5em;
         font-family: Hack, monospace;
         border-radius: 2em;
-        box-shadow: rgba(0, 0, 0, 0.25) 0em 1em 3em, rgba(0, 0, 0, 0.22) 0em 1em 1em;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 1em 3em, rgba(0, 0, 0, 0.22) 0 1em 1em;
         background-color: #fafffa;
         height: 25em;
         width: 70vw;
@@ -98,7 +98,7 @@
         font-size: 1.5em;
         font-family: Hack, monospace;
         border-radius: 2em;
-        box-shadow: rgba(0, 0, 0, 0.25) 0em 1em 3em, rgba(0, 0, 0, 0.22) 0em 1em 1em;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 1em 3em, rgba(0, 0, 0, 0.22) 0 1em 1em;
         background-color: #fafffa;
         height: 28em;
         width: 20em;
