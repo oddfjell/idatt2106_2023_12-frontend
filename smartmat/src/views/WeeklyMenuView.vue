@@ -135,6 +135,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   margin: auto;
+  zoom: 80%;
 }
 
 .carousel__item {
@@ -150,13 +151,13 @@ export default defineComponent({
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  max-width: 50em;
+  width: 100%;
   margin: auto;
 
 }
 
 #carousel {
-  width: 50em;
+  width: 100%;
   margin: auto;
 }
 

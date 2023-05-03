@@ -69,7 +69,6 @@ export default {
     align-items: center;
     position: relative;
     height: auto;
-    top: 50%;
     gap: 3%;
     margin: 5% auto auto;
   }
@@ -83,7 +82,6 @@ export default {
     align-items: center;
     position: relative;
     height: auto;
-    top: 50%;
     gap: 3%;
     margin: 5% auto auto;
     font-size: 10px;
