@@ -11,7 +11,6 @@ import { Pie } from 'vue-chartjs'
 import {tokenStore} from "@/stores/tokenStore";
 import wasteService from "@/services/wasteService";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import {bold} from "sinon/lib/sinon/color";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 
@@ -36,9 +35,8 @@ export default {
             },
             options: {
                 plugins: {
-                    // Change options for ALL labels of THIS CHART
                     datalabels: {
-                        formatter: (value, ctx) => value + " kr",
+                        formatter: (value) => value + " kr",
                         color: '#000000',
                         font:{
                             weight:"bold"
