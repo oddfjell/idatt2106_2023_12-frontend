@@ -1,14 +1,16 @@
 <template>
-    <div id="container">
+  <div id="container">
+    <div id="item">
     <input type="checkbox" :checked="listEntity.foundInStore" @change="updateChecked">
-        <p>{{ listEntity.name}}</p>
-        <div class="counter">
-            <span>{{listEntity.count}}</span>
-            <button class="decrement" :disabled="listEntity.count<=1" @click.prevent="decrement">-</button>
-            <button class="increment" :disabled="listEntity.count>=99" @click.prevent="increment">+</button>
-            <span class="material-symbols-outlined" @click.prevent="resetCounter">delete</span>
-        </div>
+    <p id="grocery-item">{{ listEntity.name }}</p>
     </div>
+    <div class="counter">
+      <button class="buttons" id="decrement" :disabled="listEntity.count<=1" @click.prevent="decrement">-</button>
+      <span id="number">{{ listEntity.count }}</span>
+      <button class="buttons" id="increment" :disabled="listEntity.count>=99" @click.prevent="increment">+</button>
+      <span class="material-symbols-outlined" @click.prevent="resetCounter">delete</span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -58,5 +60,6 @@ export default {
 </script>
 
 <style scoped>
-@import "../../assets/style/shoppingListEntity.css";
+@import "../../assets/style/shoppingList.css";
+
 </style>
