@@ -1,7 +1,10 @@
 <template>
   <div v-if="username" class="container">
-    <p>You are logged in as: </p>
-    <h1>{{username}}</h1>
+    <p>Du er logget inn som: </p>
+    <span id="user" class="material-symbols-outlined">
+  account_circle
+  </span>
+    <h1 id="loggedin-user">{{username}}</h1>
 
 
     <div id="buttons">
@@ -14,7 +17,7 @@
     <p v-if="error">{{error}}</p>
   </div>
   <div v-else class="container">
-    <h1>You are not logged in</h1>
+    <h1>Du er ikke logget inn</h1>
   </div>
 </template>
 
@@ -41,7 +44,7 @@ export default {
         tokenStore().changeUsername("")
         router.push("/")
       }catch (error){
-        this.error="Could not log out"
+        this.error="Kunne ikke logge ut"
       }
     },
     changeProfile(){

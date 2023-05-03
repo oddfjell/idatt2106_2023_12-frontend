@@ -10,7 +10,7 @@
 
           <div class="buttonBar">
               <button class="Btn" id="eatBtn" @click="onEat">Spist</button>
-              <Throw/>
+              <Throw :grocery="grocery"/>
           </div>
         </div>
 </div>

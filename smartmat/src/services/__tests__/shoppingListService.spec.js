@@ -40,6 +40,13 @@ describe("Shopping List Service", () =>{
             expect(save.status).toStrictEqual(status)
         });
     })
+
+    describe("save changes test", () => {
+        it("tests that changes are saved to backend when calling saveChanges method", async () => {
+            
+        })
+    })
+
     describe("buyChecked test", async () => {
             it("tests that axios.post method is called while calling buyChecked method", async () => {
                 const status = 202

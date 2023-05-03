@@ -1,13 +1,15 @@
 
-.container{
-    text-align: center;
-    border: 1vh solid #fafffa;
-    font-size: 3vh;
-    font-family: Hack, monospace;
-    margin-top: 18vh ;
-    border-radius: 2vh;
-    box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
-    background-color: #fafffa;
+
+ #user {
+     font-size: 15vh;
+     font-variation-settings:
+             'FILL' 1,
+             'wght' 400,
+             'GRAD' 200,
+             'opsz' 48
+ }
+
+#loggedin-user{
 }
 .logout-Btn {
     font-family: Hack, monospace;
@@ -22,9 +24,10 @@
     width: auto;
     position: relative;
     min-width: 5vh;
+    margin-top: 5vh;
 }
 
-.logout-Btn.material-symbols-outlined{
+.logout-Btn#logout{
     visibility: hidden;
 }
 
@@ -70,7 +73,38 @@
 }
 
 
+@media (max-width: 500px) {
+    .container {
+        text-align: center;
+        border: 1vh solid #fafffa;
+        font-size: 3vh;
+        font-family: Hack, monospace;
+        margin-top: 18vh;
+        border-radius: 2vh;
+        box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+        background-color: #fafffa;
+        height: 65vh;
+        width: 40vh;
+        margin-left: 7vh;
+        margin-top: 10vh;
+    }
+}
 
+@media (min-width: 501px) {
+    .container {
+        text-align: center;
+        border: 1vh solid #fafffa;
+        font-size: 3vh;
+        font-family: Hack, monospace;
+        margin-top: 18vh;
+        border-radius: 2vh;
+        box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+        background-color: #fafffa;
+        height: 65vh;
+        width: 40vh;
+        margin-top: 10vh;
+    }
+}
 
 
 
