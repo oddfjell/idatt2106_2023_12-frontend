@@ -1,5 +1,5 @@
 <template>
-  <div v-if="username" class="container" id="frame">
+  <div v-if="username && !restricted" class="container" id="frame">
     <h1 id="title">Handleliste</h1>
     <div id="header">
       <!-- The shopping list dropdown component -->
@@ -26,6 +26,11 @@
       <div v-else><h3 class="message" id="empty-list"> Du har ikke noe i handlelisten</h3></div>
     </div>
   </div>
+
+  <div v-else-if="username && restricted" class="container" id="frame">
+
+  </div>
+
   <div v-else>
     <h1 class="font"> Vennligst logg inn </h1>
   </div>
@@ -185,8 +190,12 @@ export default {
   computed: {
     username() {
       return tokenStore().user.username
+    },
+    restricted(){
+      return tokenStore().user.restricted
     }
   },
+
 }
 
 
