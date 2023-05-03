@@ -2,14 +2,14 @@
 
 @media (max-width:500px) {
     .card {
-        visibility: hidden;
+        display: none;
     }
     #outer-border{
-        visibility: hidden;
+        display: none;
     }
 
     .card h1 {
-        visibility: hidden;
+        display: none;
     }
 
     a{
@@ -18,7 +18,7 @@
 
     .material-symbols-outlined {
 
-        visibility: hidden;
+        display: none;
 
     }
 
