@@ -59,7 +59,7 @@ export default {
                         let data=response.data
                         tokenStore().changeJWT(data.jwt)
                         tokenStore().changeUsername(data.username)
-                        await router.push("/home")
+                        await router.push("/profile")
                     } else {
                         this.error = response.status
                         console.log("Login failed")
@@ -80,8 +80,9 @@ export default {
      * If the user is already logged in, they will be sent to the homepage
      */
     created() {
-        if(tokenStore().user.username){
-            router.push("/home")
+        if(tokenStore().user.username !== ""){
+            console.log(tokenStore().user.username)
+            router.push("/profile")
         }
     }
 }

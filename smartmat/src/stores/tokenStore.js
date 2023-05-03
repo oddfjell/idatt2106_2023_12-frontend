@@ -5,7 +5,8 @@ import { ref, watch } from "vue";
 export const tokenStore = defineStore("user", () => {
     const user = ref({
         username: "",
-        jwt: ""
+        jwt: "",
+        restricted: null
     });
 
     if(localStorage.getItem("user")){
@@ -28,10 +29,15 @@ export const tokenStore = defineStore("user", () => {
         user.value.jwt = newJWT;
     }
 
+    const changeRestriction = (newRestriction) => {
+        user.value.restricted = newRestriction;
+    }
+
     return{
         user,
         changeUsername,
-        changeJWT
+        changeJWT,
+        changeRestriction
     };
 
 });
