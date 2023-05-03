@@ -66,6 +66,7 @@ Phone version
 
     #all-icons-bottom {
         display: flex;
+        gap: 2.5em;
     }
 
     #logo {

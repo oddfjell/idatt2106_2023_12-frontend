@@ -29,7 +29,7 @@ export default {
 <style scoped>
 .container{
     max-width: none;
-    min-height: 100vh;
+    min-height: 100em;
 }
 #fridgeContainer{
     margin-left: 10%;
