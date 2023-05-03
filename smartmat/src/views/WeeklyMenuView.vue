@@ -18,11 +18,11 @@
                 Legg til varer i handleliste</button>
         </div>
         <div class="container" v-if="this.carousel">
-            <h1>Ingredienser</h1>
+            <h1 class="ingredients-title">Ingredienser</h1>
         <p style="display: none">{{currentSlide}}</p>
             <div v-if="this.displayRecipes[currentSlide.value]">
             <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
-            <p :key="this.displayRecipes[currentSlide._value] + index" v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
+            <p class="ingredients-text" :key="this.displayRecipes[currentSlide._value] + index" v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
             </div>
         </div>
 
@@ -166,7 +166,11 @@ export default defineComponent({
   align-items: center;
 }
  .container{
-     border: 1px solid black
+   background-color: #f7f7f7;
+   border-radius: 1.25em; /* 20px / 16px = 1.25em */
+   padding: 1.875em; /* 30px / 16px = 1.875em */
+   margin-bottom: 2.5em; /* 40px / 16px = 2.5em */
+   width: 50em;
  }
 img {
   width: 2em;
@@ -182,4 +186,20 @@ img {
 #info{
     text-align: center;
 }
+.ingredients-title {
+  font-size: 2.5em; /* 40px / 16px = 2.5em */
+  font-weight: bold;
+  margin-bottom: 1.25em; /* 20px / 16px = 1.25em */
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.125em; /* 2px / 16px = 0.125em */
+  text-align: center;
+}
+
+.ingredients-text {
+  color: #555;
+  font-size: 1.25em; /* 20px / 16px = 1.25em */
+  line-height: 1.4;
+}
+
 </style>
