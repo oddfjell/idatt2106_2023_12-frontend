@@ -1,7 +1,7 @@
 {
   "user1": {
-    "username": "testuser1",
-    "password": "testpassword1"
+    "username": "ingf",
+    "password": "ingf"
   },
   "user2": {
     "username": "",
@@ -10,6 +10,10 @@
   "user3": {
     "username": "testuser3",
     "password": ""
+  },
+  "user3": {
+    "username": "testuser4",
+    "password": "testuser4"
   }
 
 }
