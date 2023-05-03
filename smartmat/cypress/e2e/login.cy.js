@@ -20,13 +20,13 @@ describe('Login', () => {
     })
 
 
-        it('login redirects to home page', () => {
+        it('login redirects to profile page', () => {
             cy.fixture('user').then((users) => {
                 const {user1} = users;
                 cy.get('input[name=username]').type(user1.username);
                 cy.get('input[name=password]').type(user1.password);
                 cy.get('#loginBtn').click();
-                cy.url().should('include', '/home')
+                cy.url().should('include', '/profile')
             });
 
         it('invalid username ', () => {
