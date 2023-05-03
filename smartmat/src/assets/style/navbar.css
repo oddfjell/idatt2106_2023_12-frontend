@@ -112,7 +112,7 @@ Computer version
     }
 
     #all-icons-bottom {
-        visibility: hidden;
+        display: none;
     }
 
     #logo {
