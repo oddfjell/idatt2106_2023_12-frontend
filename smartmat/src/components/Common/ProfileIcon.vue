@@ -38,7 +38,7 @@ export default {
       }
     },
     async removeProfile(){
-        console.log("remove")
+        this.$emit("deleteProfile", this.profile);
     }
   }
 }

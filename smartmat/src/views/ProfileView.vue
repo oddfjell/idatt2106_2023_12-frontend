@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <div id="row">
     <div :id='"profile"+index' v-for="(profile, index) in profiles" :key="index">
-      <ProfileIcon :profile="profile" @selectProfile="passwordPopup"></ProfileIcon>
+      <ProfileIcon :profile="profile" @selectProfile="passwordPopup" @deleteProfile="passwordPopupDelete"></ProfileIcon>
     </div>
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
@@ -13,7 +13,7 @@
   </div>
 
   <div v-if="popup">
-    <PasswordPopup :profile="selectedProfile" @closePopup="closeThePopup"></PasswordPopup>
+    <PasswordPopup :profile="selectedProfile" :deleteProfile="deleteProfile" @closePopup="closeThePopup"></PasswordPopup>
   </div>
 
 </template>
@@ -35,13 +35,20 @@ export default {
         username: "Add"
       },
       popup: false,
-      selectedProfile: null
+      selectedProfile: null,
+      deleteProfile:false
     }
   },
 
   methods: {
     passwordPopup(profile) {
       this.selectedProfile = profile;
+      this.deleteProfile = false;
+      this.popup = true;
+    },
+    passwordPopupDelete(profile) {
+      this.selectedProfile = profile;
+      this.deleteProfile = true;
       this.popup = true;
     },
     closeThePopup() {

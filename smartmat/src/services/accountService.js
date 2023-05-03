@@ -41,5 +41,9 @@ export default {
 
   loginProfile(profile, token){
     return axios.post(baseURL + "/profileLogin", profile, configToken(token))
+  },
+
+  deleteProfile(profile, token){
+    return axios.post(baseURL + "/deleteProfile", profile, configToken(token))
   }
 };
