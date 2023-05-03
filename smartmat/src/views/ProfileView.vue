@@ -63,10 +63,12 @@ export default {
 
 #row {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-  margin-top: 25vh;
+  top: 15vh;
+  position: relative;
+  gap: 4vh;
 }
 
 </style>
