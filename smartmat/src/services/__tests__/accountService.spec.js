@@ -56,16 +56,13 @@ describe("Account Service", () => {
 
 
     describe("removeAccount test", () => {
-        it("tests that axios.post method is called while calling removeAccount method", async () => {
+        it("tests that axios.delete method is called while calling removeAccount method", async () => {
             const responseMock = true
-            axios.post.mockResolvedValue({
+            axios.delete.mockResolvedValue({
                 data: responseMock,
             })
-            const AccountPayload = {
-                name: 'bob',
-            }
-            const removeResult = await accountService.removeAccount(AccountPayload, 123)
-            expect(axios.post).toHaveBeenCalledWith('http://localhost:8080/auth/account/remove', AccountPayload, {headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true} )
+            const removeResult = await accountService.removeAccount( 123)
+            expect(axios.delete).toHaveBeenCalledWith('http://localhost:8080/auth/account/remove', {headers:{"Authorization": "Bearer 123", 'Content-Type': 'application/json'}, withCredentials: true} )
             expect(removeResult.data).toStrictEqual(responseMock)
         });
     })

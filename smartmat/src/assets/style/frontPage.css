@@ -1,3 +1,16 @@
+#lineChart{
+    flex-basis: 65%;
+}
+#pieChart{
+    flex-basis: 35%;
+}
+#graphGrid{
+    width: 80%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: normal;
+    margin: auto auto 30px;
+}
 
 
 @media (max-width:500px) {
@@ -100,12 +113,14 @@ Styling for the borders for the computer version
      position: relative;
      right: 15%;
 
-     font-variation-settings:
-             'FILL' 1,
-             'wght' 700,
-             'GRAD' 200,
-             'opsz' 48
- }
+ font-variation-settings:
+         'FILL' 1,
+         'wght' 700,
+         'GRAD' 200,
+         'opsz' 48
+}
+
+
 
 
 }

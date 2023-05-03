@@ -1,18 +1,26 @@
 <template>
 <div>
-    <button class="hamburgerBtn Btn GreyBtn" @click="toggleCheckedList"> {{toggleBtnText}}</button>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <button class="buttons" id="show-list" @click="toggleCheckedList"> {{toggleBtnText}}</button>
     <div v-if="uncheckedEntities || checkedEntities" id="shoppingListEntitiesGrid">
         <div id="unchecked_list">
-            <h3>Ikke valgt</h3>
-            <div v-for="(uncheckedEntity, index) in uncheckedEntities" :key="uncheckedEntity.name">
-                <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" @updateChecked="updateChecked" :count="uncheckedEntity.count" />
-            </div>
+            <h3 class="font">Ikke valgt</h3>
+          <ul>
+            <li v-for="(uncheckedEntity, index) in uncheckedEntities" :key="uncheckedEntity.name">
+              <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" @updateChecked="updateChecked" :count="uncheckedEntity.count" />
+            </li>
+          </ul>
         </div>
         <div id="checked_list">
-            <h3>Valgt</h3>
-            <div v-for="(checkedEntity, index) in checkedEntities" :key="checkedEntity.name">
-                <ShoppingListEntity :tabindex="index+1" :listEntity="checkedEntity" @updateChecked="updateChecked" :count="checkedEntity.count" />
-            </div>
+            <h3 class="font">Valgt</h3>
+          <ul>
+            <li v-for="(checkedEntity, index) in checkedEntities" :key="checkedEntity.name">
+              <ShoppingListEntity :tabindex="index+1" :listEntity="checkedEntity" @updateChecked="updateChecked" :count="checkedEntity.count" />
+            </li>
+          </ul>
+
         </div>
     </div>
     <div v-else><h3>Ingen varer i handlelisten!</h3></div>
@@ -72,54 +80,6 @@ export default {
 </script>
 
 <style scoped>
-#shoppingListEntitiesGrid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap:5px;
-}
+@import "../../assets/style/shoppingList.css";
 
-#unchecked_list{
-    text-align: center;
-    border: 1px solid steelblue;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 60vh;
-    max-height: 90vh;
-    overflow: auto;
-}
-#checked_list{
-    text-align: center;
-    border: 1px solid steelblue;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 60vh;
-    max-height: 90vh;
-    overflow: auto;
-}
-
-.hamburgerBtn{
-    display: none;
-}
-
-@media(max-width:500px ){
-    .hamburgerBtn{
-        display: block;
-        margin: 0 auto 5px;
-    }
-
-    #shoppingListEntitiesGrid{
-        grid-template-columns: 1fr;
-    }
-    #checked_list{
-        display: none;
-    }
-}
-@media (min-width: 501px) {
-    #checked_list{
-        display: block !important;
-    }
-    #unchecked_list{
-        display: block !important;
-    }
-}
 </style>

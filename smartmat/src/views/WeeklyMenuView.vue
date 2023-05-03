@@ -17,6 +17,26 @@
       <button class="BlueBtn" @click="addToShoppingList">
         Legg til varer i handleliste
       </button>
+      <p id="info">{{ info }}</p>
+      <div id="serving-wrapper">
+        <button class="incrementbutton" @click="minusServing">-</button>
+        <p id="serving-size"> {{ servings }}</p>
+        <button class="incrementbutton" @click="plusServing">+</button>
+      </div>
+      <div class=" Btn addToShoppingList">
+        <button class="BlueBtn" @click="addToShoppingList">
+          Legg til varer i handleliste
+        </button>
+      </div>
+      <div class="container" v-if="this.carousel">
+        <h1>Ingredienser</h1>
+        <p style="display: none">{{ currentSlide }}</p>
+        <div v-if="this.displayRecipes[currentSlide.value]">
+          <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
+          <p :key="this.displayRecipes[currentSlide._value] + index"
+             v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ ingredient }}</p>
+        </div>
+      </div>
     </div>
     <div class="container" v-if="this.carousel">
       <h1 class="ingredients-title">Ingredienser</h1>
@@ -33,8 +53,8 @@
 </template>
 
 <script>
-import {defineComponent, ref} from 'vue'
-import {Carousel, Navigation, Slide} from 'vue3-carousel'
+import { defineComponent, onMounted, ref } from 'vue'
+import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import recipeService from '../services/recipeService'
 import {tokenStore} from "@/stores/tokenStore";
 
@@ -48,11 +68,18 @@ export default defineComponent({
     Slide,
     Navigation,
   },
-  data() {
-    return {
-      info: ""
+
+  methods: {
+    async loadRecipes() {
+
     }
   },
+  data(){
+    return{
+      info:""
+    }
+  },
+
   setup() {
     const carousel = ref(null)
 
@@ -60,16 +87,31 @@ export default defineComponent({
 
     const recipesShown = ref([])
 
+    const servings = ref(4)
+
     const changeRecipe = (index, recipesResponse) => {
       let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
-      console.log(recipesResponse)
       recipesShown.value.push(oldRecipe[0])
+    }
+
+    const plusServing = () => {
+      if (servings.value < 25) {
+        servings.value++
+        loadRecipes();
+      }
+    }
+
+    const minusServing = () => {
+      if (servings.value > 1) {
+        servings.value--
+        loadRecipes();
+      }
     }
 
     const getAndChangeRecipe = async () => {
       try {
         let carouselIndex = carousel.value.data.currentSlide._value
-        let recipesResponse = await recipeService.getNewRecipe(tokenStore().user.jwt, recipesShown.value);
+        let recipesResponse = await recipeService.getNewRecipe(tokenStore().user.jwt, recipesShown.value, servings.value);
         changeRecipe(carouselIndex, recipesResponse.data)
       } catch (error) {
         console.log(error)
@@ -78,14 +120,35 @@ export default defineComponent({
       }
     }
 
-    async function addToShoppingList() {
-      this.info = "Lagrer til handleliste..."
-      try {
-        await recipeService.addToShoppingList(tokenStore().user.jwt, displayRecipes.value)
-        this.info = "Lagret!"
-      } catch (error) {
-        console.log(error)
-      }
+    const loadRecipes = async () => {
+      let recipeEntities = [];
+        try {
+            let recipesResponse = await recipeService.getWeekMenu(tokenStore().user.jwt, servings.value);
+            let recipes = recipesResponse.data
+            for (let recipe of recipes) {
+                recipeEntities.push(recipe)
+            }
+        }catch (error){
+            console.log(error)
+        }finally {
+
+        }
+        displayRecipes.value=recipeEntities
+        recipesShown.value=recipeEntities.slice(0)
+    }
+
+    onMounted(() => {
+      loadRecipes()
+    })
+
+    async function addToShoppingList(){
+        this.info="Lagrer til handleliste..."
+        try {
+            await recipeService.addToShoppingList(tokenStore().user.jwt, displayRecipes.value)
+            this.info="Lagret!"
+        }catch (error){
+            console.log(error)
+        }
     }
 
     return {
@@ -94,10 +157,15 @@ export default defineComponent({
       getAndChangeRecipe,
       carousel,
       recipesShown,
-      addToShoppingList
+      addToShoppingList,
+      servings,
+      plusServing,
+      minusServing,
+      loadRecipes
     }
   },
   async mounted() {
+
     let recipeEntities = [];
     try {
       let recipesResponse = await recipeService.getWeekMenu(tokenStore().user.jwt);
@@ -183,6 +251,7 @@ export default defineComponent({
   margin-bottom: 2.5em;
   width: 100%;
 }
+
 
 img {
   width: 2em;

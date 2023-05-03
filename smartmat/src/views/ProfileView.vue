@@ -1,6 +1,6 @@
 <template>
   <div id="row">
-    <div v-for="(profile, index) in profiles" :key="index" >
+    <div :id='"profile"+index' v-for="(profile, index) in profiles" :key="index">
       <ProfileIcon :profile="profile" @selectProfile="passwordPopup"></ProfileIcon>
     </div>
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
@@ -17,6 +17,7 @@ import {tokenStore} from "@/stores/tokenStore";
 import accountService from "../services/accountService";
 import ProfileIcon from "../components/Common/ProfileIcon.vue";
 import PasswordPopup from "../components/Common/PasswordPopup.vue";
+import router from "@/router";
 
 export default {
   name: "ProfileView",
@@ -32,12 +33,12 @@ export default {
     }
   },
 
-  methods:{
-    passwordPopup(profile){
+  methods: {
+    passwordPopup(profile) {
       this.selectedProfile = profile;
       this.popup = true;
     },
-    closeThePopup(){
+    closeThePopup() {
       this.selectedProfile = null;
       this.popup = false;
     }
@@ -45,6 +46,9 @@ export default {
   },
 
   async created() {
+      if (!tokenStore().user.jwt) {
+          router.push("/")
+      }
     let profileList = await accountService.getAllProfiles(tokenStore().user.jwt);
     let profileListData = profileList.data;
 

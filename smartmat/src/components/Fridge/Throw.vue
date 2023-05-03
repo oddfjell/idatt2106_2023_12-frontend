@@ -59,40 +59,6 @@ export default {
 </script>
 
 <style scoped>
-.slidecontainer {
-    width: 100%;
-}
-.slider{
-    width: 100%;
-}
-.Btn{
-    float: right;
-    border: 0;
-    width: fit-content;
-    padding: 5%;
-    border-radius: 5px;
-    margin: 0;
-}
-
-.throwModalBtn{
-    background: #fc546c;
-    color: white;
-}
-
-#cancelBtn{
-    background: #d5d5d5;
-    color: black;
-    margin-right: 10px;
-}
-
-.throwModalBtn:hover {
-    background-color: #ff2222;
-    cursor: pointer;
-}
-
-#cancelBtn:hover {
-    background-color: #b7b7b7;
-    cursor: pointer;
-}
+@import "../../assets/style/Throw.css";
 
 </style>

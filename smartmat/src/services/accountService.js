@@ -1,11 +1,5 @@
 import axios from 'axios';
 const baseURL = "http://localhost:8080/auth/account"
-let config = {
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  withCredentials: true
-}
 function configToken (token) {
   return {
     headers: {
@@ -33,9 +27,8 @@ export default {
   },
 
   //Remove an account
-  removeAccount(account, token){
-    //config.headers+=addHeader(token)
-    return axios.post(baseURL + '/remove', account, configToken(token));
+  removeAccount(token){
+    return axios.delete(baseURL + '/remove', configToken(token));
   },
 
   getAllProfiles(token){

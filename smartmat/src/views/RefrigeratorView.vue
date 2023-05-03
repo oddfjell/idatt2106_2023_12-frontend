@@ -28,21 +28,5 @@ export default {
 </script>
 
 <style scoped>
-.container{
-    max-width: none;
-    min-height: 100em;
-}
-
-#fridgeContainer {
-  text-align: center;
-  padding: 0;
-  font-family: Hack, monospace;
-
-}
-
-@media (max-width: 500px ) {
-  .container {
-    padding: 0;
-  }
-}
+@import "../assets/style/refrigerator.css";
 </style>

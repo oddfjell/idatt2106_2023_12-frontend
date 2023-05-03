@@ -1,9 +1,12 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <div id="profile-card" @click="selectProfile">
-    <div v-if="!add" class="material-symbols-outlined" id="icon">person</div>
-    <div v-else class="material-symbols-outlined" id="icon">add</div>
-    <div id="title">{{profile.username}}</div>
+  <div id="profile-card">
+      <div v-if="!add" class="material-symbols-outlined" id="remove" @click="removeProfile">Remove</div>
+      <div id="choose" @click="selectProfile">
+        <div v-if="!add" class="material-symbols-outlined" id="icon">person</div>
+        <div v-else class="material-symbols-outlined" id="icon">add</div>
+         <div id="title">{{profile.username}}</div>
+      </div>
   </div>
 </template>
 
@@ -33,6 +36,9 @@ export default {
       }else{
         this.$emit("selectProfile", this.profile);
       }
+    },
+    async removeProfile(){
+        console.log("remove")
     }
   }
 }
@@ -50,7 +56,6 @@ export default {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: transform 0.3s;
-  cursor: pointer;
 }
 
 #icon{
@@ -81,7 +86,19 @@ export default {
   z-index: 1;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.5);
 }
-
+#remove{
+   float: right;
+    margin-right: 10%;
+}
+#remove:hover{
+    transform: scale(1.5);
+    z-index: 1;
+    box-shadow: 0 0 3em rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+#choose{
+    cursor: pointer;
+}
  .material-symbols-outlined {
    font-variation-settings:
        'FILL' 1,
