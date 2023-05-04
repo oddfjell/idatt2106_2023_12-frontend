@@ -15,7 +15,10 @@
       <p id="error" v-if="error">{{ error }} </p>
 
       <div class="Btn">
-        <button class="BlueBtn" id="registerBtn" @click="onSubmit" type="submit">Registrer</button>
+        <button class="BlueBtn" @click="onSubmit" type="submit">Registrer</button>
+        <router-link to='/profile'>
+        <button class="BlueBtn" >Tilbake</button>
+        </router-link>
       </div>
 
     </form>
