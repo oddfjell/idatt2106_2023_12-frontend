@@ -43,5 +43,8 @@ function addHeader(token) {
     },
     getSavedWeekMenu(token){
       return recipeApiClient.get("/getSavedWeekMenu", addHeader(token))
+    },
+    replaceRecipe(token, recipes){
+      return recipeApiClient.post("/replaceRecipe", recipes, addHeader(token))
     }
 }
