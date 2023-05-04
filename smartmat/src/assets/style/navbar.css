@@ -54,19 +54,19 @@ Phone version
     }
 
     #nav-icons {
-        gap: 5em;
+        gap: 3em;
         display: flex;
 
     }
 
     #except-user-top {
-        gap: 5em;
+        gap: 3em;
         display: flex;
     }
 
     #all-icons-bottom {
         display: flex;
-        gap: 5em;
+        gap: 3em;
     }
 
     #logo {
@@ -87,8 +87,8 @@ Computer version
         left: 0;
         opacity: 1;
         height: 10%;
-        padding-bottom: 0.5%;
-        padding-top: 0.5%;
+        padding-bottom: 1%;
+        padding-top: 1%;
         width: 100%;
     }
 
