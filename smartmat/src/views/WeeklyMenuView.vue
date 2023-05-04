@@ -1,5 +1,5 @@
 <template>
-  <div v-if="username">
+  <div v-if="username" id="page">
     <Carousel ref="carousel" :wrap-around="false" :items-to-show="1" id="carousel">
       <Slide v-for="recipe in displayRecipes" :key="recipe">
         <div class="carousel__item" :style="{backgroundImage: 'url(' + recipe.image + ')' }">
@@ -55,18 +55,12 @@ export default defineComponent({
 
   methods: {
     async loadRecipes() {
-      
+
     }
   },
-    data(){
-      return{
-          info:""
-      }
-    },
-
-  data() {
-    return {
-      info: ""
+  data(){
+    return{
+      info:""
     }
   },
 
@@ -85,29 +79,29 @@ export default defineComponent({
     }
 
     const plusServing = () => {
-      if(servings.value < 25) {
+      if (servings.value < 25) {
         servings.value++
         loadRecipes();
       }
     }
 
     const minusServing = () => {
-      if(servings.value > 1){
-      servings.value--
-      loadRecipes();
-    }
+      if (servings.value > 1) {
+        servings.value--
+        loadRecipes();
+      }
     }
 
     const getAndChangeRecipe = async () => {
-        try {
-            let carouselIndex = carousel.value.data.currentSlide._value
-            let recipesResponse = await recipeService.getNewRecipe(tokenStore().user.jwt, recipesShown.value, servings.value);
-            changeRecipe(carouselIndex, recipesResponse.data)
-        }catch (error){
-            console.log(error)
-        }finally {
-        
-        }
+      try {
+        let carouselIndex = carousel.value.data.currentSlide._value
+        let recipesResponse = await recipeService.getNewRecipe(tokenStore().user.jwt, recipesShown.value, servings.value);
+        changeRecipe(carouselIndex, recipesResponse.data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+
+      }
     }
 
     const loadRecipes = async () => {
@@ -121,7 +115,7 @@ export default defineComponent({
         }catch (error){
             console.log(error)
         }finally {
-        
+
         }
         displayRecipes.value=recipeEntities
         recipesShown.value=recipeEntities.slice(0)
@@ -189,20 +183,35 @@ export default defineComponent({
 
 <style scoped>
 @import "../assets/style/weeklyMenu.css";
+
+#page{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  zoom: 80%;
+}
+
 .carousel__item {
-  min-height: 200px;
-    padding: 50px;
+  min-height: 10em;
+  padding: 4em;
   background-color: lightblue;
   color: black;
-  font-size: 20px;
-  border-radius: 8px;
+  font-size: 1.2em;
+  border-radius: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  margin: auto;
 
+}
+
+#carousel {
+  width: 50%;
+  margin: auto;
 }
 
 .carousel__slide {
@@ -219,27 +228,47 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
- .container{
-     border: 1px solid black
- }
-img {
-  width: 20px;
-  height: 20px;
-}
-#slideTitle{
-    background-color: rgb(76, 75, 75, 0.6);
-    color: white;
-    text-shadow: 2px 2px 2px black;
-    width: 100%;
-}
-#info{
-    text-align: center;
+
+.container {
+  background-color: #f7f7f7;
+  border-radius: 1.25em;
+  padding: 1.875em;
+  margin-bottom: 2.5em;
+  width: 100%;
 }
 
-#serving-wrapper{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+img {
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
 }
-@import "../assets/style/weeklyMenu.css";
+
+#slideTitle {
+  background-color: rgb(76, 75, 75, 0.6);
+  color: white;
+  text-shadow: 2em 2em 2em black;
+  width: 100%;
+}
+
+#info {
+  text-align: center;
+}
+
+.ingredients-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 1.25em;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.125em;
+  text-align: center;
+}
+
+.ingredients-text {
+  color: #555;
+  font-size: 1.25em;
+  line-height: 1.4;
+}
+
 </style>

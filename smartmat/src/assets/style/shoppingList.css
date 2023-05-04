@@ -1,0 +1,285 @@
+
+#grocery-item{
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.4rem;
+    margin: 0;
+    display: grid;
+    place-items: center;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5%;
+}
+#shoppingGridContainer{
+    border: none;
+    padding: 0;
+}
+/*
+styling for the trashcan icon
+ */
+ .material-symbols-outlined {
+     cursor: pointer;
+     alignment: right;
+     font-size: 3.5vh;
+     bottom: 0;
+
+
+     font-variation-settings:
+             'FILL' 1,
+             'wght' 700,
+             'GRAD' 200,
+             'opsz' 48
+ }
+ .material-symbols-outlined:hover{
+     transform: scale(1.1);
+     background: linear-gradient(to right, #000000, #000000);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     transition: all 0.2s ease;
+ }
+
+#dropdown{
+    width:80%;
+}
+
+
+#addSelected{
+    z-index: 1;
+}
+/*
+styling for pop up info
+ */
+#info{
+    text-align: center;
+    font-size: large;
+    margin: 0;
+    padding:0;
+    font-family: Hack, monospace;
+
+}
+
+
+
+@media(max-width:500px ){
+    .container{
+        margin: 0;
+        padding: 20px;
+        border: none;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+/*
+styling to make the list like a notepad
+ */
+body {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.4em;
+    background: whitesmoke;
+    margin: 0;
+    padding: 1em;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+ul {
+    list-style-position: inside;
+    width: 600px;
+    max-width: 100%;
+    padding: 0;
+    }
+
+li {
+    padding: 0 0 0 1em;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+
+li:not(:last-child) {
+    border-bottom: 1px solid lightblue;
+}
+
+li:first-child {
+    margin-top: 1em;
+}
+
+li:last-child {
+    margin-bottom: 1em;
+}
+
+/*
+Shoppinglist entity styling
+ */
+
+#container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+#item{
+    display: flex;
+}
+#decrement{
+    cursor: pointer;
+    background-color: #f87f7f;
+    color: black;
+    border-color: black;
+    border-radius: 0.2em;
+
+}
+#increment{
+    cursor: pointer;
+    background-color: #b1f6b3;
+    border-color: black;
+    color: black;
+    margin-right: 1vh;
+    border-radius: 0.2em;
+}
+
+.counter{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+#number{
+    margin: 1vh;
+    font-family: 'Amatic SC', bold, serif;
+}
+
+.font{
+    font-family: Hack, monospace;
+    align-items: center;
+    text-decoration: underline;
+}
+#title{
+    font-family: Hack, monospace;
+    text-align: center;
+
+}
+
+
+.message{
+    text-align: center;
+    font-family: Hack, monospace;
+}
+#empty-list{
+    color: white;
+    border: black 10rem solid;
+    background-color: black;
+    height: 14rem;
+    font-size: 3rem;
+    align-items: center;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+}
+
+
+
+#frame{
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0vh 4vh 7vh, rgba(0, 0, 0, 0.22) 0vh 3vh 3vh;
+}
+.container{
+    max-width: 100vh;
+    min-height: 70vh;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+
+
+
+/*
+shoppinglistgrid styling
+ */
+#shoppingListEntitiesGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:5px;
+}
+
+
+#checked_list{
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 60vh;
+    max-height: 90vh;
+    overflow: auto;
+
+}
+
+#show-list{
+    display: none;
+}
+#unchecked_list{
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 60vh;
+    max-height: 90vh;
+    overflow: auto;
+
+}
+.buttons{
+    font-family: Hack, monospace;
+    background-color: #6dbd5e;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    margin: 5px;
+
+}
+.buttons:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #000000, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.2s ease;
+}
+
+
+@media(max-width:500px ){
+    #show-list{
+        display: block;
+        margin: 0 auto 5px;
+    }
+
+    #shoppingListEntitiesGrid{
+        grid-template-columns: 1fr;
+    }
+    #checked_list{
+        display: none;
+    }
+    #buttonBar{
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+@media (min-width: 501px) {
+    #checked_list{
+        display: block !important;
+    }
+    #unchecked_list{
+        display: block !important;
+    }
+    #buttonBar{
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        position: relative;
+        width: 30%;
+        margin: auto;
+    }
+}

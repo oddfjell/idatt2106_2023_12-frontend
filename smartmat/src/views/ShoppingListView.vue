@@ -1,33 +1,38 @@
 <template>
-  <div v-if="username" class="container">
-    <h1>Handleliste</h1>
+  <div v-if="username && !restricted" class="container" id="frame">
+    <h1 id="title">Handleliste</h1>
     <div id="header">
       <!-- The shopping list dropdown component -->
       <Dropdown id="dropdown"
-                :options="groceries"
+              :options="groceries"
                 :placeholder="selectedText"
-                v-on:selected="onSelection">
+              v-on:selected="onSelection">
       </Dropdown>
       <!-- Button for adding the selected item to shoppinglist -->
-      <button class="Btn GreyBtn" @click="addShoppingListEntity">Legg til vare</button>
+      <button class="buttons" @click="addShoppingListEntity">Legg til vare</button>
     </div>
     <div class="container" id="shoppingGridContainer">
       <!-- Text field for displaying information to the user -->
       <p id="info">{{ info }}</p>
-      <div id="buttonBar" class="Btn">
+      <div id="buttonBar">
         <!-- Button for saving changes related to the shoppinglist-->
-        <button class="BlueBtn" id="saveChanges" @click="save">Lagre endringer</button>
+        <button class="buttons" id="saveChanges" @click="save">Lagre endringer</button>
         <!-- Button for moving checked items to the fridge, and removing them from the shoppinglist-->
-        <button class="BlueBtn" id="addSelected" @click="buy">Kjøp valgte varer</button>
+        <button class="buttons" id="addSelected" @click="buy">Kjøp valgte varer</button>
       </div>
-      <div v-if="loading"><h3 style="text-align: center">Laster ...</h3></div>
+      <div v-if="loading"><h3 class="message">Laster...</h3></div>
       <!-- ShoppinglistGrid component, for displaying items in the shoppinglist, if none: textField is displayed -->
       <ShoppingListGrid ref="grid" v-else-if="shoppingListStore().getShoppingListEntities().length"/>
-      <div v-else><h3 style="text-align: center"> Du har ikke noe i handlelisten</h3></div>
+      <div v-else><h3 class="message" id="empty-list"> Du har ikke noe i handlelisten</h3></div>
     </div>
   </div>
+
+  <div v-else-if="username && restricted" class="container" id="frame">
+
+  </div>
+
   <div v-else>
-    <h1>Please log in</h1>
+    <h1 class="font"> Vennligst logg inn </h1>
   </div>
 </template>
 
@@ -185,61 +190,18 @@ export default {
   computed: {
     username() {
       return tokenStore().user.username
+    },
+    restricted(){
+      return tokenStore().user.restricted
     }
   },
+
 }
 
 
 </script>
 
 <style scoped>
-.container {
-  max-width: 100vh;
-  min-height: 70vh;
-  border: 1px solid steelblue;
-  padding-bottom: 0;
-  padding-top: 0;
-}
+@import "../assets/style/shoppingList.css";
 
-#header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5%;
-}
-
-#shoppingGridContainer {
-  border: none;
-  padding: 0;
-}
-
-#dropdown {
-  width: 80%;
-}
-
-#buttonBar {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px;
-}
-
-#info {
-  text-align: center;
-  font-size: large;
-  margin: 0;
-  padding: 0;
-}
-
-.GreyBtn {
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-@media (max-width: 500px ) {
-  .container {
-    margin: 0;
-    padding: 20px;
-    border: none;
-  }
-}
 </style>
