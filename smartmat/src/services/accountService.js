@@ -44,5 +44,9 @@ export default {
 
   registerProfile(profile,token){
     return axios.post(baseURL + '/registerProfile', profile,configToken(token))
+  },
+
+  loginProfile(profile, token){
+    return axios.post(baseURL + "/profileLogin", profile, configToken(token))
   }
 };

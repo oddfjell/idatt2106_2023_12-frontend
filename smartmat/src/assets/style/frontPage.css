@@ -2,14 +2,14 @@
 
 @media (max-width:500px) {
     .card {
-        visibility: hidden;
+        display: none;
     }
     #outer-border{
-        visibility: hidden;
+        display: none;
     }
 
     .card h1 {
-        visibility: hidden;
+        display: none;
     }
 
     a{
@@ -18,7 +18,7 @@
 
     .material-symbols-outlined {
 
-        visibility: hidden;
+        display: none;
 
     }
 
@@ -28,29 +28,27 @@ Styling for the borders for the computer version
  */
 @media (min-width:501px) {
     .card {
-        width: 25vh;
-        border: 1vh solid black;
-        padding: 5vh;
-        height: 40vh;
-        margin: 1vh;
+        width: 14em;
+        border: 1em solid black;
+        padding: 5em;
+        height: 24em;
+        margin: 1em;
         cursor: pointer;
         display: inline-block;
         position: relative;
-        box-shadow: 0 0 2vh rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
         transform-style: preserve-3d;
         transform: rotateX(0deg) rotateY(0deg);
-        border-radius: 5vh;
+        border-radius: 5em;
     }
 
     #outer-border{
         display: flex;
-        margin-top: 5%;
         justify-content: center;
-        height: 60vh;
-    }
-    #outer-border img{
-        height: 40vh;
-        margin-top: 0;
+        height: 60em;
+        width: 90em;
+        align-items: center;
+        margin: auto;
     }
 
 
@@ -79,22 +77,24 @@ Styling for the borders for the computer version
     .card h1 {
         text-align: center;
         color: black;
-        font-size: 4.5vh;
+        font-size: 2em;
         font-family: Hack, monospace;
 
     }
 
     a{
         text-decoration: none;
-        height: 52vh;
-        border-radius: 5vh;
+        height: 52em;
+        border-radius: 5em;
     }
 
 
  .material-symbols-outlined {
 
      color: black;
-     font-size: 23vh;
+     font-size: 14em;
+     text-align: center;
+     align-items: center;
 
      font-variation-settings:
              'FILL' 1,
@@ -102,6 +102,28 @@ Styling for the borders for the computer version
              'GRAD' 200,
              'opsz' 48
  }
+    #lineChart{
+        flex-grow: 1;
+    }
+    pie-chart{
+        flex-grow: 0.5;
+    }
+
+    #graphGrid{
+        width: 80%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: normal;
+        margin: auto auto 30px;
+    }
+
+    @media (max-width: 800px) {
+        #graphGrid{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
 
 
 }

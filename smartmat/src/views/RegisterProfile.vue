@@ -1,16 +1,18 @@
 <template>
   <div id="registerpage">
     <h1>Register Profile</h1>
-    <form @submit.prevent >
+    <form @submit.prevent>
       <label class="registerLabel">Brukernavn: </label>
       <input type="text" v-model="profile.username" placeholder="Skriv ditt brukernavn " name="username" required>
+      <label class="registerLabel">Passord: </label>
+      <input type="password" v-model="profile.password" placeholder="Skriv ditt passord " name="password" required>
       <div id="row">
         <label class="registerLabel">Restricted </label>
         <input type="checkbox" v-model="profile.restricted" name="restricted"/>
       </div>
 
 
-      <p id="error" v-if="error">{{error}} </p>
+      <p id="error" v-if="error">{{ error }} </p>
 
       <div class="Btn">
         <button class="BlueBtn" id="registerBtn" @click="onSubmit" type="submit">Register</button>
@@ -32,9 +34,10 @@ export default {
     return {
       profile: {
         username: "",
-        restricted: false
+        restricted: false,
+        password: ""
       },
-      error:""
+      error: ""
     }
   },
 
@@ -54,11 +57,12 @@ export default {
 
 
 @import "../assets/style/register.css";
+
 #registerBtn {
   width: 80%;
 }
 
-#registerpage{
+#registerpage {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -67,11 +71,11 @@ export default {
   align-items: center;
 }
 
-#error{
-  color:red
+#error {
+  color: red
 }
 
-#row{
+#row {
   display: flex;
   flex-direction: row;
 }

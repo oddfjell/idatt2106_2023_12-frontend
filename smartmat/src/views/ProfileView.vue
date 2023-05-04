@@ -1,12 +1,14 @@
 <template>
   <div id="row">
     <div v-for="(profile, index) in profiles" :key="index">
-      <ProfileIcon :profile="profile"></ProfileIcon>
+      <ProfileIcon :profile="profile" @selectProfile="passwordPopup"></ProfileIcon>
     </div>
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
 
-  <PasswordPopup></PasswordPopup>
+  <div v-if="popup">
+    <PasswordPopup :profile="selectedProfile" @closePopup="closeThePopup"></PasswordPopup>
+  </div>
 
 </template>
 
@@ -24,8 +26,22 @@ export default {
       profiles: [],
       addProfile: {
         username: "Add"
-      }
+      },
+      popup: false,
+      selectedProfile: null
     }
+  },
+
+  methods: {
+    passwordPopup(profile) {
+      this.selectedProfile = profile;
+      this.popup = true;
+    },
+    closeThePopup() {
+      this.selectedProfile = null;
+      this.popup = false;
+    }
+
   },
 
   async created() {
@@ -44,13 +60,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../assets/style/profile.css";
 
-#row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-top: 25vh;
-}
 
 </style>
