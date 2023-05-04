@@ -39,7 +39,7 @@
                 v-on:selected="onSelection">
       </Dropdown>
       <!-- Button for adding the selected item to shoppinglist -->
-      <button class="buttons" @click="addShoppingListEntity">Legg til vare</button>
+      <button class="buttons" @click="suggestShoppingListEntity">Foreslå en vare</button>
     </div>
     <div class="container" id="shoppingGridContainer">
       <!-- Text field for displaying information to the user -->
@@ -144,7 +144,7 @@ export default {
      */
     async addShoppingListEntity() {
       try {
-        let product = {name: this.selected.name, count: 1, foundInStore: false}
+        let product = {name: this.selected.name, count: 1, foundInStore: false, suggestion: false}
         shoppingListStore().addShoppingListEntity(product)
         this.info = "Lagt til " + product.name
         shoppingListStore().setStateSaved(false)
@@ -156,6 +156,22 @@ export default {
         console.log(error)
         this.info = "Ikke lagt til"
       }
+    },
+    async suggestShoppingListEntity(){
+      try {
+        let product = {name: this.selected.name, count: 1, foundInStore: false, suggestion: true}
+        shoppingListStore().updateSuggestion(product)
+        this.info = "Lagt til " + product.name
+        shoppingListStore().setStateSaved(false)
+        this.onSelection(null)
+        if (this.$refs.grid) {
+          this.$refs.grid.updateChecked()
+        }
+      } catch (error) {
+        console.log(error)
+        this.info = "Ikke lagt til"
+      }
+      this.groceries
     },
     /**
      * Gets saved list-entities from backend and updates the shoppingListStore.
@@ -177,7 +193,7 @@ export default {
       if (this.$refs.grid) {
         this.$refs.grid.updateChecked()
       }
-    }
+    },
   },
   /**
    * When created, the view gets list-entities and a list of products from backend.
@@ -189,10 +205,27 @@ export default {
     //Get groceries from database
     let groceriesResponse = await groceryService.getProducts(tokenStore().user.jwt)
     let groceries = groceriesResponse.data
-    for (let grocery of groceries) {
-      this.groceries.push(grocery)
+    if(!this.restricted){
+      for (let grocery of groceries) {
+        this.groceries.push(grocery)
+      }
+    }else{
+      for (let grocery of groceries) {
+        let shoppingListEntities = shoppingListStore().getShoppingListEntities();
+        let found = false;
+        for (let shoppingListEntity of shoppingListEntities){
+          if(shoppingListEntity.name === grocery.name){
+            found = true;
+          }
+        }
+        if(!found){
+          this.groceries.push(grocery)
+        }
+      }
     }
+
   },
+
   /**
    * If the user is not logged in, the user is redirected to the login-page
    */
