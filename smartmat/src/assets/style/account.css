@@ -1,6 +1,4 @@
-
-
- #user {
+#user {
      font-size: 15vh;
      font-variation-settings:
              'FILL' 1,
@@ -8,9 +6,6 @@
              'GRAD' 200,
              'opsz' 48
  }
-
-#loggedin-user{
-}
 .logout-Btn {
     font-family: Hack, monospace;
     background: #6dbd5e;
@@ -25,7 +20,6 @@
     position: relative;
     min-width: 5em;
 }
-
 .logout-Btn::after {
     font-family: "Material Icons";
     position: absolute;
@@ -76,19 +70,16 @@
 }
 
 
-@media (max-width: 500px) {
-    .container {
-        text-align: center;
-        border: 1em solid #fafffa;
-        font-size: 1em;
-        font-family: Hack, monospace;
-        border-radius: 2em;
-        box-shadow: rgba(0, 0, 0, 0.25) 0 1em 3em, rgba(0, 0, 0, 0.22) 0 1em 1em;
-        background-color: #fafffa;
-        height: 60%;
-        width: 80%;
-        margin: 1em auto auto;
-    }
+.container {
+    text-align: center;
+    border: 1em solid #fafffa;
+    font-size: 1em;
+    font-family: Hack, monospace;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 1em 3em, rgba(0, 0, 0, 0.22) 0 1em 1em;
+    background-color: #fafffa;
+    width: 80%;
+    margin: 1em auto auto;
 }
 
 @media (min-width: 501px) {
@@ -100,7 +91,6 @@
         border-radius: 2em;
         box-shadow: rgba(0, 0, 0, 0.25) 0 1em 3em, rgba(0, 0, 0, 0.22) 0 1em 1em;
         background-color: #fafffa;
-        height: 60%;
         width: 80%;
         margin-top: 1%;
     }
