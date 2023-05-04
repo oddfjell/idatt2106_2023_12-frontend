@@ -2,8 +2,9 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
   <div v-if="username && !restricted" class="container" id="frame">
-    <div v-if="suggestions.length" class="notifications">
-      <span class="material-symbols-outlined">notifications_active</span>
+    <div v-if="suggestions.length" class="notifications" id="active">
+      <label>Forslag</label>
+      <span class="material-symbols-outlined" @click="getSuggestions">notifications_active</span>
     </div>
     <div v-else class="notifications">
       <span class="material-symbols-outlined">notifications</span>
@@ -33,6 +34,11 @@
       <ShoppingListGrid ref="grid" v-else-if="shoppingListStore().getShoppingListEntities().length"/>
       <div v-else><h3 class="message" id="empty-list"> Du har ikke noe i handlelisten</h3></div>
     </div>
+    <div v-if="popup">
+      <SuggestionPopup :suggestionList="suggestions" @closePopup="closePopup" @acceptedSuggestion="acceptedSuggestion"></SuggestionPopup>
+    </div>
+
+
   </div>
 
 
@@ -77,10 +83,11 @@ import shoppingListService from "@/services/shoppingListService";
 import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
 import router from "@/router";
 import {shoppingListStore} from "@/stores/shoppingListStore";
+import SuggestionPopup from "@/components/ShoppingList/SuggestionPopup.vue";
 
 export default {
   name: "ShoppingList",
-  components: {ShoppingListGrid, Dropdown},
+  components: {SuggestionPopup, ShoppingListGrid, Dropdown},
   /**
    * Initial data
    * @returns {{selectedText: string, trigger: boolean, loading: boolean, groceries: [], selected: null, info: string}}
@@ -93,6 +100,7 @@ export default {
       suggestions: [],
       loading: true,
       info: " ",
+      popup:false
     }
   },
   methods: {
@@ -178,7 +186,6 @@ export default {
         console.log(error)
         this.info = "Ikke lagt til"
       }
-      this.groceries
     },
     /**
      * Gets saved list-entities from backend and updates the shoppingListStore.
@@ -197,7 +204,6 @@ export default {
             this.suggestions.push(shoppinglistEntity);
           }
         }
-        console.log(this.suggestions)
       } catch (error) {
         console.log(error)
       }
@@ -206,6 +212,17 @@ export default {
         this.$refs.grid.updateChecked()
       }
     },
+    getSuggestions(){
+      this.popup = true;
+    },
+    closePopup(){
+      this.popup = false;
+    },
+    acceptedSuggestion(){
+      if (this.$refs.grid) {
+        this.$refs.grid.updateChecked()
+      }
+    }
   },
   /**
    * When created, the view gets list-entities and a list of products from backend.

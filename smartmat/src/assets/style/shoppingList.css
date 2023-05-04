@@ -284,3 +284,19 @@ shoppinglistgrid styling
     }
 }
 
+.notifications{
+    float: right;
+    align-items: center;
+    display: flex;
+    gap: 0.5em;
+}
+
+#active{
+    color: blue;
+}
+
+.notifications label{
+    color: black;
+    font-family: Hack, monospace;
+    font-weight: bold;
+}

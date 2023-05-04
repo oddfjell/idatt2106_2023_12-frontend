@@ -24,6 +24,17 @@ export default {
     },
     acceptRequest(product, token){
         return axios.put(baseURL+'/accept', product, config(token))
+    },
+    getSuggestions(token){
+        return axios.get(baseURL + "/getSuggestions", config(token))
+    },
+    suggestGrocery(product, token){
+        return axios.post(baseURL + "/suggest", product, config(token))
+    },
+    deleteSuggestion(product, token){
+        return axios.post(baseURL + "/delete", product, config(token))
     }
+
+
 }
 
