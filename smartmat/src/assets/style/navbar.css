@@ -1,16 +1,12 @@
-
 nav a {
     color: black;
 }
-
-
 nav {
     font-size: 10px;
     display: flex;
     z-index: 9999;
 
 }
-
 .material-symbols-outlined {
     background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
     -webkit-background-clip: text;
@@ -22,8 +18,6 @@ nav {
     'GRAD' 200,
     'opsz' 48
 }
-
-
 
 /*
 Phone version
@@ -87,10 +81,9 @@ Computer version
         z-index: 9999;
         left: 0;
         opacity: 1;
-        height: 10%;
-        padding-bottom: 1%;
-        padding-top: 1%;
+        height: fit-content;
         width: 100%;
+        padding-bottom: 2px;
     }
 
 
@@ -121,7 +114,7 @@ Computer version
     }
 
     #logo {
-        width: 6em;
+        width: 50px;
         height: auto;
         float: left;
         left: 2em;
