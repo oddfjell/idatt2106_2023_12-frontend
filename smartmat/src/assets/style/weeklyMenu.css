@@ -142,7 +142,7 @@ img {
 
 #info {
     text-align: center;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: Hack, monospace, cursive;
 }
 
 .ingredients-title {
@@ -153,21 +153,21 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.125em;
     text-align: center;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: Hack, monospace, cursive;
 }
 
 .ingredients-text {
     color: #555;
     font-size: 1.25em;
     line-height: 1.4;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: Hack, monospace, cursive;
 }
 
 #serving-wrapper {
     display: flex;
     justify-content: center;
     width: 100%;
-    font-family: 'Gloria Hallelujah', cursive;
+    font-family: Hack, monospace, cursive;
     font-weight: bold;
 
 }
