@@ -20,7 +20,7 @@ describe('Profile', () => {
         cy.fixture('user').then((users) => {
             const {testUser} = users;
             cy.get('h1').contains(testUser.username);
-            cy.get("#buttons").find('button').should('have.length', 2)
+            cy.get("#buttons").find('button').should('have.length', 3)
         });
     })
     it('The user is logged out', () => {
