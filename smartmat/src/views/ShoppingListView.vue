@@ -1,12 +1,20 @@
 <template>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
   <div v-if="username && !restricted" class="container" id="frame">
+    <div v-if="suggestions.length" class="notifications">
+      <span class="material-symbols-outlined">notifications_active</span>
+    </div>
+    <div v-else class="notifications">
+      <span class="material-symbols-outlined">notifications</span>
+    </div>
     <h1 id="title">Handleliste</h1>
     <div id="header">
       <!-- The shopping list dropdown component -->
       <Dropdown id="dropdown"
-              :options="groceries"
+                :options="groceries"
                 :placeholder="selectedText"
-              v-on:selected="onSelection">
+                v-on:selected="onSelection">
       </Dropdown>
       <!-- Button for adding the selected item to shoppinglist -->
       <button class="buttons" @click="addShoppingListEntity">Legg til vare</button>
@@ -26,7 +34,6 @@
       <div v-else><h3 class="message" id="empty-list"> Du har ikke noe i handlelisten</h3></div>
     </div>
   </div>
-
 
 
   <div v-else-if="username && restricted" class="container" id="frame">
@@ -56,7 +63,6 @@
   </div>
 
 
-
   <div v-else>
     <h1 class="font"> Vennligst logg inn </h1>
   </div>
@@ -84,6 +90,7 @@ export default {
       selectedText: "Søk etter vare",
       selected: null,
       groceries: [],
+      suggestions: [],
       loading: true,
       info: " ",
     }
@@ -157,7 +164,7 @@ export default {
         this.info = "Ikke lagt til"
       }
     },
-    async suggestShoppingListEntity(){
+    async suggestShoppingListEntity() {
       try {
         let product = {name: this.selected.name, count: 1, foundInStore: false, suggestion: true}
         shoppingListStore().updateSuggestion(product)
@@ -184,8 +191,13 @@ export default {
         let shoppingListResponse = await shoppingListService.getProducts(tokenStore().user.jwt)
         let shoppinglistEntities = shoppingListResponse.data
         for (let shoppinglistEntity of shoppinglistEntities) {
-          listEntities.push(shoppinglistEntity)
+          if (!shoppinglistEntity.suggestion) {
+            listEntities.push(shoppinglistEntity)
+          } else {
+            this.suggestions.push(shoppinglistEntity);
+          }
         }
+        console.log(this.suggestions)
       } catch (error) {
         console.log(error)
       }
@@ -205,20 +217,20 @@ export default {
     //Get groceries from database
     let groceriesResponse = await groceryService.getProducts(tokenStore().user.jwt)
     let groceries = groceriesResponse.data
-    if(!this.restricted){
+    if (!this.restricted) {
       for (let grocery of groceries) {
         this.groceries.push(grocery)
       }
-    }else{
+    } else {
       for (let grocery of groceries) {
         let shoppingListEntities = shoppingListStore().getShoppingListEntities();
         let found = false;
-        for (let shoppingListEntity of shoppingListEntities){
-          if(shoppingListEntity.name === grocery.name){
+        for (let shoppingListEntity of shoppingListEntities) {
+          if (shoppingListEntity.name === grocery.name) {
             found = true;
           }
         }
-        if(!found){
+        if (!found) {
           this.groceries.push(grocery)
         }
       }
@@ -250,7 +262,7 @@ export default {
     username() {
       return tokenStore().user.username
     },
-    restricted(){
+    restricted() {
       return tokenStore().user.restricted
     }
   },
