@@ -1,21 +1,21 @@
 <template>
   <div id="registerpage">
-    <h1>Register Profile</h1>
+    <h1 class="registerLabel">Registrer Profil</h1>
     <form @submit.prevent>
-      <label class="registerLabel">Brukernavn: </label>
-      <input type="text" v-model="profile.username" placeholder="Skriv ditt brukernavn " name="username" required>
+      <label class="registerLabel">Navn: </label>
+      <input type="text" v-model="profile.username" placeholder="Skriv ditt navn " name="username" required>
       <label class="registerLabel">PIN: </label>
-      <input type="password" v-model="profile.password" placeholder="Skriv ditt passord " name="password" required>
+      <input type="password" v-model="profile.password" placeholder="Skriv din pin-kode " name="password" required>
       <div id="row">
-        <label class="registerLabel">Restricted </label>
-        <input type="checkbox" v-model="profile.restricted" name="restricted"/>
+        <input id="checkbox" type="checkbox" v-model="profile.restricted" name="restricted"/>
+        <label class="registerLabel" id="restricted">Begrenset</label>
       </div>
 
 
       <p id="error" v-if="error">{{ error }} </p>
 
       <div class="Btn">
-        <button class="BlueBtn" id="registerBtn" @click="onSubmit" type="submit">Register</button>
+        <button class="BlueBtn" id="registerBtn" @click="onSubmit" type="submit">Registrer</button>
       </div>
 
     </form>
@@ -57,28 +57,5 @@ export default {
 
 
 @import "../assets/style/register.css";
-
-#registerBtn {
-  width: 80%;
-}
-
-#registerpage {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 50vh;
-  margin: 20vh auto auto;
-  align-items: center;
-}
-
-#error {
-  color: red
-}
-
-#row {
-  display: flex;
-  flex-direction: row;
-}
-
 
 </style>
