@@ -27,9 +27,35 @@
     </div>
   </div>
 
-  <div v-else-if="username && restricted" class="container" id="frame">
 
+
+  <div v-else-if="username && restricted" class="container" id="frame">
+    <h1 id="title">Handleliste</h1>
+    <div id="header">
+      <!-- The shopping list dropdown component -->
+      <Dropdown id="dropdown"
+                :options="groceries"
+                :placeholder="selectedText"
+                v-on:selected="onSelection">
+      </Dropdown>
+      <!-- Button for adding the selected item to shoppinglist -->
+      <button class="buttons" @click="addShoppingListEntity">Legg til vare</button>
+    </div>
+    <div class="container" id="shoppingGridContainer">
+      <!-- Text field for displaying information to the user -->
+      <p id="info">{{ info }}</p>
+      <div id="buttonBar">
+        <!-- Button for saving changes related to the shoppinglist-->
+        <button class="buttons" id="saveChanges" @click="save">Lagre endringer</button>
+      </div>
+      <div v-if="loading"><h3 class="message">Laster...</h3></div>
+      <!-- ShoppinglistGrid component, for displaying items in the shoppinglist, if none: textField is displayed -->
+      <ShoppingListGrid ref="grid" v-else-if="shoppingListStore().getShoppingListEntities().length"/>
+      <div v-else><h3 class="message" id="empty-list"> Du har ikke noe i handlelisten</h3></div>
+    </div>
   </div>
+
+
 
   <div v-else>
     <h1 class="font"> Vennligst logg inn </h1>
