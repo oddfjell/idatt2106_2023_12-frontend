@@ -128,7 +128,7 @@ Computer version
         position: relative;
     }
 
-    #logo-frame {
+    .logo-frame {
         float: left;
     }
     header {
