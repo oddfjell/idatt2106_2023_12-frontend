@@ -6,7 +6,7 @@
         </div>
         <div id="grocery-right">
           <p id="category">{{grocery.categoryName}}</p>
-          <p class="rigth" :class="   {red:expiredWarning}" >{{expiredText}}</p>
+          <p class="right" :class="   {red:expiredWarning}" >{{expiredText}}</p>
 
           <div class="buttonBar">
               <button class="Btn" id="eatBtn" @click="onEat">Spist</button>

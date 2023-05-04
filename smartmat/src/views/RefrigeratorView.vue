@@ -1,5 +1,5 @@
 <template>
-  <div v-if="username" id="fridgeContainer" class="container">
+  <div v-if="username" id="fridgeContainer" class="container" >
     <h1>Kjøleskap</h1>
     <GroceryGrid/>
   </div>

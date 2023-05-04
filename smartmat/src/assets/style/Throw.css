@@ -1,4 +1,4 @@
-.slidecontainer {
+.slidecontainer{
     width: 100%;
 }
 .slider{
@@ -14,8 +14,13 @@
 }
 
 .throwModalBtn{
-    background: #fc546c;
-    color: white;
+    background: #ff2222;
+    color: black;
+    font-family: Hack, monospace;
+    width: 20%;
+    align-content: center;
+    margin-right: 2%;
+    text-align: center;
 }
 
 #cancelBtn{
@@ -26,7 +31,9 @@
 
 .throwModalBtn:hover {
     background-color: #ff2222;
+    color: white;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 #cancelBtn:hover {

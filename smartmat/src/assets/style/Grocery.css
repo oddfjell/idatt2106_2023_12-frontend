@@ -15,6 +15,7 @@
     padding: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     font-family: Hack, monospace;
+    border: #67bb51 2px solid;
 
 }
 #grocery-left{
@@ -46,17 +47,21 @@
 
 #eatBtn{
     background: #48bd00;
-    color: white;
+    color: black;
     float: right;
+    width: 20%;
 }
 
 #eatBtn:hover {
-    background-color: #048100;
+    background-color: #48bd00;
     cursor: pointer;
+    color: white;
+    transform: scale(1.2);
+
 }
 .red{
     color:red
 }
-.rigth{
+.right{
     text-align: right;
 }
