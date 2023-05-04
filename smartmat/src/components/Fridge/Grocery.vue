@@ -47,10 +47,8 @@ export default {
                 return "Utgår i dag"
             }else if(this.grocery.expiresInDays===-1){
                 return "Utgått for 1 dag siden"
-            } else if(this.grocery.expiresInDay<0){
-                return "Utgått for " -this.grocery.expiresInDays + "dager siden"
-            } else{
-                return ""
+            } else if(this.grocery.expiresInDays < 0){
+                return "Utgått for " + -this.grocery.expiresInDays + " dager siden"
             }
         },
         expiredWarning(){

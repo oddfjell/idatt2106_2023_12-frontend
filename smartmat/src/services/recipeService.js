@@ -23,8 +23,10 @@ function addHeader(token) {
 }
   export default{
   //add Product
-    getWeekMenu(token, servingsNr){
-      return recipeApiClient.get('/weekMenu/'+servingsNr, addHeader(token))
+    getWeekMenu(token, servingsNr, nDays){
+      console.log(servingsNr)
+      console.log(nDays)
+      return recipeApiClient.get('/weekMenu/'+servingsNr+'/'+nDays, addHeader(token))
     },
     getNewRecipe(token, recipes, servingsNr){
         return recipeApiClient.post('/newRecipe/'+servingsNr, recipes, addHeader(token))
@@ -34,5 +36,15 @@ function addHeader(token) {
       },
     addToShoppingList(token,menuRecipes){
       return shoppingListApiClient.post('/addAllFromMenu', menuRecipes, addHeader(token))
+    },
+    saveRecipes(token, recipes){
+      console.log(recipes)
+      return recipeApiClient.post('/saveRecipes', recipes, addHeader(token))
+    },
+    getSavedWeekMenu(token){
+      return recipeApiClient.get("/getSavedWeekMenu", addHeader(token))
+    },
+    replaceRecipe(token, recipes){
+      return recipeApiClient.post("/replaceRecipe", recipes, addHeader(token))
     }
 }
