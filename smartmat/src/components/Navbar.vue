@@ -3,13 +3,15 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <div id="logo-frame">
+      <RouterLink to="/home">
       <img id="logo" src="../images/logo.png">
+      </RouterLink>
     </div>
     <div id="navbar-frame">
       <nav>
         <div id="nav-icons" v-if="username">
 
-          <div id="all-icons-bottom" v-if="$route.path=='/home'">
+          <div id="all-icons-bottom">
             <RouterLink to="/home">
               <span class="material-symbols-outlined">home</span>
             </RouterLink>
@@ -25,9 +27,6 @@
           </div>
 
           <div id="except-user-top" v-if="$route.path !=='/home'">
-            <RouterLink to="/home">
-              <span class="material-symbols-outlined">home</span>
-            </RouterLink>
             <RouterLink to="/refrigerator">
               <span class="material-symbols-outlined">kitchen</span>
             </RouterLink>

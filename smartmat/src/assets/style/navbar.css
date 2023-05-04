@@ -61,7 +61,7 @@ Phone version
 
     #except-user-top {
         gap: 3em;
-        display: flex;
+        display: none;
     }
 
     #all-icons-bottom {
@@ -72,6 +72,7 @@ Phone version
     #logo {
         display: none;
     }
+
 }
 
 
