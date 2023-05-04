@@ -3,7 +3,7 @@
 }
 .container{
     max-width: none;
-    min-height: 100em;
+    min-height: 100vh;
 }
 
 #fridgeContainer {
@@ -15,6 +15,6 @@
 
 @media (max-width: 500px ) {
     .container {
-        padding: 0;
+        padding-bottom: 20%;
     }
 }

@@ -39,7 +39,7 @@ import Navbar from "@/components/Navbar.vue";
 }
 @media (min-width:501px){
   #whitespace{
-    height: 15%;
+    height: 10%;
   }
 }
 
