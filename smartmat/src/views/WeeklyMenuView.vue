@@ -241,4 +241,5 @@ img {
   align-items: center;
   justify-content: center;
 }
+@import "../assets/style/weeklyMenu.css";
 </style>
