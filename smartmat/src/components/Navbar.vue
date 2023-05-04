@@ -2,10 +2,13 @@
   <header>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <div id="logo-frame">
+    <div class="logo-frame" v-if="$route.path !=='/' && $route.path !=='/register' && $route.path !=='/profile' && $route.path !=='/registerProfile'">
       <RouterLink to="/home">
       <img id="logo" src="../images/logo.png">
       </RouterLink>
+    </div>
+    <div class="logo-frame" v-else>
+      <img id="logo" src="../images/logo.png">
     </div>
     <div id="navbar-frame">
       <nav>
