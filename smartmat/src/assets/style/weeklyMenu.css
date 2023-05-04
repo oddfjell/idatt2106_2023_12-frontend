@@ -17,7 +17,7 @@
 }
 
 #carousel{
-    width: 50em;
+    width: 50%;
     margin: auto;
 }
 
@@ -40,7 +40,7 @@
     border-radius: 1.25em; /* 20px / 16px = 1.25em */
     padding: 1.875em; /* 30px / 16px = 1.875em */
     margin-bottom: 2.5em; /* 40px / 16px = 2.5em */
-    width: 50em;
+    width: 90%;
 }
 img {
     width: 2em;
@@ -75,9 +75,7 @@ img {
 }
 #page{
     width: 100%;
-    height: 100%;
-    margin: auto;
-    zoom: 80%;
+
 }
 
 .carousel__item {
@@ -121,9 +119,10 @@ img {
 .container {
     background-color: #f7f7f7;
     border-radius: 1.25em;
-    padding: 1.875em;
-    margin-bottom: 2.5em;
-    width: 100%;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
 
 
@@ -147,7 +146,7 @@ img {
 }
 
 .ingredients-title {
-    font-size: 2.5em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 1.25em;
     color: #333;
@@ -174,7 +173,7 @@ img {
 }
 .incrementbutton{
     margin: 0 10px;
-    width: 2%;
+    width: 50px;
     text-align: center;
     font-weight: bold;
     background-color: #f5f5f5;
