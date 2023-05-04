@@ -21,7 +21,7 @@
     min-width: 5em;
 }
 .logout-Btn::after {
-    font-family: "Material Icons";
+    font-family: "Material Icons", serif;
     position: absolute;
     left: 70%;
     top: 55%;
@@ -62,10 +62,11 @@
 }
 
 #removeAccount{
-    color: white;
+    color: black;
     background: #ff2f2f;
 }
 #removeAccount:hover{
+    color: white;
     box-shadow: 0 1em 2em #ff2f2f;
 }
 
