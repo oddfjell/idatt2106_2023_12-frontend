@@ -4,7 +4,7 @@
     <form @submit.prevent>
       <label class="registerLabel">Brukernavn: </label>
       <input type="text" v-model="profile.username" placeholder="Skriv ditt brukernavn " name="username" required>
-      <label class="registerLabel">Passord: </label>
+      <label class="registerLabel">PIN: </label>
       <input type="password" v-model="profile.password" placeholder="Skriv ditt passord " name="password" required>
       <div id="row">
         <label class="registerLabel">Restricted </label>

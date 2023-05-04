@@ -32,7 +32,7 @@ export default {
     return {
       profiles: [],
       addProfile: {
-        username: "Add"
+        username: "Legg til profil"
       },
       popup: false,
       selectedProfile: null,

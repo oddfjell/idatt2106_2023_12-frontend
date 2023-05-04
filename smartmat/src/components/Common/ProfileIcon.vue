@@ -31,7 +31,7 @@ export default {
 
   methods:{
     async selectProfile() {
-      if(this.profile.username === "Add"){
+      if(this.profile.username === "Legg til profil"){
         await router.push("/registerProfile")
       }else{
         this.$emit("selectProfile", this.profile);
