@@ -23,6 +23,15 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
         }
     }
 
+    const updateSuggestion = (newShoppingListEntity) => {
+        let shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
+        if(!shoppingListEntity){
+            shoppingList.value.shoppingListEntities.push(newShoppingListEntity)
+            shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
+        }
+        shoppingListEntity.suggestion = true;
+    }
+
     const updateShoppingListEntity = (updatedEntity) =>{
         let shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===updatedEntity.name)
         if(shoppingListEntity){
@@ -46,6 +55,7 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
         getStateSaved,
         setStateSaved,
         shoppingList,
+        updateSuggestion
     };
 })
 
