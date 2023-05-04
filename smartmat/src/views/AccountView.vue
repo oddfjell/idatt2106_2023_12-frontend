@@ -12,7 +12,7 @@
       <button @click="logout" id="logout" class="logout-Btn">Logg ut
         <span class="material-symbols-outlined">logout</span></button>
 
-        <button @click="removeAccount" id="removeAccount" class="logout-Btn">Slett konto</button>
+        <button v-if="!restricted" @click="removeAccount" id="removeAccount" class="logout-Btn">Slett konto</button>
     </div>
 
 
@@ -38,7 +38,10 @@ export default {
   computed: {
     username() {
       return tokenStore().user.username
-    }
+    },
+      restricted(){
+        return tokenStore().user.restricted
+      }
   },
   methods: {
     logout() {
