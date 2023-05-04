@@ -199,9 +199,6 @@ Shoppinglist entity styling
     padding-top: 0;
 }
 
-
-
-
 /*
 shoppinglistgrid styling
  */
@@ -252,6 +249,9 @@ shoppinglistgrid styling
 
 
 @media(max-width:900px ){
+    .container{
+        max-width: none;
+    }
     #show-list{
         display: block;
         margin: 0 auto 5px;
