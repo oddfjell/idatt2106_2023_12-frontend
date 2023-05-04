@@ -13,9 +13,9 @@
         </button>
       </template>
     </Carousel>
+          <p id="info">{{info}}</p>
       <div id="controlPanel">
           <div id="containerThisWeekMenu">
-        <p id="info">{{info}}</p>
         <div class=" Btn addToShoppingList">
             <button class="BlueBtn" @click="addToShoppingList">
                 Legg til varer i handleliste</button>
@@ -78,7 +78,7 @@ export default defineComponent({
           this.popup=false
           await this.loadRecipes(data.servings, data.ndays)
           try{
-              let response = await recipeService.saveRecipes(tokenStore().user.jwt, this.displayRecipes)
+              await recipeService.saveRecipes(tokenStore().user.jwt, this.displayRecipes)
           }catch (error){
               console.log("error")
           }
@@ -151,6 +151,7 @@ export default defineComponent({
             this.info="Lagret!"
         }catch (error){
             console.log(error)
+            this.info="Kunne ikke lagre!"
         }
     }
 
