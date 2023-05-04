@@ -1,17 +1,17 @@
 <template>
-    <div v-if="username">
-  <Carousel ref="carousel" :wrap-around="false" :items-to-show="1">
-    <Slide v-for="recipe in displayRecipes" :key="recipe">
-      <div class="carousel__item" :style="{backgroundImage: 'url(' + recipe.image + ')' }">
+  <div v-if="username">
+    <Carousel ref="carousel" :wrap-around="false" :items-to-show="1" id="carousel">
+      <Slide v-for="recipe in displayRecipes" :key="recipe">
+        <div class="carousel__item" :style="{backgroundImage: 'url(' + recipe.image + ')' }">
           <h3 id="slideTitle"> {{ recipe.title }} </h3></div>
-    </Slide>
-    <template #addons>
-      <Navigation />
-      <button id="refreshRecipeBtn" @click="getAndChangeRecipe">
-        <img src="../images/refresh-icon.png" alt="refresh-icon">
-      </button>
-    </template>
-  </Carousel>
+      </Slide>
+      <template #addons>
+        <Navigation/>
+        <button id="refreshRecipeBtn" @click="getAndChangeRecipe">
+          <img src="../images/refresh-icon.png" alt="refresh-icon">
+        </button>
+      </template>
+    </Carousel>
         <p id="info">{{info}}</p>
         <div id="serving-wrapper">
           <button class="incrementbutton" @click="minusServing">-</button>
@@ -22,16 +22,17 @@
             <button class="BlueBtn" @click="addToShoppingList">
                 Legg til varer i handleliste</button>
         </div>
-        <div class="container" v-if="this.carousel">
-            <h1>Ingredienser</h1>
-        <p style="display: none">{{currentSlide}}</p>
-            <div v-if="this.displayRecipes[currentSlide.value]">
-            <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
-            <p :key="this.displayRecipes[currentSlide._value] + index" v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ingredient}}</p>
-            </div>
-        </div>
-
+    <div class="container" v-if="this.carousel">
+      <h1 class="ingredients-title">Ingredienser</h1>
+      <p style="display: none">{{ currentSlide }}</p>
+      <div v-if="this.displayRecipes[currentSlide.value]">
+        <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
+        <p class="ingredients-text" :key="this.displayRecipes[currentSlide._value] + index"
+           v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">{{ ingredient }}</p>
+      </div>
     </div>
+
+  </div>
   <div v-else><h1>Please log in</h1></div>
 </template>
 
@@ -39,7 +40,7 @@
 import { defineComponent, onMounted, ref } from 'vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import recipeService from '../services/recipeService'
-import { tokenStore } from "@/stores/tokenStore";
+import {tokenStore} from "@/stores/tokenStore";
 
 import 'vue3-carousel/dist/carousel.css'
 import router from "@/router";
@@ -51,6 +52,7 @@ export default defineComponent({
     Slide,
     Navigation,
   },
+
   methods: {
     async loadRecipes() {
       
@@ -61,6 +63,13 @@ export default defineComponent({
           info:""
       }
     },
+
+  data() {
+    return {
+      info: ""
+    }
+  },
+
   setup() {
     const carousel = ref(null)
 
@@ -146,25 +155,40 @@ export default defineComponent({
     }
   },
   async mounted() {
-    
+
+    let recipeEntities = [];
+    try {
+      let recipesResponse = await recipeService.getWeekMenu(tokenStore().user.jwt);
+      let recipes = recipesResponse.data
+      for (let recipe of recipes) {
+        recipeEntities.push(recipe)
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+
+    }
+    this.displayRecipes = recipeEntities
+    this.recipesShown = recipeEntities.slice(0)
   },
-    created() {
-        if(!tokenStore().user.username){
-            router.push("/")
-        }
+  created() {
+    if (!tokenStore().user.username) {
+      router.push("/")
+    }
+  },
+  computed: {
+    username() {
+      return tokenStore().user.username
     },
-  computed:{
-      username(){
-          return tokenStore().user.username
-      },
-      currentSlide(){
-          return this.carousel.data.currentSlide
-      },
+    currentSlide() {
+      return this.carousel.data.currentSlide
+    },
   }
 })
 </script>
 
 <style scoped>
+@import "../assets/style/weeklyMenu.css";
 .carousel__item {
   min-height: 200px;
     padding: 50px;
