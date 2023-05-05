@@ -35,6 +35,10 @@ export default {
     components:{Line},
     dates:[],
     totalMoneyLost:[],
+  /**
+   * Returns data for the chart
+   * @returns {{loaded: boolean, chartOptions: {plugins: {datalabels: {formatter: (function(*, *): string), color: string, offset: number, display: boolean, align: string, font: {size: number, weight: string}}}, scales: {x: {title: {display: boolean, text: string}}, y: {min: number, ticks: {callback: (function(*, *, *): string)}, title: {display: boolean, text: string}}}}, chartData: {datasets: [{borderColor: string, backgroundColor: string, tension: number, data: [], datalabels: {anchor: string, align: string}, label: string, fill: boolean}], labels: []}}}
+   */
     data(){
         return{
             loaded:false,
@@ -95,6 +99,11 @@ export default {
 
         }
     },
+  /**
+   * @async
+   * @function created fetches money lost and data to display the chart
+   * @returns {Promise<void>}
+   */
     async created() {
         this.loaded=false
         let dates = []

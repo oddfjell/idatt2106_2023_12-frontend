@@ -17,7 +17,7 @@
       <div class="Btn">
         <button class="BlueBtn" @click="onSubmit" type="submit">Registrer</button>
         <router-link to='/profile'>
-        <button class="BlueBtn" >Tilbake</button>
+          <button class="BlueBtn">Tilbake</button>
         </router-link>
       </div>
 
@@ -45,17 +45,21 @@ export default {
   },
 
   methods: {
-
+    /**
+     * @async
+     * @function onSubmit method that handles the registration
+     * @returns {Promise<void>}
+     */
     async onSubmit() {
       if (this.profile.username !== "") {
         try {
           await accountService.registerProfile(this.profile, tokenStore().user.jwt);
           await router.push("/profile")
-        }catch (error){
+        } catch (error) {
           this.error = "Brukernavn eksisterer allerede i konto"
         }
 
-      }else{
+      } else {
         this.error = "Brukernavn kan ikke være tom"
       }
     }
