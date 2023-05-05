@@ -3,37 +3,53 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <div v-if="username" id="page">
         <div v-if="this.displayRecipes.length>0">
-            <Carousel ref="carousel" :wrap-around="false" :items-to-show="1" id="carousel">
+
+          <div id="carousel-wrapper">
+            <button class="navigation-icon" id="btn-left" @click="carousel.prev()"> &lt </button>
+            <Carousel ref="carousel" :wrap-around="true" :settings="settings" :breakpoints="breakpoints" id="carousel">
                 <Slide v-for="recipe in displayRecipes" :key="recipe">
                     <div class="carousel__item" :style="{backgroundImage: 'url(' + recipe.image + ')' }">
                         <h3 id="slideTitle"> {{ recipe.title }} </h3></div>
                 </Slide>
                 <template #addons>
-                    <Navigation/>
-                    <button id="refreshRecipeBtn" :disabled="isLoading"
-                            @click="getAndChangeRecipe">
-                        <span class="material-symbols-outlined">sync</span>
-                    </button>
+                  <div id="pagination">
+                  <Pagination />
+                  </div>
+                  <Navigation>
+                    <template #next>
+                    </template>
+                    <template #prev>
+                    </template>
+                  </Navigation>
+
+
                 </template>
             </Carousel>
+            <button class="navigation-icon" id="btn-right" @click="carousel.next()"> > </button>
+          </div>
+
             <p id="info">{{ info }}</p>
             <div id="controlPanel">
                 <div id="containerThisWeekMenu">
                     <div class=" Btn addToShoppingList">
-                        <button class="BlueBtn" @click="addToShoppingList">
+                        <button class="GreenBtn" @click="addToShoppingList">
                             Legg til varer i handleliste
                         </button>
                     </div>
                 </div>
+              <button class="GreenBtn" id="refreshRecipeBtn" :disabled="isLoading"
+                      @click="getAndChangeRecipe">
+                <span class="material-symbols-outlined">sync</span>
+              </button>
                 <div id="containerNewWeekMenu">
-                    <button @click="getNewWeekMenu" class="Btn BlueBtn"> Velg ny ukesmeny</button>
+                    <button @click="getNewWeekMenu" class="Btn GreenBtn"> Velg ny ukesmeny</button>
                 </div>
             </div>
             <div class="container" v-if="this.carousel">
                 <h1 class="ingredients-title">Ingredienser</h1>
                 <p style="display: none">{{ currentSlide }}</p>
                 <div v-if="this.displayRecipes[currentSlide.value]">
-                    <a :href="this.displayRecipes[currentSlide.value].url">Se på matprat</a>
+                    <a :href="this.displayRecipes[currentSlide.value].url" class="ingredients-title" id="link">Se på matprat</a>
                     <p class="ingredients-text" :key="this.displayRecipes[currentSlide._value] + index"
                        v-for="(ingredient, index) in this.displayRecipes[currentSlide._value].ingredients ">
                         {{ ingredient }}</p>
@@ -43,7 +59,7 @@
         <div style="text-align: center" v-else class="container">
             <h1>Du har ingen ukesmeny enda</h1>
             <div class="Btn">
-                <button class="BlueBtn" @click="getNewWeekMenu"> Få en ukesmeny!</button>
+                <button class="Btn GreenBtn"  @click="getNewWeekMenu"> Få en ukesmeny!</button>
             </div>
         </div>
         <div v-if="popup">
@@ -55,7 +71,7 @@
 
 <script>
 import {defineComponent, ref} from 'vue'
-import {Carousel, Navigation, Slide} from 'vue3-carousel'
+import {Carousel, Navigation, Slide, Pagination} from 'vue3-carousel'
 import recipeService from '../services/recipeService'
 import {tokenStore} from "@/stores/tokenStore";
 
@@ -70,6 +86,7 @@ export default defineComponent({
         Carousel,
         Slide,
         Navigation,
+        Pagination,
     },
 
     methods: {
@@ -170,7 +187,17 @@ export default defineComponent({
             addToShoppingList,
             loadRecipes,
             info,
-            isLoading
+            isLoading,
+          settings: {
+            itemsToShow: 1,
+            snapAlign: "start",
+          },
+          breakpoints: {
+            501: {
+              itemsToShow: 2.5,
+              snapAlign: "center",
+            },
+          }
         }
     },
     async mounted() {
@@ -202,10 +229,7 @@ export default defineComponent({
 <style scoped>
 @import "../assets/style/weeklyMenu.css";
 
-#controlPanel {
-    display: flex;
-    justify-content: space-evenly;
-}
+
 
 
 </style>
