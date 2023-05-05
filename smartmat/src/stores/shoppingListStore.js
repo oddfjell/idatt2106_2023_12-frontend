@@ -4,6 +4,7 @@ import {ref} from "vue";
 export const shoppingListStore = defineStore("shoppingList",() =>{
     const shoppingList = ref({
         shoppingListEntities:[],
+        shoppingListSuggestions:[],
         saved:true
     });
 
@@ -11,8 +12,16 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
         return shoppingList.value.shoppingListEntities
     }
 
+    const getShoppingListSuggestions = ()=>{
+        return shoppingList.value.shoppingListSuggestions
+    }
+
     const setShoppingListEntities = (newShoppingListEntities) =>{
         shoppingList.value.shoppingListEntities= newShoppingListEntities
+    }
+
+    const setShoppingListSuggestions = (newSuggestions) =>{
+        shoppingList.value.shoppingListSuggestions = newSuggestions
     }
     const addShoppingListEntity = (newShoppingListEntity) =>{
         let shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
@@ -24,10 +33,10 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
     }
 
     const updateSuggestion = (newShoppingListEntity) => {
-        let shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
+        let shoppingListEntity = shoppingList.value.shoppingListSuggestions.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
         if(!shoppingListEntity){
-            shoppingList.value.shoppingListEntities.push(newShoppingListEntity)
-            shoppingListEntity = shoppingList.value.shoppingListEntities.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
+            shoppingList.value.shoppingListSuggestions.push(newShoppingListEntity)
+            shoppingListEntity = shoppingList.value.shoppingListSuggestions.find((shoppingListEntity)=> shoppingListEntity.name===newShoppingListEntity.name)
         }
         shoppingListEntity.suggestion = true;
     }
@@ -49,7 +58,9 @@ export const shoppingListStore = defineStore("shoppingList",() =>{
 
     return{
         getShoppingListEntities,
+        getShoppingListSuggestions,
         setShoppingListEntities,
+        setShoppingListSuggestions,
         addShoppingListEntity,
         updateShoppingListEntity,
         getStateSaved,

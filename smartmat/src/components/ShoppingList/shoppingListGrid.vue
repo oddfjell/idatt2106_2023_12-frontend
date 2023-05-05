@@ -59,6 +59,19 @@ export default {
             this.uncheckedEntities=uncheckedEntities
             this.checkedEntities=checkedEntities
         },
+        updateSuggestionChecked(){
+            let suggestedEntities = []
+            for (const entity of shoppingListStore().getShoppingListSuggestions()){
+                suggestedEntities.push(entity)
+            }
+
+            let shoppinglistEntities = []
+            for (const entity of shoppingListStore().getShoppingListEntities()) {
+                shoppinglistEntities.push(entity)
+            }
+            this.uncheckedEntities = suggestedEntities
+            this.checkedEntities=shoppinglistEntities
+        },
         toggleCheckedList(){
             let checkedList = document.querySelector("#checked_list")
             let uncheckedList = document.querySelector("#unchecked_list")

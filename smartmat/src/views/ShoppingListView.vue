@@ -2,7 +2,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
   <div v-if="username && !restricted" class="container" id="frame">
-    <div v-if="suggestions.length" class="notifications" id="active">
+    <div v-if="notification.length" class="notifications" id="active">
       <label>Forslag</label>
       <span class="material-symbols-outlined" @click="getSuggestions">notifications_active</span>
     </div>
@@ -33,7 +33,7 @@
       <div v-else><h3 class="message" id="empty-list"> Du har ikke noe i handlelisten</h3></div>
     </div>
     <div v-if="popup">
-      <SuggestionPopup :suggestionList="suggestions" @closePopup="closePopup" @acceptedSuggestion="acceptedSuggestion"></SuggestionPopup>
+      <SuggestionPopup :suggestionList="notification" @closePopup="closePopup" @acceptedSuggestion="acceptedSuggestion"></SuggestionPopup>
     </div>
 
 
@@ -94,7 +94,7 @@ export default {
     return {
       selectedText: "Søk etter vare",
       groceries: [],
-      suggestions: [],
+        notification: [],
       loading: true,
       info: " ",
       popup:false
@@ -110,8 +110,10 @@ export default {
      * @param selection - the selected product
      */
     onSelection(selection) {
-        if(selection !==undefined || selection !==null) {
+        if(selection && !tokenStore().user.restricted) {
             this.addShoppingListEntity(selection)
+        } else if(selection){
+            this.suggestShoppingListEntity(selection)
         }
     },
     /**
@@ -139,6 +141,7 @@ export default {
       this.info = "Lagrer... "
       try {
         await shoppingListService.saveChanges(shoppingListStore().getShoppingListEntities(), tokenStore().user.jwt)
+        await shoppingListService.saveChanges(shoppingListStore().getShoppingListSuggestions(),tokenStore().user.jwt)
         shoppingListStore().setStateSaved(true)
         this.info = "Lagret!"
       } catch (error) {
@@ -166,15 +169,15 @@ export default {
         this.info = "Ikke lagt til"
       }
     },
-    async suggestShoppingListEntity() {
+    async suggestShoppingListEntity(selected) {
       try {
-        let product = {name: this.selected.name, count: 1, foundInStore: false, suggestion: true}
+        let product = {name: selected.name, count: 1, foundInStore: false, suggestion: true}
         shoppingListStore().updateSuggestion(product)
         this.info = "Lagt til " + product.name
         shoppingListStore().setStateSaved(false)
         this.onSelection(null)
         if (this.$refs.grid) {
-          this.$refs.grid.updateChecked()
+          this.$refs.grid.updateSuggestionChecked()
         }
       } catch (error) {
         console.log(error)
@@ -195,15 +198,21 @@ export default {
           if (!shoppinglistEntity.suggestion) {
             listEntities.push(shoppinglistEntity)
           } else {
-            this.suggestions.push(shoppinglistEntity);
+            this.notification.push(shoppinglistEntity);
+
           }
         }
       } catch (error) {
         console.log(error)
       }
+      shoppingListStore().setShoppingListSuggestions(this.notification)
       shoppingListStore().setShoppingListEntities(listEntities)
       if (this.$refs.grid) {
-        this.$refs.grid.updateChecked()
+          if(!tokenStore().user.restricted){
+              this.$refs.grid.updateChecked()
+          } else{
+              this.$refs.grid.updateSuggestionChecked()
+          }
       }
     },
     getSuggestions(){
@@ -226,6 +235,7 @@ export default {
 
     await this.getListEntities()
     this.loading = false
+
     //Get groceries from database
     let groceriesResponse = await groceryService.getProducts(tokenStore().user.jwt)
     let groceries = groceriesResponse.data
@@ -247,9 +257,13 @@ export default {
         }
       }
     }
-
-    console.log(shoppingListStore().getShoppingListEntities())
-
+      if (this.$refs.grid) {
+          if(!tokenStore().user.restricted){
+              this.$refs.grid.updateChecked()
+          } else{
+              this.$refs.grid.updateSuggestionChecked()
+          }
+      }
   },
 
   /**
