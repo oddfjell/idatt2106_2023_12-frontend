@@ -17,6 +17,9 @@ ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels)
 export default {
     name: "GraphComponent",
     components:{Pie},
+  /**
+   * @returns {{loaded: boolean, chartData: {datasets: [{backgroundColor: string[], data: number[], datalabels: {anchor: string, align: string}}], labels: *[]}, options: {plugins: {datalabels: {formatter: (function(*): string), color: string, font: {weight: string}}}}}}
+   */
     data(){
         return{
             loaded:false,
@@ -46,6 +49,12 @@ export default {
             },
         }
     },
+
+  /**
+   * @async
+   * @function created fetches money lost per category and data to dislpay chart
+   * @returns {Promise<void>}
+   */
     async created() {
         this.loaded=false
         let categories = []

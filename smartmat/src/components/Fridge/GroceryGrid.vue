@@ -26,6 +26,11 @@ export default {
     },
     methods:{
     },
+  /**
+   * @function created fetches a arrau with  grocery items
+   * @async
+   * @returns {Promise<void>}
+   */
     async created(){
         let fridgeEntities = [];
         try {
