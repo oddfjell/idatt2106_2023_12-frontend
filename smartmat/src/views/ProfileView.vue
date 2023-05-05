@@ -4,7 +4,7 @@
     <div :id='"profile"+index' v-for="(profile, index) in profiles" :key="index">
       <ProfileIcon :profile="profile" @selectProfile="passwordPopup" @deleteProfile="passwordPopupDelete"></ProfileIcon>
     </div>
-    <ProfileIcon id="addContainer" :profile="addProfile" :add="1"></ProfileIcon>
+    <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
   </div>
 
   <div id="logout">
@@ -52,10 +52,17 @@ export default {
         await router.push("/home")
       }
     },
-    passwordPopupDelete(profile) {
-      this.selectedProfile = profile;
-      this.deleteProfile = true;
-      this.popup = true;
+    async passwordPopupDelete(profile) {
+        if (profile.password) {
+            this.selectedProfile = profile;
+            this.deleteProfile = true;
+            this.popup = true;
+        }else{
+            console.log("YOOOO")
+            console.log(profile)
+            await accountService.deleteProfile(profile, tokenStore().user.jwt)
+            location.reload();
+        }
     },
     closeThePopup() {
       this.selectedProfile = null;

@@ -29,7 +29,7 @@
       </div>
 
       <p id="info">{{ info }}</p>
-      <div id="controlPanel">
+      <div v-if="!restricted" id="controlPanel">
         <div id="containerThisWeekMenu">
           <div class=" Btn addToShoppingList">
             <button class="GreenBtn" @click="addToShoppingList">
@@ -80,7 +80,7 @@ import router from "@/router";
 import WeekMenuPopup from "@/components/Common/WeekMenuPopup.vue";
 
 export default defineComponent({
-  name: 'Basic',
+  name: 'WeeklyMenu',
   components: {
     WeekMenuPopup,
     Carousel,
@@ -90,26 +90,12 @@ export default defineComponent({
   },
 
   methods: {
-    /**
-     * method that shows a popup of weekly menu which allows the user to select number of servings and number of days
-     */
     getNewWeekMenu() {
       this.popup = true
     },
-
-    /**
-     * closed the popup of weekly menu which allows the user to select number of servings and number of days
-     */
     closeThePopup() {
       this.popup = false;
     },
-    /**
-     * @async
-     * @function Method that generates a new week menu based on the users preferance
-     * @param data.servings object with number of servings for the week menu
-     * @param data.ndays object with number of days for the week menu
-     * @returns {Promise<void>}
-     */
     async newWeekMenu(data) {
       this.popup = false
       await this.loadRecipes(data.servings, data.ndays)
@@ -137,14 +123,6 @@ export default defineComponent({
     const info = ref("")
     const isLoading = ref(false)
 
-    /**
-     * @async
-     * @function changeRecipe method that changes the recipe in the menu
-     * @param {number} index the index of the recipe that is getting changed
-     * @param recipesResponse New recipe object
-     * @returns {Promise<void>}
-     */
-
     const changeRecipe = async (index, recipesResponse) => {
       let oldRecipe = displayRecipes.value.splice(index, 1, recipesResponse)
       recipesShown.value.push(recipesResponse)
@@ -159,11 +137,6 @@ export default defineComponent({
       }
     }
 
-    /**
-     * @async
-     * @function getAndChangeRecipe fetches new recipe
-     * @returns {Promise<void>}
-     */
     const getAndChangeRecipe = async () => {
       try {
         info.value = "Laster..."
@@ -176,14 +149,6 @@ export default defineComponent({
         console.log(error)
       }
     }
-
-    /**
-     * @async
-     * @function loadRecipes loads recipes for the serving amount
-     * @param {number} servings amount of servings per recipe
-     * @param{number} nDays amount of days per recipe
-     * @returns {Promise<void>}
-     */
 
     const loadRecipes = async (servings, nDays) => {
       let recipeEntities = [];
@@ -200,12 +165,6 @@ export default defineComponent({
       recipesShown.value = recipeEntities.slice(0)
       console.log(recipesShown)
     }
-
-    /**
-     * @async
-     * @function addToShoppingList adds recipes to the users shoppinglist
-     * @returns {Promise<void>}
-     */
 
     async function addToShoppingList() {
       this.info = "Lagrer til handleliste..."
@@ -241,11 +200,6 @@ export default defineComponent({
       }
     }
   },
-  /**
-   * @async
-   * @function mounted fetches the week menu when mounted
-   * @returns {Promise<void>}
-   */
   async mounted() {
     try {
       let response = await recipeService.getSavedWeekMenu(tokenStore().user.jwt)
@@ -256,18 +210,11 @@ export default defineComponent({
       console.log(error)
     }
   },
-  /**
-   * @function created
-   */
   created() {
     if (!tokenStore().user.username) {
       router.push("/")
     }
   },
-
-  /**
-   * @computed
-   */
   computed: {
     username() {
       return tokenStore().user.username
@@ -275,10 +222,15 @@ export default defineComponent({
     currentSlide() {
       return this.carousel.data.currentSlide
     },
+    restricted() {
+      return tokenStore().user.restricted
+    }
   }
 })
 </script>
 
 <style scoped>
 @import "../assets/style/weeklyMenu.css";
+
+
 </style>
