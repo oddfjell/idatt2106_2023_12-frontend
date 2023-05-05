@@ -10,50 +10,51 @@ describe('Refrigerator', () => {
             cy.get('#profile-card').click()
             cy.get('input[type=password]').type(testUser.password)
             cy.get('button[type=submit]').click()
-            cy.visit("/home")
+            cy.wait(2000)
             cy.visit("/refrigerator")
         })
     });
 
     it('refrigerator renders ', () => {
         cy.contains("Kjøleskap");
-
     });
 
     it('can eat a grocery', () => {
+        cy.visit("/shoppingList")
+        cy.get('.dropdown input').type('Nøkkelost')
+        cy.get('.dropdown-menu li').contains('Nøkkelost').click();
+        cy.get('[type="checkbox"]').check()
+        cy.get(".buttons").contains("Kjøp valgte varer").click();
+        cy.intercept({
+            method: 'POST',
+            url: '**/buy',
+        }).as('buy');
+        cy.wait('@buy')
 
-        cy.get(".container").first().find("#count").then(($count) => {
-            const beforeThrown = parseInt($count.text().replace("Antall: ", " "));
-            console.log(beforeThrown)
-            cy.get(".container").first().find("#eatBtn").click();
-            cy.get('#grocery_grid').should('be.visible');
-            cy.get(".container").first().find("#count").should(($updateCount) => {
-                const afterThrown = parseInt($updateCount.text().replace("Antall: ", " "));
-                console.log(afterThrown)
-                expect(afterThrown).to.equal(beforeThrown - 1)
-            })
-
+        cy.visit("/refrigerator")
+        cy.get('#grocery_grid').should('be.visible');
+        cy.contains("Nøkkelost").should("exist")
+        cy.get(".container").first().find("#eatBtn").click();
+        cy.wait(3000)
+        cy.contains("Nøkkelost").should("not.exist")
         })
-
-    })
-
-
     it('can throw away a grocery', () => {
-
-        cy.get(".container").first().find("#count").then(($count1) => {
-            const beforeThrown = parseInt($count1.text().replace("Antall: ", " "));
-            console.log(beforeThrown)
+        cy.visit("/shoppingList")
+        cy.get('.dropdown input').type('Nøkkelost')
+        cy.get('.dropdown-menu li').contains('Nøkkelost').click();
+        cy.get('[type="checkbox"]').check()
+        cy.get(".buttons").contains("Kjøp valgte varer").click();
+        cy.intercept({
+            method: 'POST',
+            url: '**/buy',
+        }).as('buy');
+        cy.wait('@buy')
+        cy.visit("/refrigerator")
+        cy.contains("Nøkkelost").should("exist")
             cy.get('.container').first().find('.throwModalBtn').click()
             cy.get('#throwSlider').invoke('val', 50).trigger('input')
             cy.get('#throwModalBtn').click()
-            cy.get('#grocery_grid').should('be.visible');
-            cy.get(".container").first().find("#count").should(($updateCount1) => {
-                const afterThrown = parseInt($updateCount1.text().replace("Antall: ", " "));
-                console.log(afterThrown)
-                expect(afterThrown).to.equal(beforeThrown - 1)
-            })
-
-        })
-
+        cy.wait(3000)
+        cy.contains("Nøkkelost").should("not.exist")
     })
 });

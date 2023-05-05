@@ -2,8 +2,6 @@ describe('Login', () => {
     beforeEach(() => {
         cy.visit('/');
     });
-
-
     it('should render components', () => {
         cy.contains("Logg inn");
         cy.contains("Brukernavn");

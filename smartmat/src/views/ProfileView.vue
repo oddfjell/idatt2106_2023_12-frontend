@@ -5,7 +5,9 @@
     <div :id='"profile"+index' v-for="(profile, index) in profiles" :key="index">
       <ProfileIcon :profile="profile" @selectProfile="passwordPopup" @deleteProfile="passwordPopupDelete"></ProfileIcon>
     </div>
+      <div id="addProfile">
     <ProfileIcon :profile="addProfile" :add="1"></ProfileIcon>
+      </div>
   </div>
 
   <div id="logout">

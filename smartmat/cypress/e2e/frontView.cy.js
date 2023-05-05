@@ -14,7 +14,6 @@ describe('FrontView', () => {
     });
 
     it('router links work correctly', () => {
-
         cy.get('#outer-border').find('a').should('have.length', 3).each(($link) => {
             const href = $link.attr('href'); // Get the href attribute of the link
             cy.visit(href); // Click the link
