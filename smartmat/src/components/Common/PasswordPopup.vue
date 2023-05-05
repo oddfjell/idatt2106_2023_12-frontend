@@ -8,7 +8,7 @@
         <input type="password" v-model="password" class="popup-input">
         <p>{{error}}</p>
         <button v-if="!deleteProfile" type="submit" class="popup-button" id="login">Logg inn</button>
-        <button v-else-if="deleteProfile" type="submit" class="popup-button" id="delete">SLETT PROFIL</button>
+        <button v-else-if="deleteProfile" type="submit" class="popup-button" id="delete" :disabled="!password">SLETT PROFIL</button>
       </form>
     </div>
   </div>

@@ -58,8 +58,6 @@ export default {
             this.deleteProfile = true;
             this.popup = true;
         }else{
-            console.log("YOOOO")
-            console.log(profile)
             await accountService.deleteProfile(profile, tokenStore().user.jwt)
             location.reload();
         }
