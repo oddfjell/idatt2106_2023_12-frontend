@@ -24,7 +24,7 @@
         </div>
       </RouterLink>
     </div>
-      <div id="graphGrid">
+    <div id="graphGrid">
       <GraphComponent id="lineChart"/>
       <PieChart id="pieChart"/>
     </div>
@@ -40,10 +40,21 @@ import PieChart from "@/components/Graphs/PieChart.vue";
 export default {
   components: {GraphComponent, PieChart},
   computed: {
+    /**
+     * the username method is a computed property that returns the username of the currently logged in user
+     * @returns {string} The username of the currently logged in user
+     */
     username() {
       return tokenStore().user.username
     }
   },
+  /**
+   * The `created()` method is a lifecycle hook that is called after the component has been
+   * initialized and its data has been set up.
+   * This method checks if there is a user logged in, if not it redirects the user to the
+   * login page. It also logs the user's username, restricted status and JSON web token to the console.
+   */
+
   created() {
     if (!tokenStore().user.username) {
       router.push("/")
