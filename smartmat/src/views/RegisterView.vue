@@ -76,7 +76,7 @@ export default {
           }
         } catch (error) {
           console.log("Registration failed")
-          this.error = "Kan ikke ha tomme felt"
+          this.error = "Brukernavn er opptatt"
         }
       }
     },
