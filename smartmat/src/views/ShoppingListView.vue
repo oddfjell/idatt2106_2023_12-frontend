@@ -17,8 +17,6 @@
                 :placeholder="selectedText"
                 v-on:selected="onSelection">
       </Dropdown>
-      <!-- Button for adding the selected item to shoppinglist -->
-      <button class="buttons" @click="addShoppingListEntity">Legg til vare</button>
     </div>
     <div class="container" id="shoppingGridContainer">
       <!-- Text field for displaying information to the user -->
@@ -95,7 +93,6 @@ export default {
   data() {
     return {
       selectedText: "Søk etter vare",
-      selected: null,
       groceries: [],
       suggestions: [],
       loading: true,
@@ -113,12 +110,9 @@ export default {
      * @param selection - the selected product
      */
     onSelection(selection) {
-      if (selection !== null && selection !== undefined) {
-        this.selected = selection;
-        this.selectedText = selection.name
-      } else {
-        this.selectedText = "Søk etter vare"
-      }
+        if(selection !==undefined || selection !==null) {
+            this.addShoppingListEntity(selection)
+        }
     },
     /**
      * Buy-method. Transfers checked items from the shopping-list to the fridge.
@@ -157,9 +151,9 @@ export default {
      *  Uses the grid $refs to force an updated list in shoppingListGrid
      * @returns {Promise<void>}
      */
-    async addShoppingListEntity() {
+    async addShoppingListEntity(selected) {
       try {
-        let product = {name: this.selected.name, count: 1, foundInStore: false, suggestion: false}
+        let product = {name: selected.name, count: 1, foundInStore: false, suggestion: false}
         shoppingListStore().addShoppingListEntity(product)
         this.info = "Lagt til " + product.name
         shoppingListStore().setStateSaved(false)
