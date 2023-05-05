@@ -229,6 +229,7 @@ export default {
    * @returns {Promise<void>}
    */
   async created() {
+
     await this.getListEntities()
     this.loading = false
     //Get groceries from database
@@ -252,6 +253,8 @@ export default {
         }
       }
     }
+
+    console.log(shoppingListStore().getShoppingListEntities())
 
   },
 
