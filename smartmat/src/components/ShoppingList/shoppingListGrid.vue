@@ -6,7 +6,8 @@
     <button class="buttons" id="show-list" @click="toggleCheckedList"> {{toggleBtnText}}</button>
     <div v-if="uncheckedEntities || checkedEntities" id="shoppingListEntitiesGrid">
         <div id="unchecked_list">
-            <h3 class="font">Ikke valgt</h3>
+            <h3 v-if="!tokenStore().user.restricted" class="font">Ikke valgt</h3>
+            <h3 v-else-if="tokenStore().user.restricted" class="font">Forslag</h3>
           <ul>
             <li v-for="(uncheckedEntity, index) in uncheckedEntities" :key="uncheckedEntity.name">
               <ShoppingListEntity :tabindex="index+1" :listEntity="uncheckedEntity" @updateChecked="updateChecked" :count="uncheckedEntity.count" />
@@ -14,7 +15,8 @@
           </ul>
         </div>
         <div id="checked_list">
-            <h3 class="font">Valgt</h3>
+            <h3 v-if="!tokenStore().user.restricted" class="font">Valgt</h3>
+            <h3 v-else-if="tokenStore().user.restricted" class="font">Handlelisten</h3>
           <ul>
             <li v-for="(checkedEntity, index) in checkedEntities" :key="checkedEntity.name">
               <ShoppingListEntity :tabindex="index+1" :listEntity="checkedEntity" @updateChecked="updateChecked" :count="checkedEntity.count" />
@@ -30,6 +32,7 @@
 <script>
 import ShoppingListEntity from "@/components/ShoppingList/shoppingListEntity.vue";
 import {shoppingListStore} from "@/stores/shoppingListStore";
+import {tokenStore} from "@/stores/tokenStore";
 
 export default {
     name: "shoppingListGrid",
@@ -42,6 +45,7 @@ export default {
         }
     },
     methods:{
+        tokenStore,
         shoppingListStore,
         updateChecked(){
             let uncheckedEntities = []

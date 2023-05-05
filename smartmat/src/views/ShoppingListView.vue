@@ -41,7 +41,7 @@
 
 
   <div v-else-if="username && restricted" class="container" id="frame">
-    <h1 id="title">Handleliste</h1>
+    <h1 id="title">Forslag til handlelisten</h1>
     <div id="header">
       <!-- The shopping list dropdown component -->
       <Dropdown id="dropdown"
@@ -49,8 +49,6 @@
                 :placeholder="selectedText"
                 v-on:selected="onSelection">
       </Dropdown>
-      <!-- Button for adding the selected item to shoppinglist -->
-      <button class="buttons" @click="suggestShoppingListEntity">Foreslå en vare</button>
     </div>
     <div class="container" id="shoppingGridContainer">
       <!-- Text field for displaying information to the user -->
@@ -101,6 +99,7 @@ export default {
     }
   },
   methods: {
+      tokenStore,
     /**
      * The pinia-Store
      */
