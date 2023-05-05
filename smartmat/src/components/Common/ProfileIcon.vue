@@ -2,8 +2,8 @@
   <div id="profile-card">
       <div v-if="!add" class="material-symbols-outlined" id="remove" @click="removeProfile">Remove</div>
       <div id="choose" @click="selectProfile">
-        <div v-if="!add && profile.restricted" class="material-symbols-outlined" id="icon">person</div>
-        <div v-if="!add && !profile.restricted" class="material-symbols-outlined" id="icon">shield_person</div>
+        <div v-if="!add && profile.restricted" class="material-symbols-outlined" id="icon">supervisor_account</div>
+        <div v-if="!add && !profile.restricted" class="material-symbols-outlined" id="icon">person</div>
         <div v-else class="material-symbols-outlined" id="icon">add</div>
          <div id="title">{{profile.username}}</div>
       </div>
