@@ -12,6 +12,11 @@ function configToken (token) {
   }
 }
   export default{
+    /**
+     * Retrieves all products from the server using a token for authentication.
+     * @param {string} token - The token for authentication.
+     * @returns {Promise} - A promise that resolves to the response from the server containing all the products.
+     */
   getProducts(token){
     return axios.get(baseURL+"/", configToken(token))
   }

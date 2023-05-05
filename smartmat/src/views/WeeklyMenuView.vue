@@ -29,7 +29,7 @@
       </div>
 
       <p id="info">{{ info }}</p>
-      <div id="controlPanel">
+      <div v-if="!restricted" id="controlPanel">
         <div id="containerThisWeekMenu">
           <div class=" Btn addToShoppingList">
             <button class="GreenBtn" @click="addToShoppingList">
@@ -80,7 +80,7 @@ import router from "@/router";
 import WeekMenuPopup from "@/components/Common/WeekMenuPopup.vue";
 
 export default defineComponent({
-  name: 'Basic',
+  name: 'WeeklyMenu',
   components: {
     WeekMenuPopup,
     Carousel,
@@ -90,9 +90,6 @@ export default defineComponent({
   },
 
   methods: {
-    /**
-     *method that shows a popup of weekly menu which allows the user to select number of servings and number of days
-     */
     getNewWeekMenu() {
       this.popup = true
     },
@@ -275,10 +272,15 @@ export default defineComponent({
     currentSlide() {
       return this.carousel.data.currentSlide
     },
+    restricted() {
+      return tokenStore().user.restricted
+    }
   }
 })
 </script>
 
 <style scoped>
 @import "../assets/style/weeklyMenu.css";
+
+
 </style>

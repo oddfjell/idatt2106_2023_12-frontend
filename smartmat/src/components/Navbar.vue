@@ -56,6 +56,12 @@ import {tokenStore} from "@/stores/tokenStore";
 
 export default {
   computed: {
+    /**
+     * Returns the username of the currently logged in user from the tokenStore.
+     *
+     * @returns {string} The username of the currently logged in user.
+     */
+
     username() {
       return tokenStore().user.username
     }
