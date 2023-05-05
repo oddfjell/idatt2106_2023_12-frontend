@@ -48,6 +48,7 @@ export default {
     }
   },
   methods: {
+
     /**
      *Triggered when pressing the login button. Sends a loginrequest. If it is valid it sets the token and username as the
      * logged-in user
@@ -79,7 +80,8 @@ export default {
     }
   },
   /**
-   * If the user is already logged in, they will be sent to the homepage
+   Lifecycle hook called when the component is created. If the user is already logged in (tokenStore().user.username !== ""),
+   they are redirected to the profile page, otherwise, nothing happens.
    */
   created() {
     if (tokenStore().user.username !== "") {

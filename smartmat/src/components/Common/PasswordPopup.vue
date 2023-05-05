@@ -1,12 +1,13 @@
 <template>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
   <div class="popup-overlay">
     <div class="popup-container">
       <form @submit.prevent="login">
         <span class="material-symbols-outlined" @click="close" id="popup-close">close</span>
         <h1 class="popup-title">PIN</h1>
         <input type="password" v-model="password" class="popup-input">
-        <p>{{error}}</p>
+        <p>{{ error }}</p>
         <button v-if="!deleteProfile" type="submit" class="popup-button" id="login">Logg inn</button>
         <button v-else-if="deleteProfile" type="submit" class="popup-button" id="delete" :disabled="!password">SLETT PROFIL</button>
       </form>
@@ -22,52 +23,62 @@ import router from "@/router";
 
 export default {
   name: "PasswordPopup",
-  props:{
-    profile:Object,
-    deleteProfile:false
+  props: {
+    profile: Object,
+    deleteProfile: false
   },
+  /**
+   Data object containing user password and error message.
+   Returns a new PasswordData object with empty values for password and error.
+   @returns {PasswordData} A new PasswordData object.
+   */
   data() {
     return {
       password: "",
       error: ""
     }
   },
-  emits:{
-    close:{
-
-    }
+  emits: {
+    close: {}
   },
-  methods:{
-
+  methods: {
+    /**
+     * Attempts to log in to the user account with the provided credentials.
+     *
+     * @throws {Error} Throws an error if the provided password is incorrect.
+     * @returns {Promise<void>} Promise that resolves when the login is successful.
+     */
     async login() {
       let loginProfile = {
         username: this.profile.username,
         restricted: this.profile.restricted,
         password: this.password
       }
-      if(this.deleteProfile){
+      if (this.deleteProfile) {
         try {
           await accountService.deleteProfile(loginProfile, tokenStore().user.jwt)
           location.reload();
-        }catch (error){
+        } catch (error) {
           this.error = "Feil password";
         }
 
-      }else{
-        try{
+      } else {
+        try {
           await accountService.loginProfile(loginProfile, tokenStore().user.jwt)
           tokenStore().changeUsername(this.profile.username);
           tokenStore().changeRestriction(this.profile.restricted);
           await router.push("/home")
-        }catch (error){
+        } catch (error) {
           this.error = "Feil password";
         }
       }
 
 
     },
-
-    close(){
+    /**
+     * Closes the popup component by emitting a "closePopup" event.
+     */
+    close() {
       this.$emit("closePopup");
     }
 
@@ -134,19 +145,19 @@ export default {
   width: 50%;
 }
 
-#login{
+#login {
   background: #6dbd5e;
 }
 
-#delete{
+#delete {
   background: red;
 }
 
-#login:hover{
+#login:hover {
   background: black;
 }
 
-#delete:hover{
+#delete:hover {
   background: black;
 }
 
@@ -167,14 +178,13 @@ export default {
   color: #de1726;
 }
 
- .material-symbols-outlined {
-   float: right;
-   font-variation-settings:
-       'FILL' 0,
-       'wght' 400,
-       'GRAD' 0,
-       'opsz' 48
- }
+.material-symbols-outlined {
+  float: right;
+  font-variation-settings: 'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
 
 .material-symbols-outlined:hover {
   cursor: pointer;
