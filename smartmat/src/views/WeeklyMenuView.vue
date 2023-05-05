@@ -91,7 +91,7 @@ export default defineComponent({
 
   methods: {
     /**
-     * method that shows a popup of weekly menu which allows the user to select number of servings and number of days
+     *method that shows a popup of weekly menu which allows the user to select number of servings and number of days
      */
     getNewWeekMenu() {
       this.popup = true

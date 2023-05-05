@@ -27,7 +27,7 @@ export default {
     methods:{
     },
   /**
-   * @function created fetches a arrau with  grocery items
+   * @function created fetches an arrau with  grocery items
    * @async
    * @returns {Promise<void>}
    */
