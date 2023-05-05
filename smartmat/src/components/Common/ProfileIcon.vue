@@ -4,7 +4,7 @@
       <div id="choose" @click="selectProfile">
         <div v-if="!add && profile.restricted" class="material-symbols-outlined" id="icon">supervisor_account</div>
         <div v-if="!add && !profile.restricted" class="material-symbols-outlined" id="icon">person</div>
-        <div v-else class="material-symbols-outlined" id="icon">add</div>
+        <div v-else-if="add" class="material-symbols-outlined" id="icon">add</div>
          <div id="title">{{profile.username}}</div>
       </div>
   </div>
