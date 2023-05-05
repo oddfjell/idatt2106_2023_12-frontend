@@ -11,8 +11,49 @@
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center;
-    width: 100%;
+    width: 300px;
+    height: 200px;
     margin: auto;
+
+}
+.navigation-icon{
+    color: black;
+    font-size: 50px;
+    margin-left: 10px;
+    background-color: #6dbd5e;
+    border: #6dbd5e;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 50%;
+    margin-top: 60px;
+
+}
+#btn-left{
+    margin-left: 10px;
+}
+#btn-right{
+    margin-right: 10px;
+}
+
+.navigation-icon:hover{
+    transform: scale(1.1);
+
+}
+
+#carousel-wrapper{
+    display: flex;
+
+}
+.carousel__slide--next, .carousel__slide--prev{
+    opacity: 0.3;
+}
+
+.carousel__slide {
+    padding: 5%
+}
+
+#pagination{
+    margin-left: 20px;
 }
 
 #carousel{
@@ -20,8 +61,11 @@
     margin: auto;
 }
 
-.carousel__slide {
-    padding: 5px;
+#pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10%;
 }
 
 .carousel__next {
@@ -58,6 +102,9 @@ img {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.5);
+    padding: 5%;
+
 }
 
 #info {
@@ -99,4 +146,80 @@ img {
     background-color: #f5f5f5;
     border: 1px solid #ccc;
     cursor: pointer;
+}
+
+#controlPanel {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+    .GreenBtn {
+        font-family: Hack, monospace;
+        background: #6dbd5e;
+        color: #2c2c2c;
+        cursor: pointer;
+        font-size: 90%;
+        padding: 0.8em;
+        border: 0;
+        transition: all 0.5s;
+        border-radius: 0.4em;
+        width: auto;
+        position: relative;
+        min-width: 300px;
+    }
+
+
+    .GreenBtn:hover {
+        background: black;
+        transition: all 0.5s;
+        border-radius: 0.5em;
+        box-shadow: 0 1em 1em #6dbd5e;
+        padding: 0.9em 2em 0.9em 1em;
+        color: #ffffff;
+
+    }
+
+
+    #link{
+        color: #0b6dff;
+    }
+
+    #link:hover{
+        color: #468cfc;
+    }
+
+#refreshRecipeBtn{
+    background-color: #6dbd5e;
+    border-color: #6dbd5e;
+    border-radius: 0.5em;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: 5%;
+}
+
+#refreshRecipeBtn:hover:not([disabled]){
+    cursor: pointer;
+    box-shadow: 0 1em 2em #6dbd5e;
+    transition: all 0.5s;
+    transform: scale(1.1);
+}
+
+#refreshRecipeBtn:disabled{
+    background-color: #eaeaea;
+    border-color: #c0bcbc;
+    color: #c0c0c0;
+}
+
+
+@media (max-width: 500px) {
+    .GreenBtn {
+        font-size: 60%;
+        min-width:100px;
+
+    }
+
 }
