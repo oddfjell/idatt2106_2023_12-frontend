@@ -56,7 +56,6 @@ export default {
       }else{
         try{
           await accountService.loginProfile(loginProfile, tokenStore().user.jwt)
-
           tokenStore().changeUsername(this.profile.username);
           tokenStore().changeRestriction(this.profile.restricted);
           await router.push("/home")

@@ -37,6 +37,7 @@
     </div>
 
 
+
   </div>
 
 
@@ -68,6 +69,9 @@
   <div v-else>
     <h1 class="font"> Vennligst logg inn </h1>
   </div>
+    <div v-if="savepopUp">
+        <SavePopup @saving="saving" @withoutSaving="withoutSaving" @closePopup="closeSavePopup"/>
+    </div>
 </template>
 
 <script>
@@ -80,10 +84,11 @@ import ShoppingListGrid from "@/components/ShoppingList/shoppingListGrid.vue";
 import router from "@/router";
 import {shoppingListStore} from "@/stores/shoppingListStore";
 import SuggestionPopup from "@/components/ShoppingList/SuggestionPopup.vue";
+import SavePopup from "@/components/Common/SavePopup.vue";
 
 export default {
   name: "ShoppingList",
-  components: {SuggestionPopup, ShoppingListGrid, Dropdown},
+  components: {SuggestionPopup, SavePopup, ShoppingListGrid, Dropdown},
   /**
    * Initial data
    * @returns {{selectedText: string, trigger: boolean, loading: boolean, groceries: [], selected: null, info: string}}
@@ -95,7 +100,8 @@ export default {
         notification: [],
       loading: true,
       info: " ",
-      popup:false
+      popup:false,
+      savepopUp:false
     }
   },
   methods: {
@@ -224,7 +230,19 @@ export default {
       if (this.$refs.grid) {
         this.$refs.grid.updateChecked()
       }
-    }
+    },
+      saving(){
+        this.savepopUp=false
+          this.save()
+          shoppingListStore().setStateSaved(true)
+      },
+      withoutSaving(){
+          this.savepopUp=false
+          shoppingListStore().setStateSaved(true)
+      },
+      closeSavePopup(){
+          this.savepopUp=false
+      }
   },
   /**
    * When created, the view gets list-entities and a list of products from backend.
@@ -275,15 +293,13 @@ export default {
   },
   /**
    * If there are unsaved changes, the user will be prompted to save those changes before leaving
-   * @returns {Promise<void>}
+   * @returns {boolean}
    */
-  async beforeUnmount() {
+  beforeRouteLeave() {
     if (!shoppingListStore().getStateSaved()) {
-      if (confirm("You have unsaved changes. Save?")) {
-        await this.save()
-      }
-      shoppingListStore().setStateSaved(true)
+      this.savepopUp=true
     }
+    return shoppingListStore().getStateSaved()
   },
   computed: {
     username() {
