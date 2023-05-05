@@ -41,7 +41,7 @@ export default {
         return{
             uncheckedEntities:Array,
             checkedEntities:Array,
-            toggleBtnText:"Vis valgte"
+            toggleBtnText: (tokenStore().user.restricted) ? "Vis handleliste":"Vis valgte",
         }
     },
     methods:{
@@ -82,11 +82,20 @@ export default {
             if(checkedList.style.display === "block"){
                checkedList.style.display = "none"
                 uncheckedList.style.display= "block"
-                this.toggleBtnText="Vis valgte"
+                if(tokenStore().user.restricted){
+                    this.toggleBtnText="Vis handleliste"
+                } else{
+                    this.toggleBtnText="Vis valgte"
+                }
             } else{
                 checkedList.style.display = "block"
                 uncheckedList.style.display= "none"
-                this.toggleBtnText="Vis ikke valgte"
+                if(tokenStore().user.restricted){
+                    this.toggleBtnText="Vis forslag"
+                } else{
+                    this.toggleBtnText="Vis ikke valgte"
+                }
+
             }
         }
     },
