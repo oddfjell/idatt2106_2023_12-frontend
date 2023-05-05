@@ -41,10 +41,16 @@ export default {
   },
 
   methods: {
-    passwordPopup(profile) {
-      this.selectedProfile = profile;
-      this.deleteProfile = false;
-      this.popup = true;
+    async passwordPopup(profile) {
+      if (profile.password) {
+        this.selectedProfile = profile;
+        this.deleteProfile = false;
+        this.popup = true;
+      } else {
+        tokenStore().changeUsername(profile.username);
+        tokenStore().changeRestriction(profile.restricted);
+        await router.push("/home")
+      }
     },
     passwordPopupDelete(profile) {
       this.selectedProfile = profile;
