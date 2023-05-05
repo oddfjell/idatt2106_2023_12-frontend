@@ -98,7 +98,7 @@ export default defineComponent({
     },
 
     /**
-     * closed the popup of weekly menu which allows the user to select number of servings and number of days
+     *closed the popup of weekly menu which allows the user to select number of servings and number of days
      */
     closeThePopup() {
       this.popup = false;
@@ -106,7 +106,7 @@ export default defineComponent({
     /**
      * @async
      * @function Method that generates a new week menu based on the users preferance
-     * @param data.servings object with number of servings for the week menu
+     * @param data.servings object with number of servings for the week  menu
      * @param data.ndays object with number of days for the week menu
      * @returns {Promise<void>}
      */
@@ -140,7 +140,7 @@ export default defineComponent({
     /**
      * @async
      * @function changeRecipe method that changes the recipe in the menu
-     * @param {number} index the index of the recipe that is getting changed
+     * @param {number} index the index of the recipe that  is getting changed
      * @param recipesResponse New recipe object
      * @returns {Promise<void>}
      */
@@ -161,7 +161,7 @@ export default defineComponent({
 
     /**
      * @async
-     * @function getAndChangeRecipe fetches new recipe
+     * @function getAndChangeRecipe fetches new  recipe
      * @returns {Promise<void>}
      */
     const getAndChangeRecipe = async () => {
@@ -181,7 +181,7 @@ export default defineComponent({
      * @async
      * @function loadRecipes loads recipes for the serving amount
      * @param {number} servings amount of servings per recipe
-     * @param{number} nDays amount of days per recipe
+     * @param{number} nDays amount of days per  recipe
      * @returns {Promise<void>}
      */
 
@@ -203,7 +203,7 @@ export default defineComponent({
 
     /**
      * @async
-     * @function addToShoppingList adds recipes to the users shoppinglist
+     * @function addToShoppingList adds recipes to  the users shoppinglist
      * @returns {Promise<void>}
      */
 
@@ -243,7 +243,7 @@ export default defineComponent({
   },
   /**
    * @async
-   * @function mounted fetches the week menu when mounted
+   * @function mounted fetches the week menu when  mounted
    * @returns {Promise<void>}
    */
   async mounted() {
@@ -257,7 +257,7 @@ export default defineComponent({
     }
   },
   /**
-   * @function created
+   *  @function created
    */
   created() {
     if (!tokenStore().user.username) {
@@ -266,7 +266,7 @@ export default defineComponent({
   },
 
   /**
-   * @computed
+   *  @computed
    */
   computed: {
     username() {
