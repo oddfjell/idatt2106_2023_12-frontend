@@ -56,7 +56,7 @@ export default {
      */
     async onSubmit() {
       console.log(this.user.username)
-      if (this.user.username !== undefined || "") {
+      if (this.user.username !== "" && this.user.password !== "") {
         try {
           let response = await accountService.registerAccount(this.user)
           if (response.status === 200) {
@@ -72,11 +72,11 @@ export default {
             }
           } else {
             console.log("Login failed")
-            this.error = response.status
+            this.error = "Kan ikke ha tomme felt"
           }
         } catch (error) {
           console.log("Registration failed")
-          this.error = "Registration failed"
+          this.error = "Kan ikke ha tomme felt"
         }
       }
     },

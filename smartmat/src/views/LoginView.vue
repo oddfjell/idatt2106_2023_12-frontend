@@ -67,7 +67,7 @@ export default {
             console.log("Login failed")
           }
         } catch (error) {
-          this.error = "Could not find this user"
+          this.error = "Brukernavn/Passord er feil"
         }
       }
     },
