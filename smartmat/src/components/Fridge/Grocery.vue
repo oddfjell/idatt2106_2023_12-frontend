@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     /**
-     * @function expiredText describinf the expiration of a grocery
+     * @function expiredText describing the expiration of a grocery
      * @returns {string} string describing the expiration of a grocery
      */
     expiredText() {
