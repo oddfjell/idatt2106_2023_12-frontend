@@ -21,16 +21,16 @@ export const tokenStore = defineStore("user", () => {
         {deep:true}
     );
 
-    const changeUsername = (newUsername) => {
-        user.value.username = newUsername;
+    const changeUsername = (updateUsername) => {
+        user.value.username = updateUsername;
     }
 
-    const changeJWT = (newJWT) => {
-        user.value.jwt = newJWT;
+    const changeJWT = (updateJWT) => {
+        user.value.jwt = updateJWT;
     }
 
-    const changeRestriction = (newRestriction) => {
-        user.value.restricted = newRestriction;
+    const changeRestriction = (updateRestriction) => {
+        user.value.restricted = updateRestriction;
     }
 
     return{
