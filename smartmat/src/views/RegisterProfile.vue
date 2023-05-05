@@ -47,9 +47,11 @@ export default {
   methods: {
 
     async onSubmit() {
-      if (this.profile.username !== "") {
+      if (this.profile.username !== "" && this.profile.password !== "") {
         await accountService.registerProfile(this.profile, tokenStore().user.jwt);
         await router.push("/profile")
+      }else{
+        this.error = "Kan ikke ha tomme felt"
       }
     }
   }
