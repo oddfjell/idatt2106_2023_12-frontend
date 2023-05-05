@@ -5,7 +5,7 @@
       <label class="registerLabel">Navn: </label>
       <input type="text" v-model="profile.username" placeholder="Skriv ditt navn " name="username" required>
       <label class="registerLabel">PIN: </label>
-      <input type="password" v-model="profile.password" placeholder="Skriv din pin-kode " name="password" required>
+      <input type="password" v-model="profile.password" placeholder="Skriv din pin-kode " name="password">
       <div id="row">
         <input id="checkbox" type="checkbox" v-model="profile.restricted" name="restricted"/>
         <label class="registerLabel" id="restricted">Begrenset</label>
@@ -47,11 +47,16 @@ export default {
   methods: {
 
     async onSubmit() {
-      if (this.profile.username !== "" && this.profile.password !== "") {
-        await accountService.registerProfile(this.profile, tokenStore().user.jwt);
-        await router.push("/profile")
+      if (this.profile.username !== "") {
+        try {
+          await accountService.registerProfile(this.profile, tokenStore().user.jwt);
+          await router.push("/profile")
+        }catch (error){
+          this.error = "Brukernavn eksisterer allerede i konto"
+        }
+
       }else{
-        this.error = "Kan ikke ha tomme felt"
+        this.error = "Brukernavn kan ikke være tom"
       }
     }
   }
