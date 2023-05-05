@@ -60,6 +60,7 @@ export default {
                     checkedEntities.push(entity)
                 }
             }
+
             this.uncheckedEntities=uncheckedEntities
             this.checkedEntities=checkedEntities
         },
